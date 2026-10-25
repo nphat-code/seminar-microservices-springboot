@@ -29,7 +29,6 @@ Tạo slide thuyết trình cho chuyên đề "Spring for Microservices" dựa t
 
 Yêu cầu:
 - Thiết kế nền slide màu trắng. Tự do sáng tạo bố cục và phong cách giao diện trực quan.
-- Slide 1 chỉ để tiêu đề và phụ đề chủ đề, không thêm các thông tin giảng viên hướng dẫn, tên nhóm, thành viên hay ngày báo cáo.
 - Ngôn ngữ: Điềm đạm, khách quan, chuẩn mực kỹ thuật; không dùng từ ngữ phóng đại hay giật gân.
 ```
 
@@ -41,7 +40,6 @@ Create a presentation slide deck for "Spring for Microservices" based on the pro
 
 Requirements:
 - Design: White background. Feel free to creatively design the layout and visual presentation.
-- Slide 1 should only contain the main title and topic subtitle, without instructor name, team name, member list, or presentation date.
 - Language: Objective, calm, and technically accurate; avoid any exaggerated or sensational phrasing.
 ```
 
