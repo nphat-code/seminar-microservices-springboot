@@ -28,8 +28,8 @@ Khi bấm vào nút **Slide Deck** trong NotebookLM, thiết lập các mục nh
 Tạo slide thuyết trình cho chuyên đề "Spring for Microservices" dựa trên tài liệu nguồn đã cung cấp.
 
 Yêu cầu:
-- Thiết kế: Nền slide màu trắng sáng chủ đạo (Light theme), không đổ nền tối toàn màn hình. Sử dụng màu nhấn tinh tế (như xanh lá Spring, xanh dương công nghệ) cho tiêu đề, thẻ khối, icon và sơ đồ để slide sinh động, trực quan.
-- Ngôn ngữ: Điềm đạm, khách quan, chuẩn mực kỹ thuật; tuyệt đối không dùng từ ngữ phóng đại hay giật gân.
+- Thiết kế nền slide màu trắng. Tự do sáng tạo bố cục và phong cách giao diện trực quan.
+- Ngôn ngữ: Điềm đạm, khách quan, chuẩn mực kỹ thuật; không dùng từ ngữ phóng đại hay giật gân.
 ```
 
 ---
@@ -39,8 +39,8 @@ Yêu cầu:
 Create a presentation slide deck for "Spring for Microservices" based on the provided source documents.
 
 Requirements:
-- Design: Clean white background (Light theme), no full dark background. Use subtle, modern accent colors (such as Spring green and tech blue) for titles, cards, icons, and diagrams to make the slides visually engaging and professional.
-- Language: Objective, calm, and technically accurate; strictly avoid any exaggerated or sensational phrasing.
+- Design: White background. Feel free to creatively design the layout and visual presentation.
+- Language: Objective, calm, and technically accurate; avoid any exaggerated or sensational phrasing.
 ```
 
 ---
