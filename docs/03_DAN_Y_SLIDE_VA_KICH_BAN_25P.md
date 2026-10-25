@@ -21,8 +21,8 @@
 ## II. CHI TIẾT NỘI DUNG TỪNG SLIDE (SLIDE DECK OUTLINE)
 
 ### Slide 1: Trang tiêu đề
-- **Tiêu đề:** TÌM HIỂU KIẾN TRÚC VI DỊCH VỤ VỚI SPRING CLOUD (SPRING FOR MICROSERVICES)
-- **Thông tin:** Giảng viên hướng dẫn, Tên nhóm, Thành viên thực hiện, Ngày báo cáo.
+- **Tiêu đề chính:** KIẾN TRÚC VI DỊCH VỤ VỚI SPRING CLOUD (SPRING FOR MICROSERVICES)
+- **Chủ đề:** Chuyên đề kiến trúc hệ thống phân tán trong Java Enterprise
 
 ### Slide 2: Đặt vấn đề - Nỗi đau của kiến trúc Monolith (Monolithic Hell)
 - Một ứng dụng Web Java truyền thống (`WAR/JAR` gom chung Controller, Service, DAO vào một chỗ).
