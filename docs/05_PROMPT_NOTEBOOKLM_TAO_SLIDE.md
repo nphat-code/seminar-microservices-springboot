@@ -23,28 +23,26 @@ Khi bấm vào nút **Slide Deck** trong NotebookLM, thiết lập các mục nh
 
 ## 📝 II. PROMPT DÁN VÀO Ô MÔ TẢ (DESCRIBE THE SLIDE DECK YOU WANT TO CREATE)
 
-### 📌 Bản Tiếng Việt (Khuyến nghị dùng để báo cáo môn học):
+### 📌 Bản Tiếng Việt:
 ```text
-Tạo một bộ slide báo cáo học thuật chuyên đề J2EE với chủ đề "Spring for Microservices", dựa sát vào 2 tài liệu nguồn đã cung cấp.
+Tạo bộ slide thuyết trình cho chuyên đề J2EE "Spring for Microservices" dựa trên các tài liệu nguồn đã cung cấp.
 
-Yêu cầu chi tiết về nội dung và phong cách:
-1. Cấu trúc bài: Bám sát dàn ý 13 slide trong tài liệu nguồn: Đặt vấn đề Monolith, Khái niệm Microservices, Hệ sinh thái Spring Boot & Spring Cloud, Service Discovery (Eureka), API Gateway, Giao tiếp & Chịu lỗi (OpenFeign & Resilience4j Circuit Breaker), Đánh giá ưu nhược điểm, Sơ đồ và Kịch bản Demo 4 service, Kết luận.
-2. Giọng văn và từ ngữ: Chuẩn mực kỹ thuật, khách quan, điềm đạm; tuyệt đối không dùng từ ngữ phóng đại, giật gân hay khẩu ngữ. Giữ nguyên các thuật ngữ kỹ thuật chuẩn (Monolith, Microservices, Eureka, Gateway, FeignClient, Circuit Breaker, Fallback, Saga Pattern).
-3. Thiết kế nội dung slide: Trình bày dạng bullet points ngắn gọn, súc tích; mỗi ý làm nổi bật từ khóa chính; sử dụng bảng so sánh (Monolith vs Microservices) và sơ đồ luồng dữ liệu thay vì các đoạn văn dài.
-4. Đối tượng người nghe: Giảng viên và sinh viên ngành Công nghệ thông tin.
+Yêu cầu về phong cách và thiết kế trực quan:
+- Thiết kế tối giản, chuyên nghiệp với nền trắng hoàn toàn (clean white background); tuyệt đối không sử dụng nền màu, nền tối hay các dải màu gradient.
+- Chữ tối màu với độ tương phản cao, rõ ràng và dễ đọc trên nền trắng.
+- Giữ văn phong chuẩn mực kỹ thuật, khách quan và điềm đạm.
 ```
 
 ---
 
-### 📌 Bản Tiếng Anh (Dành cho trường hợp muốn làm slide tiếng Anh học thuật):
+### 📌 Bản Tiếng Anh:
 ```text
-Create a professional academic presentation deck for a university J2EE seminar titled "Spring for Microservices", strictly based on the provided source documents.
+Create a presentation slide deck for the J2EE seminar "Spring for Microservices" based on the provided source documents.
 
-Requirements:
-1. Structure: Follow the 13-slide outline in the sources: Monolith bottlenecks, Microservices principles, Spring Boot & Spring Cloud ecosystem, Eureka Service Discovery, Spring Cloud Gateway, OpenFeign & Resilience4j Circuit Breaker, Trade-offs & Architecture evaluation, Demo project architecture & 3 testing scenarios, Conclusion.
-2. Tone: Academic, professional, objective, and realistic. Avoid exaggeration, sensationalism, or informal slang. Maintain standard technical terminology.
-3. Slide Layout: Concise bullet points, clear key takeaways, comparative tables, and flow diagrams rather than long paragraphs.
-4. Audience: Computer Science professors and engineering students.
+Visual & Style Requirements:
+- Minimalist and professional design with a pure white background (clean white background only); strictly avoid colored backgrounds, dark themes, or gradient fills.
+- High-contrast, dark-colored text on the white background for optimal readability.
+- Maintain an objective, professional, and academic tone.
 ```
 
 ---
