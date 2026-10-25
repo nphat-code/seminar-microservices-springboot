@@ -40,7 +40,10 @@
 - [x] Đã hoàn thành kịch bản báo cáo: [03_DAN_Y_SLIDE_VA_KICH_BAN_25P.md](file:///c:/Study/HK1Nam3/J2EE/Seminar/docs/03_DAN_Y_SLIDE_VA_KICH_BAN_25P.md)
   - Phân bổ thời gian chuẩn: 15' lý thuyết + 7' demo + 3' Q&A.
   - Chi tiết nội dung cho 13 slide thuyết trình.
-  - Soạn sẵn câu trả lời cho **3 câu hỏi phản biện bẫy** thường gặp của giảng viên (Data Consistency/Saga, Spring Cloud Gateway vs. Zuul, Trạng thái Circuit Breaker).
+- [x] Đã hoàn thành lời thoại chi tiết từng slide (Speaker Notes): [04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md](file:///c:/Study/HK1Nam3/J2EE/Seminar/docs/04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md)
+  - Lời thoại văn phong thuyết trình chuyên nghiệp, tự tin cho toàn bộ 13 slide.
+  - Hướng dẫn thao tác màn hình, trỏ chuột khi Live Demo (Eureka, Gateway, Circuit Breaker).
+  - Soạn sẵn lời thoại trả lời sắc bén cho **3 câu hỏi phản biện bẫy** của giảng viên (Data Consistency/Saga, Spring Cloud Gateway vs. Zuul, Trạng thái Circuit Breaker).
 
 ### 4. Xây dựng Mã nguồn Demo thực chiến (Demo Project)
 - [x] Đã tạo trọn vẹn dự án Maven multi-module chuẩn Spring Boot 3 & Spring Cloud: [demo/](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/)
@@ -63,11 +66,10 @@
   - Chạy thử 4 file Application theo đúng thứ tự (`Eureka` -> `Product` -> `Order` -> `Gateway`).
   - Kiểm tra link `http://localhost:8761` và gọi thử API bằng Postman/Browser.
   - Test tính năng ngắt `product-service` để tận mắt thấy hàm Fallback hoạt động.
-- [ ] **Phân chia nhiệm vụ trong nhóm:**
-  - *Thành viên 1:* Mở đầu, trình bày bối cảnh Monolith vs. Microservices + Kiến trúc tổng quan Spring Cloud.
-  - *Thành viên 2:* Trình bày chi tiết các thành phần (Eureka, Gateway, Feign, Resilience4j) + Ưu/Nhược điểm.
-  - *Thành viên 3:* Thao tác trực tiếp Live Demo trên màn hình chiếu + giải thích code.
-  - *Cả nhóm:* Cùng ôn luyện các câu hỏi phản biện trong mục Q&A để tự tin trả lời giảng viên.
+- [x] **Chuẩn bị thuyết trình cá nhân (Solo 1 mình):**
+  - Làm chủ toàn bộ mạch bài: Lý thuyết (Slide 1-9) -> Thao tác Live Demo (Slide 10-11) -> Kết luận & Q&A (Slide 12-13).
+  - Sử dụng kịch bản lời thoại solo tự nhiên tại: [04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md](file:///c:/Study/HK1Nam3/J2EE/Seminar/docs/04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md).
+  - Tự tin phản biện với giảng viên với bộ câu hỏi đã chuẩn bị sẵn.
 - [ ] **Tập dượt thuyết trình (Rehearsal):**
   - Canh đồng hồ bấm giờ để toàn bộ phần nói + demo kết thúc trong khoảng **20 - 23 phút** (không vượt quá 25 phút).
 
