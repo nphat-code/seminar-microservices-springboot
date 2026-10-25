@@ -41,9 +41,10 @@
   - Phân bổ thời gian chuẩn: 15' lý thuyết + 7' demo + 3' Q&A.
   - Chi tiết nội dung cho 13 slide thuyết trình.
 - [x] Đã hoàn thành lời thoại chi tiết từng slide (Speaker Notes): [04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md](file:///c:/Study/HK1Nam3/J2EE/Seminar/docs/04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md)
-  - Lời thoại văn phong thuyết trình chuyên nghiệp, tự tin cho toàn bộ 13 slide.
+  - Lời thoại văn phong thuyết trình chuyên nghiệp, chuẩn mực, điềm đạm cho toàn bộ 13 slide.
   - Hướng dẫn thao tác màn hình, trỏ chuột khi Live Demo (Eureka, Gateway, Circuit Breaker).
-  - Soạn sẵn lời thoại trả lời sắc bén cho **3 câu hỏi phản biện bẫy** của giảng viên (Data Consistency/Saga, Spring Cloud Gateway vs. Zuul, Trạng thái Circuit Breaker).
+  - Soạn sẵn lời thoại trả lời sắc bén cho **3 câu hỏi phản biện** của giảng viên (Data Consistency/Saga, Spring Cloud Gateway vs. Zuul, Trạng thái Circuit Breaker).
+- [x] Đã chuẩn bị cấu hình và Prompt chuẩn mực tạo Slide trên NotebookLM: [05_PROMPT_NOTEBOOKLM_TAO_SLIDE.md](file:///c:/Study/HK1Nam3/J2EE/Seminar/docs/05_PROMPT_NOTEBOOKLM_TAO_SLIDE.md)
 
 ### 4. Xây dựng Mã nguồn Demo thực chiến (Demo Project)
 - [x] Đã tạo trọn vẹn dự án Maven multi-module chuẩn Spring Boot 3 & Spring Cloud: [demo/](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/)

@@ -14,7 +14,8 @@ c:/Study/HK1Nam3/J2EE/Seminar/
 │   ├── 01_LY_THUYET_MICROSERVICES_SPRING.md   # Bài viết đầy đủ: Khái niệm, kiến trúc, Ưu/Nhược điểm, Patterns, Ứng dụng thực tế
 │   ├── 02_TONG_HOP_TAI_LIEU_SACH_YOUTUBE.md    # Danh mục sách kinh điển (Manning, O'Reilly), kênh YouTube, Baeldung, GitHub mẫu
 │   ├── 03_DAN_Y_SLIDE_VA_KICH_BAN_25P.md       # Dàn ý chi tiết 13 slide, phân bổ thời gian <25 phút và câu hỏi phản biện
-│   └── 04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md # LỜI THOẠI CHI TIẾT TỪNG SLIDE (Speaker Notes) kèm kịch bản nói khi Live Demo
+│   ├── 04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md # LỜI THOẠI CHI TIẾT TỪNG SLIDE (Speaker Notes) kèm kịch bản nói khi Live Demo
+│   └── 05_PROMPT_NOTEBOOKLM_TAO_SLIDE.md       # Hướng dẫn cấu hình & Prompt chuẩn mực để sinh Slide trên NotebookLM
 │
 ├── demo/                                       # Project mã nguồn thực chiến minh hoạ
 │   ├── pom.xml                                 # Maven parent cấu hình Spring Boot 3 & Spring Cloud
