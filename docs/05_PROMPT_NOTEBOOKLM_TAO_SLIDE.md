@@ -25,24 +25,22 @@ Khi bấm vào nút **Slide Deck** trong NotebookLM, thiết lập các mục nh
 
 ### 📌 Bản Tiếng Việt:
 ```text
-Tạo bộ slide thuyết trình cho chuyên đề J2EE "Spring for Microservices" dựa trên các tài liệu nguồn đã cung cấp.
+Tạo slide thuyết trình cho chuyên đề "Spring for Microservices" dựa trên tài liệu nguồn đã cung cấp.
 
-Yêu cầu về phong cách và thiết kế trực quan:
-- Thiết kế tối giản, chuyên nghiệp với nền trắng hoàn toàn (clean white background); tuyệt đối không sử dụng nền màu, nền tối hay các dải màu gradient.
-- Chữ tối màu với độ tương phản cao, rõ ràng và dễ đọc trên nền trắng.
-- Giữ văn phong chuẩn mực kỹ thuật, khách quan và điềm đạm.
+Yêu cầu:
+- Thiết kế: Nền trắng hoàn toàn, không dùng nền màu hay nền tối. Chữ tối màu, dễ đọc.
+- Ngôn ngữ: Điềm đạm, khách quan, chuẩn mực kỹ thuật; tuyệt đối không dùng từ ngữ phóng đại hay giật gân.
 ```
 
 ---
 
 ### 📌 Bản Tiếng Anh:
 ```text
-Create a presentation slide deck for the J2EE seminar "Spring for Microservices" based on the provided source documents.
+Create a presentation slide deck for "Spring for Microservices" based on the provided source documents.
 
-Visual & Style Requirements:
-- Minimalist and professional design with a pure white background (clean white background only); strictly avoid colored backgrounds, dark themes, or gradient fills.
-- High-contrast, dark-colored text on the white background for optimal readability.
-- Maintain an objective, professional, and academic tone.
+Requirements:
+- Design: Pure white background only, no colored or dark backgrounds. Dark, easily readable text.
+- Language: Objective, calm, and technically accurate; strictly avoid any exaggerated or sensational phrasing.
 ```
 
 ---
