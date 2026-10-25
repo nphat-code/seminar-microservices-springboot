@@ -1,196 +1,193 @@
-# LỜI THOẠI THUYẾT TRÌNH CÁ NHÂN (TỰ NHIÊN, KHÁCH QUAN, GẦN GŨI)
+# LỜI THOẠI THUYẾT TRÌNH CÁ NHÂN (CHUẨN 14 SLIDE)
 **Chuyên đề:** Spring for Microservices  
 **Hình thức:** Thuyết trình cá nhân (1 người trình bày từ đầu đến cuối)  
-**Phong cách:** Tự nhiên, thân thiện, tập trung truyền tải kiến thức & demo trực quan (không cần rào đón hay nhấn mạnh việc tự làm).  
+**Phong cách:** Tự nhiên, thân thiện, súc tích, dùng ví von trực quan (không cần rào đón, không nhắc repo).  
 **Thời lượng chuẩn:** 20 - 25 phút (15 phút lý thuyết + 7 phút live demo + 3 phút Q&A)
 
 ---
 
-## SLIDE 1: MỞ ĐẦU (TRANG TIÊU ĐỀ)
+## SLIDE 1: EXPLORING MICROSERVICES ARCHITECTURE WITH SPRING CLOUD
 - **Thời lượng:** ~30 - 45 giây
-- **Cues:** Cười tươi, tự tin, đứng cạnh laptop.
+- **Cues:** Cười tươi, tự tin, đứng cạnh máy tính.
 
 > **🗣️ LỜI THOẠI:**  
 > "Chào thầy và chào tất cả các bạn!  
 > 
 > Chắc hẳn ở đây ai cũng từng canh giờ săn sale Shopee lúc 0h, hay chen chân đặt vé concert rồi đúng không? Có bao giờ mọi người thắc mắc: Tại sao hàng triệu người cùng ùa vào một lúc bấm mua hàng liên tục mà hệ thống của họ vẫn chạy phà phà, không hề bị sập hay chưa?  
 > 
-> Bí mật đằng sau đó chính là kiến trúc **Microservices**. Và trong thế giới Java, bộ công cụ phổ biến hàng đầu để hiện thực hóa điều đó chính là hệ sinh thái **Spring Cloud**.  
+> Bí mật đằng sau đó chính là kiến trúc **Microservices**. Và trong thế giới Java, bộ công cụ hàng đầu để hiện thực hóa điều đó chính là hệ sinh thái **Spring Cloud**.  
 > 
-> Hôm nay, em xin phép được trình bày với thầy và cả lớp đề tài: **'Spring for Microservices'**.  
+> Hôm nay, em xin phép được trình bày với thầy và cả lớp chuyên đề: **'Exploring Microservices Architecture with Spring Cloud'**.  
 > 
-> Bài chia sẻ hôm nay sẽ gồm 3 phần: Đầu tiên là lý do vì sao thế giới lại chuyển dịch sang Microservices; tiếp theo là cách các thành phần trong Spring Cloud giải quyết các bài toán phân tán; và cuối cùng là phần **Live Demo trực tiếp 4 microservices** để minh họa thực tế cách hệ thống vận hành.  
+> Bài chia sẻ hôm nay sẽ đi từ nguyên nhân vì sao phải chuyển dịch kiến trúc, cách Spring Cloud giải quyết các bài toán phân tán, và đặc biệt là phần **Live Demo trực tiếp 4 microservices** để minh họa thực tế cách hệ thống vận hành.  
 > 
 > Bây giờ em xin phép bắt đầu vào nội dung đầu tiên!"
 
 ---
 
-## SLIDE 2: NỖI ĐAU CỦA KIẾN TRÚC NGUYÊN KHỐI (MONOLITHIC HELL)
+## SLIDE 2: THE MONOLITH PROBLEM (NỖI ĐAU KIẾN TRÚC NGUYÊN KHỐI)
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Giọng tự nhiên, chỉ tay vào sơ đồ Monolith trên slide.
+- **Cues:** Chỉ tay vào hình Tháp rút gỗ Jenga trên slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Trước khi nói về cái mới, mình cùng nhìn lại cách làm quen thuộc trong các đồ án trước giờ: đó là **Monolith (Nguyên khối)**.  
+> "Trước khi nói về cái mới, mình cùng nhìn lại cách làm truyền thống trong các đồ án trước giờ: đó là **Monolith (Nguyên khối)**.  
 > 
 > Hiểu đơn giản là: tất cả code từ Controller, Service, kết nối Database, tới file giao diện HTML đều được gom chung vào một project duy nhất, rồi build ra đúng một file `WAR` hoặc `JAR` đem chạy trên server.  
 > 
-> Lúc làm đồ án ít người thì rất tiện, dễ viết dễ chạy. Nhưng khi dự án lớn dần lên, vài chục lập trình viên cùng đụng vào, nó sẽ gặp phải những giới hạn rất lớn:  
+> Trên màn hình, em dùng hình ảnh **Tháp rút gỗ Jenga** để mô tả Monolith: Lúc tháp còn thấp thì rất vững, nhưng càng xây cao lên, nó sẽ bộc lộ 3 giới hạn chí mạng:  
 > 
-> - **Khổ nhất là lúc Deploy:** Đôi khi chỉ cần sửa mỗi một dòng chữ khuyến mãi trên web, nhưng ta vẫn phải ngồi chờ build lại cả một cục ứng dụng nặng mấy trăm Megabyte, deploy mất cả tiếng đồng hồ. Lỡ ai đó viết lỗi một chỗ là cả đợt release bị hoãn lại.  
-> - **Khổ thứ hai là mở rộng (Scale):** Mọi người tưởng tượng ngày 11/11, khách chỉ vào lướt xem hàng thôi chứ chưa chắc đã mua nhiều. Lượng xem tăng vọt thì máy chủ xem hàng đuối. Thế nhưng vì Monolith đóng chung một cục, ta không thể nhân bản riêng tính năng Xem hàng được, mà phải thuê thêm server nhân bản cả con web nặng nề đó. Vừa tốn chi phí, vừa lãng phí tài nguyên.  
-> - **Và nguy hiểm nhất là sự cố dây chuyền:** Chỉ cần một chức năng phụ như Xuất báo cáo Excel viết câu query không tối ưu làm tràn bộ nhớ RAM, là cả server lăn ra chết. Kéo theo các tính năng cốt lõi như Đăng nhập, Giỏ hàng, Thanh toán cũng chết theo luôn.  
+> - **Thứ nhất là tắc nghẽn triển khai (Deployment Bottlenecks):** Đôi khi chỉ sửa một dòng chữ khuyến mãi nhỏ, ta vẫn phải build lại cả file ứng dụng nặng mấy trăm Megabyte, deploy mất cả tiếng đồng hồ. Lỡ ai đó viết lỗi một chỗ là cả đợt release bị hoãn lại.  
+> - **Thứ hai là hạn chế mở rộng (Scaling Limitations):** Vào ngày 11/11, khách chỉ vào lướt xem hàng chứ chưa chắc đã mua nhiều. Ta không thể nhân bản riêng module Xem hàng được, mà phải thuê thêm server nhân bản cả con web nặng nề đó. Vừa tốn chi phí, vừa lãng phí tài nguyên.  
+> - **Và nguy hiểm nhất là sự cố dây chuyền (Single Point of Failure):** Giống hệt như rút nhầm một thanh gỗ Jenga, chỉ cần chức năng Xuất báo cáo Excel viết câu query ẩu làm tràn RAM, là cả server lăn ra chết, kéo theo tính năng Đăng nhập và Thanh toán cũng chết theo luôn.  
 > 
-> Chính vì những hạn chế này, người ta mới chuyển hướng sang giải pháp chia nhỏ hệ thống!"
+> Chính vì những hạn chế này, người ta mới chuyển hướng sang kiến trúc Vi dịch vụ!"
 
 ---
 
-## SLIDE 3: CHIA ĐỂ TRỊ VỚI MICROSERVICES
+## SLIDE 3: SHIFTING TO MICROSERVICES (CHUYỂN DỊCH SANG VI DỊCH VỤ)
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Giọng tươi tỉnh, dùng tay làm động tác 'cắt nhỏ'.
+- **Cues:** Giọng tươi tỉnh, dùng tay làm động tác 'chia nhỏ module'.
 
 > **🗣️ LỜI THOẠI:**  
-> "Và thế là **Microservices** ra đời, dựa trên đúng tư tưởng: 'Chia để trị'.  
+> "Để giải quyết bài toán trên, **Microservices** ra đời dựa trên đúng tư tưởng: 'Chia để trị'.  
 > 
-> Thay vì nhét tất cả vào một cục to đùng, ứng dụng được chia thành nhiều dịch vụ nhỏ, mỗi dịch vụ là một chương trình chạy độc lập hoàn toàn.  
+> Thay vì nhét tất cả vào một khối to đùng, ứng dụng được phân rã thành nhiều dịch vụ nhỏ, mỗi dịch vụ là một chương trình chạy độc lập hoàn toàn.  
 > 
-> Kiến trúc này xoay quanh 3 nguyên tắc rất rõ ràng:  
-> 1. **Nguyên tắc Đơn nhiệm (Single Responsibility):** Order Service chỉ chuyên tâm lo đơn hàng. Product Service chỉ lo sản phẩm. Không ai dẫm chân lên nghiệp vụ của ai.  
-> 2. **Cơ sở dữ liệu riêng (Database per Service):** Mỗi service có một cơ sở dữ liệu riêng. Order Service không được truy cập trực tiếp vào database của Product Service. Muốn lấy thông tin gì thì phải gửi request qua API để hỏi.  
-> 3. **Độc lập triển khai và công nghệ:** Service này viết bằng Java, service kia viết bằng Go hay Node.js cũng được; một con gặp sự cố thì các con khác vẫn hoạt động bình thường.  
+> Kiến trúc này xoay quanh 3 nguyên tắc vàng:  
+> 1. **Nguyên tắc Đơn nhiệm (Single Responsibility):** Mỗi service chỉ chuyên tâm làm một việc duy nhất. Order Service lo đơn hàng, Product Service lo sản phẩm. Không ai dẫm chân lên nghiệp vụ của ai.  
+> 2. **Cơ sở dữ liệu riêng (Independent Databases):** Mỗi service sở hữu một cơ sở dữ liệu riêng biệt. Order Service không được truy cập trực tiếp vào DB của Product Service, mà bắt buộc phải gửi request qua API để trao đổi dữ liệu.  
+> 3. **Tính tự chủ (Autonomy):** Mỗi service có thể tự do chọn ngôn ngữ, tự do deploy và scale riêng rẽ. Một con gặp sự cố thì các con khác vẫn hoạt động bình thường.  
 > 
-> Vậy với nền tảng Java, công nghệ nào giúp ta hiện thực hóa mô hình này một cách chuẩn mực nhất? Đó chính là Spring Boot và Spring Cloud."
+> Vậy với nền tảng Java, công nghệ nào giúp ta hiện thực hóa mô hình này một cách chuẩn mực nhất? Mời mọi người sang slide tiếp theo!"
 
 ---
 
-## SLIDE 4: TẠI SAO LẠI LÀ BỘ ĐÔI SPRING BOOT & SPRING CLOUD?
+## SLIDE 4: THE SPRING BOOT & SPRING CLOUD SOLUTION
 - **Thời lượng:** ~1 phút 15 giây
-- **Cues:** Giơ 2 ngón tay minh họa 2 thành phần.
+- **Cues:** Giơ 2 ngón tay minh họa 2 thành phần động cơ.
 
 > **🗣️ LỜI THOẠI:**  
-> "Để làm Microservices trong Java, giải pháp tiêu chuẩn công nghiệp hiện nay chính là: **Spring Boot kết hợp Spring Cloud**.  
+> "Để làm Microservices trong Java, giải pháp tiêu chuẩn công nghiệp hiện nay chính là bộ đôi: **Spring Boot kết hợp Spring Cloud**.  
 > 
-> - **Spring Boot** đóng vai trò nền móng: Nhờ nhúng sẵn Tomcat và cơ chế Auto-configuration, nó giúp việc khởi tạo một microservice độc lập trở nên rất nhanh chóng, chỉ mất vài phút.  
-> - Nhưng khi hệ thống có cả chục microservice cùng chạy, các bài toán phân tán bắt đầu xuất hiện: Các service làm sao tìm thấy IP của nhau khi IP thay đổi liên tục? Khách hàng bên ngoài gọi vào đâu? Lỡ một service bị treo thì các service khác xử lý thế nào?  
+> Ở đây có một hình ảnh ẩn dụ rất hay: **Động cơ 2 thành phần**:  
+> - **Spring Boot** chính là khối động cơ motor nền tảng: Nhờ nhúng sẵn Tomcat và cơ chế Auto-configuration, nó giúp khởi tạo một vi dịch vụ độc lập chỉ trong vài phút mà không cần cấu hình XML phức tạp.  
+> - Nhưng khi có cả chục microservice cùng chạy, ta cần một chiếc vô lăng và bảng điều khiển trung tâm: Đó chính là **Spring Cloud**. Spring Cloud cung cấp đầy đủ các công cụ giải quyết sẵn tất cả các bài toán hóc búa của hệ thống phân tán: từ tra cứu IP, định tuyến request, cho đến bảo vệ chống sập hệ thống.  
 > 
-> Đó là lúc **Spring Cloud** phát huy vai trò. Spring Cloud là một bộ công cụ toàn diện giải quyết sẵn tất cả các bài toán kinh điển của hệ thống phân tán, giúp lập trình viên không phải tự xây dựng lại từ đầu.  
-> 
-> Để cả lớp dễ hình dung các thành phần này phối hợp với nhau ra sao, mời mọi người nhìn vào sơ đồ kiến trúc ở slide tiếp theo."
+> Để cả lớp dễ hình dung bộ đôi này phối hợp ra sao, mời mọi người nhìn vào bản đồ kiến trúc ở slide số 5."
 
 ---
 
-## SLIDE 5: BỨC TRANH TOÀN CẢNH SPRING CLOUD
+## SLIDE 5: ARCHITECTURE BLUEPRINT (BẢN ĐỒ KIẾN TRÚC TỔNG THỂ)
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ vào từng khối trên màn hình theo luồng từ ngoài vào trong.
 
 > **🗣️ LỜI THOẠI:**  
-> "Đây là mô hình tổng quan về luồng hoạt động của một hệ thống Spring Microservices:  
+> "Trên màn hình là bản đồ tổng quan về luồng hoạt động của một hệ sinh thái Spring Microservices:  
 > 
-> - Ngoài cùng là người dùng (điện thoại hay trình duyệt). Người dùng không cần biết bên trong có bao nhiêu service, mà chỉ tương tác qua một cổng duy nhất là **Spring Cloud Gateway**. Gateway đứng ở cửa: kiểm tra xác thực, giới hạn lưu lượng, rồi điều hướng request vào đúng service bên trong.  
-> - Đi qua Gateway là các dịch vụ nghiệp vụ như **Product, Order, Payment**. Mỗi service có cơ sở dữ liệu riêng. Khi cần gọi lẫn nhau, chúng dùng **OpenFeign** kết hợp **Resilience4j** để bảo vệ chống sập dây chuyền.  
-> - Ở phía sau, hệ thống có các thành phần điều phối gồm: **Eureka Server** làm danh bạ lưu trữ IP động, **Config Server** quản lý file cấu hình tập trung, và hệ thống **Tracing** để truy vết đường đi của request.  
+> - Ngoài cùng là người dùng (điện thoại hay trình duyệt). Người dùng không bao giờ gọi thẳng vào từng service con, mà chỉ tương tác qua một cổng duy nhất là **Spring Cloud Gateway**. Gateway kiểm tra xác thực, giới hạn lưu lượng, rồi điều hướng request vào đúng service bên trong.  
+> - Đi qua Gateway là các dịch vụ nghiệp vụ như **Product, Order, Payment**, mỗi service có cơ sở dữ liệu riêng. Khi cần gọi lẫn nhau, chúng dùng **OpenFeign** kết hợp **Resilience4j** để bảo vệ chống sập dây chuyền.  
+> - Ở hậu phương, hệ thống có cụm điều phối gồm: **Eureka Server** làm danh bạ IP động, **Config Server** quản lý file cấu hình tập trung, và hệ thống **Tracing** để truy vết đường đi của request.  
 > 
-> Bây giờ, em xin phép đi sâu vào 3 thành phần cốt lõi và quan trọng nhất của kiến trúc này."
+> Bây giờ, em xin phép đi sâu vào từng thành phần cốt lõi của bức tranh này!"
 
 ---
 
-## SLIDE 6: THÀNH PHẦN 1 - EUREKA (SERVICE DISCOVERY)
+## SLIDE 6: EUREKA SERVICE DISCOVERY (RADAR ĐỊNH VỊ DỊCH VỤ)
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Giọng thoải mái, dùng ví von danh bạ điện thoại.
+- **Cues:** Dùng hình ảnh Radar quét mục tiêu trên slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Thành phần đầu tiên là **Eureka Server - Service Discovery & Registry**.  
+> "Thành phần đầu tiên là **Eureka Server - Service Discovery & Registry**, hoạt động hệt như một **màn hình Radar định vị**:  
 > 
-> Trong môi trường Cloud hay Container, các service được bật tắt và co giãn liên tục, đồng nghĩa với việc **địa chỉ IP và cổng Port thay đổi thường xuyên**. Nếu cấu hình IP tĩnh trong code thì hệ thống sẽ rất dễ bị gián đoạn.  
+> Trong môi trường Cloud hay Container, các service được bật tắt và co giãn liên tục, đồng nghĩa với việc **địa chỉ IP và cổng Port thay đổi thường xuyên**. Nếu cấu hình IP tĩnh trong code thì hệ thống sẽ gãy ngay.  
 > 
-> Eureka giải quyết việc này giống như một cuốn **danh bạ điện thoại thông minh**:  
-> 1. Mỗi khi một service khởi động, nó tự động gửi thông tin đăng ký lên Eureka: *'Tên tôi là PRODUCT-SERVICE, tôi đang chạy ở IP và Port này'*.  
-> 2. Định kỳ mỗi 30 giây, service gửi tín hiệu nhịp tim (**Heartbeat**). Nếu quá thời gian quy định không nhận được tín hiệu, Eureka sẽ tự động xóa instance đó khỏi danh bạ.  
-> 3. Khi Order Service cần gọi Product Service, nó chỉ việc hỏi Eureka: *'Cho tôi địa chỉ của PRODUCT-SERVICE đang khả dụng'*. Eureka trả về địa chỉ, và Order Service gọi trực tiếp tới.  
+> Eureka giải quyết việc này như sau:  
+> 1. Mỗi khi một service khởi động, nó tự động gửi thông tin đăng ký lên Radar của Eureka: *'Tên tôi là PRODUCT-SERVICE, tôi đang chạy ở IP và Port này'*.  
+> 2. Định kỳ mỗi 30 giây, service gửi tín hiệu nhịp tim (**Heartbeat**). Nếu quá thời gian quy định không nhận được tín hiệu, Radar sẽ tự động xóa instance đó khỏi danh bạ.  
+> 3. Khi Order Service cần gọi Product Service, nó không cần biết IP cứng, nó chỉ việc hỏi Eureka: *'Cho tôi địa chỉ của PRODUCT-SERVICE đang online'*. Eureka trả về địa chỉ, và Order Service kết nối tới.  
 > 
-> Nhờ đó, việc giao tiếp giữa các service diễn ra hoàn toàn tự động mà không cần gõ chết bất kỳ địa chỉ IP nào trong code."
+> Nhờ đó, việc giao tiếp giữa các service diễn ra hoàn toàn tự động mà không cần gõ chết bất kỳ địa chỉ IP nào trong code!"
 
 ---
 
-## SLIDE 7: THÀNH PHẦN 2 - SPRING CLOUD GATEWAY (CỔNG ĐIỀU HƯỚNG TẬP TRUNG)
+## SLIDE 7: SPRING CLOUD GATEWAY TRAFFIC ROUTING (ĐỊNH TUYẾN THÔNG MINH)
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Chỉ vào khối Gateway nằm giữa Client và Services.
+- **Cues:** So sánh 2 mô hình Blocking vs Non-blocking trên slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Thành phần thứ hai là **Spring Cloud Gateway**.  
+> "Thành phần thứ hai là **Spring Cloud Gateway** — cổng tiếp nhận duy nhất của toàn hệ thống.  
 > 
-> Nếu hệ thống có nhiều service con, việc để client gọi trực tiếp vào từng port riêng lẻ sẽ gây khó khăn cho việc quản lý và tiềm ẩn rủi ro bảo mật.  
+> Gateway mang lại 3 giá trị sống còn: Ẩn giấu địa chỉ mạng nội bộ để bảo mật; Kiểm tra Token JWT tập trung ngay tại cửa ngõ; và Định tuyến thông minh theo đường dẫn URL.  
 > 
-> Gateway sinh ra để làm vai trò: **Điểm tiếp nhận duy nhất (Single Entry Point)**.  
-> - Khách hàng chỉ cần gọi vào đúng một địa chỉ Gateway duy nhất.  
-> - Tại đây, Gateway sẽ kiểm tra tính hợp lệ của request (như kiểm tra Token JWT, giới hạn số lượng request để chống spam).  
-> - Sau đó, Gateway tự động điều hướng: request xem sản phẩm thì chuyển về Product Service, request đặt hàng thì chuyển về Order Service.  
-> 
-> Khác với Netflix Zuul thế hệ cũ vốn chạy theo kiểu Blocking (mỗi request chiếm 1 thread), Spring Cloud Gateway được xây dựng trên nền tảng **WebFlux Reactive Non-blocking**, giúp tiêu tốn rất ít tài nguyên mà vẫn xử lý được lưu lượng đồng thời rất cao."
+> Điểm đắt giá nhất ở slide này là sự so sánh giữa 2 mô hình xử lý:  
+> - Trước đây, người ta hay dùng Netflix Zuul 1.x, nhưng Zuul hoạt động theo mô hình **Blocking I/O (Thread-per-request)**: mỗi request chiếm trọn 1 luồng xử lý, khi gặp tải cao hoặc mạng trễ thì thread pool cạn kiệt, server bị nghẽn tắc.  
+> - Còn **Spring Cloud Gateway** được xây dựng trên **Spring WebFlux (Project Reactor)** theo cơ chế **Reactive Non-blocking I/O**. Các thread không bao giờ đứng chờ dữ liệu mà liên tục tiếp nhận kết nối mới. Nhờ đó, chỉ với một lượng tài nguyên rất nhỏ, Gateway có thể xử lý mượt mà hàng chục nghìn kết nối đồng thời!"
 
 ---
 
-## SLIDE 8: THÀNH PHẦN 3 - OPENFEIGN & RESILIENCE4J (GIAO TIẾP VÀ CHỊU LỖI)
+## SLIDE 8: CIRCUIT BREAKER WITH RESILIENCE4J (GIAO TIẾP & CẦU DAO CHỊU LỖI)
 - **Thời lượng:** ~1 phút 45 giây
-- **Cues:** Nhấn mạnh cơ chế Circuit Breaker giống cầu dao điện.
+- **Cues:** Chỉ vào sơ đồ 3 trạng thái của Circuit Breaker trên slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Khi các service cần trao đổi dữ liệu với nhau, Spring Cloud cung cấp **OpenFeign**.  
-> Thay vì phải tự viết mã gọi HTTP thủ công bằng RestTemplate, với OpenFeign ta chỉ cần khai báo một Interface Java với annotation `@FeignClient`, Spring sẽ tự động xử lý việc gọi qua mạng ngầm định, cú pháp gọn gàng như gọi hàm nội bộ.  
+> "Khi các service gọi lẫn nhau, ta dùng **Spring Cloud OpenFeign**: chỉ cần khai báo một Java Interface với annotation `@FeignClient`, Spring sẽ tự sinh mã gọi HTTP ngầm định, cú pháp gọn gàng như gọi hàm nội bộ.  
 > 
-> Tuy nhiên, bài toán đặt ra là: **Nếu service đích bị chết hoặc bị treo mạng thì sao?**  
-> Nếu Order gọi sang Product mà Product không phản hồi, các luồng xử lý của Order sẽ bị giữ lại chờ timeout. Khi lượng người dùng tăng cao, tài nguyên của Order Service sẽ cạn kiệt và sập theo. Đó chính là hiện tượng **Cascading Failure (Sập dây chuyền)**.  
+> Nhưng nếu service đích bị sập hoặc treo mạng, request gửi sang sẽ bị kẹt lại chờ timeout, gây cạn kiệt tài nguyên và sập luôn service gọi. Hiện tượng này gọi là **Cascading Failure (Sập dây chuyền)**.  
 > 
-> Để khắc phục, ta kết hợp thêm **Resilience4j Circuit Breaker** — hoạt động theo cơ chế của chiếc **cầu dao điện**:  
-> - Trạng thái bình thường (**CLOSED**): Request đi qua bình thường.  
-> - Khi tỉ lệ lỗi vượt ngưỡng cài đặt (ví dụ trên 50%): Cầu dao lập tức chuyển sang trạng thái ngắt (**OPEN**). Lúc này, mọi request mới gửi đến sẽ bị chặn ngay lập tức, không gửi qua mạng nữa để tránh làm tắc nghẽn thêm.  
-> - Đồng thời, hệ thống kích hoạt hàm dự phòng (**Fallback Method**), trả về một kết quả an toàn (ví dụ: thông báo đơn hàng đang ở trạng thái chờ xử lý).  
+> Để khắc phục, ta bọc ngoài bằng **Resilience4j Circuit Breaker** — hoạt động y hệt **chiếc cầu dao điện**:  
+> 1. Trạng thái bình thường (**CLOSED**): Mạch đóng, request đi qua bình thường.  
+> 2. Khi tỉ lệ lỗi vượt ngưỡng (ví dụ > 50%): Cầu dao lập tức ngắt sang **OPEN**. Mọi request mới gửi đến sẽ bị chặn ngay lập tức, không gửi qua mạng nữa để tránh làm tắc nghẽn thêm. Đồng thời, hệ thống kích hoạt hàm dự phòng (**Fallback Method**) để trả về kết quả an toàn.  
+> 3. Trạng thái thăm dò (**HALF-OPEN**): Sau một khoảng thời gian chờ (ví dụ 10 giây), cầu dao hé mở cho một vài request đi qua thăm dò. Nếu thành công, mạch tự động đóng lại bình thường (**CLOSED**); nếu vẫn lỗi, nó tiếp tục ngắt (**OPEN**).  
 > 
-> Nhờ cơ chế này, toàn bộ hệ thống vẫn đứng vững ngay cả khi một service thành phần gặp sự cố."
+> Nhờ đó, hệ thống luôn giữ được tính sẵn sàng cao ngay cả khi có service thành phần gặp sự cố!"
 
 ---
 
-## SLIDE 9: ƯU ĐIỂM & NHƯỢC ĐIỂM TRONG THỰC TẾ
-- **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Giữ góc nhìn khách quan, cân bằng giữa ưu và nhược điểm.
+## SLIDE 9: DISTRIBUTED DATA & THE SAGA PATTERN (DỮ LIỆU PHÂN TÁN & SAGA)
+- **Thời lượng:** ~1 phút 45 giây
+- **Cues:** Chỉ vào lưu đồ (flowchart) mô tả chiều đi tới và chiều đi lùi trên slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Nhìn một cách khách quan, Microservices không phải là giải pháp phù hợp cho mọi trường hợp, mà luôn có sự đánh đổi:  
+> "Đây chính là bài toán hóc búa nhất của Microservices: **Làm sao đảm bảo toàn vẹn dữ liệu khi mỗi service có một Database riêng?**  
 > 
-> - **Về ưu điểm:** Khả năng mở rộng độc lập từng phần rất tốt, lỗi được cô lập triệt để, và các nhóm lập trình có thể làm việc song song mà không phụ thuộc nhau.  
-> - **Về thách thức:**  
->   - Việc vận hành và giám sát phức tạp hơn rất nhiều, đòi hỏi kiến thức về Docker, Kubernetes và hệ thống log tập trung.  
->   - Giao tiếp qua mạng làm tăng độ trễ so với gọi hàm nội bộ.  
->   - Và phức tạp nhất là bài toán **Toàn vẹn dữ liệu phân tán**: không thể dùng `@Transactional` thông thường giữa các database riêng lẻ, mà phải áp dụng nguyên lý **Eventual Consistency** và mô hình **Saga Pattern**.  
+> Vì mỗi service ôm một DB độc lập, ta **không thể dùng annotation `@Transactional` thông thường** để rollback giữa các database được nữa.  
 > 
-> Vì vậy, bài học thực tế là: Với các hệ thống lớn, lưu lượng truy cập cao thì Microservices là lựa chọn cần thiết. Nhưng với các dự án nhỏ, giai đoạn MVP ban đầu, kiến trúc **Monolith** vẫn là giải pháp tối ưu nhất về chi phí và thời gian triển khai.  
+> Giải pháp là chấp nhận nguyên lý **Tính nhất quán cuối cùng (Eventual Consistency)** và áp dụng mẫu thiết kế **Saga Pattern**:  
+> - Thay vì một giao dịch lớn duy nhất, Saga chia thành một chuỗi các **giao dịch cục bộ (Local Transactions)**:  
+>   - Bước 1: Order Service tạo đơn ở trạng thái chờ.  
+>   - Bước 2: Inventory Service khóa giữ chỗ sản phẩm trong kho.  
+>   - Bước 3: Payment Service tiến hành trừ tiền.  
+> - **Điểm cốt lõi là Giao dịch bù trừ (Compensating Transactions):** Nếu ở Bước 3 khách thanh toán thất bại (thẻ hết hạn hoặc hết tiền), hệ thống không rollback bằng database, mà **tự động chạy giật lùi bằng code logic**:  
+>   - Gọi ngược lại Inventory để nhả hàng đã giữ chỗ ra lại kho.  
+>   - Gọi ngược lại Order để cập nhật trạng thái đơn thành ĐÃ HỦY.  
 > 
-> Tiếp theo đây, em xin phép chuyển sang phần **Live Demo** để cùng thầy và các bạn quan sát thực tế cách hệ thống vận hành."
+> Nhờ các giao dịch bù trừ này, dữ liệu của toàn bộ hệ thống sau cùng luôn trở về trạng thái nhất quán và chính xác hoàn toàn!"
 
 ---
 
-## SLIDE 10: GIỚI THIỆU MÔ HÌNH DỰ ÁN DEMO
+## SLIDE 10: LIVE DEMO PROJECT SCHEMATIC (SƠ ĐỒ DỰ ÁN DEMO)
 - **Thời lượng:** ~1 phút
-- **Cues:** Chuyển sang tư thế thao tác máy tính, mở sẵn các cửa sổ cần thiết.
+- **Cues:** Chỉ vào sơ đồ 4 nút (4-node diagram) chuẩn bị bước vào demo.
 
 > **🗣️ LỜI THOẠI:**  
-> "Mô hình demo gồm 4 service chạy trên nền Spring Boot 3:  
+> "Để kiểm chứng toàn bộ lý thuyết trên, hệ thống demo gồm 4 service chạy trên nền Spring Boot 3:  
 > 1. **`discovery-server`** chạy port **8761**: Đóng vai trò là Eureka Server.  
 > 2. **`api-gateway`** chạy port **8080**: Cổng điều hướng tập trung.  
 > 3. **`product-service`** chạy port **8081**: Cung cấp API thông tin sản phẩm.  
-> 4. **`order-service`** chạy port **8082**: Nhận tạo đơn hàng, gọi sang Product Service qua OpenFeign và bọc bởi Resilience4j Circuit Breaker.  
+> 4. **`order-service`** chạy port **8082**: Nhận tạo đơn hàng, gọi sang Product Service qua OpenFeign và được bọc bởi Resilience4j Circuit Breaker.  
 > 
-> Hiện tại 4 service đều đã được khởi động sẵn trên máy. Bây giờ em xin phép chuyển màn hình sang Desktop để thực hiện 3 kịch bản demo."
+> Hiện tại cả 4 service đều đã được khởi động sẵn trên máy. Bây giờ em xin phép chuyển sang màn hình thao tác trực tiếp."
 
 ---
 
-## SLIDE 11: KỊCH BẢN LIVE DEMO (THAO TÁC TRÊN MÀN HÌNH)
+## SLIDE 11: LIVE DEMO SCRIPT (THAO TÁC TRỰC TIẾP TRÊN MÀN HÌNH)
 - **Thời lượng:** ~6 phút
-- **Cues:** Thao tác rõ ràng, phóng to màn hình trình duyệt và Postman để cả lớp nhìn rõ dữ liệu JSON.
+- **Cues:** Giữ slide 11 trên máy chiếu làm visual anchor, chuyển sang trình duyệt/Postman/IDE thao tác rõ ràng.
 
 > **🗣️ LỜI THOẠI TRỰC TIẾP:**  
 > 
 > *(Mở trình duyệt tab `http://localhost:8761`)*  
-> "**Kịch bản 1: Kiểm tra Service Discovery trên Eureka Dashboard.**  
+> "**Kịch bản 1: Quan sát Eureka Dashboard.**  
 > Đây là giao diện của Eureka Server. Ở bảng danh sách các instance, mọi người có thể thấy cả 3 service: `API-GATEWAY`, `PRODUCT-SERVICE`, và `ORDER-SERVICE` đều đang ở trạng thái **UP**.  
 > Các service tự động tìm thấy nhau qua tên logic mà không cần khai báo IP hay Port cố định trong file cấu hình.  
 > 
@@ -224,25 +221,45 @@
 
 ---
 
-## SLIDE 12: KẾT LUẬN & ỨNG DỤNG THỰC TẾ
+## SLIDE 12: ARCHITECTURAL EVALUATION (ĐÁNH GIÁ KIẾN TRÚC)
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Chuyển lại màn hình slide, giọng tự nhiên, đúc kết ngắn gọn.
+- **Cues:** Quay lại màn hình slide, phân tích ma trận Trade-off.
 
 > **🗣️ LỜI THOẠI:**  
-> "Như vậy, qua phần tìm hiểu và demo vừa rồi, ta thấy kiến trúc Microservices giải quyết rất tốt bài toán về quy mô và tính sẵn sàng của hệ thống lớn.  
+> "Sau phần demo thực tế, ta cùng nhìn lại ma trận đánh giá hai mặt của Microservices:  
 > 
-> Các nền tảng như Netflix, Shopee hay Tiki sử dụng mô hình này để đảm bảo hệ thống không bị gián đoạn khi lượng truy cập tăng đột biến.  
+> - **Về ưu điểm:** Khả năng mở rộng độc lập từng phần rất linh hoạt, lỗi được cô lập triệt để ở từng service, và các nhóm lập trình có thể release tính năng liên tục mà không phụ thuộc nhau.  
+> - **Về thách thức (Trade-off):**  
+>   - Vận hành và giám sát phức tạp hơn rất nhiều, đòi hỏi hạ tầng Container hóa và hệ thống log tập trung.  
+>   - Giao tiếp qua mạng làm tăng độ trễ (Network latency) so với gọi hàm nội bộ.  
+>   - Và như đã phân tích ở Slide 9, việc quản lý giao dịch dữ liệu phân tán đòi hỏi áp dụng Saga Pattern thay vì ACID đơn giản.  
 > 
-> Tuy nhiên, việc áp dụng kiến trúc nào phụ thuộc vào bài toán cụ thể. Microservices phù hợp khi hệ thống đủ lớn và có nhiều đội ngũ phát triển; còn với những bài toán vừa và nhỏ, Monolith vẫn là giải pháp hiệu quả và tiết kiệm chi phí nhất."
+> Vậy làm thế nào để quyết định khi nào nên áp dụng kiến trúc này? Mời mọi người cùng nhìn vào ma trận chẩn đoán ở slide 13!"
 
 ---
 
-## SLIDE 13: TỔNG KẾT & CÂU HỎI (Q&A)
-- **Thời lượng:** ~30 giây
+## SLIDE 13: DECISION MATRIX: WHEN TO ADOPT MICROSERVICES? (MA TRẬN QUYẾT ĐỊNH 2X2)
+- **Thời lượng:** ~1 phút 30 giây
+- **Cues:** Chỉ vào 4 góc phần tư của biểu đồ 2x2 (Team Size vs Project Scale).
+
+> **🗣️ LỜI THOẠI:**  
+> "Trên màn hình là **Ma trận quyết định 2x2**, dựa trên hai trục: **Quy mô dự án** và **Độ lớn đội ngũ phát triển**:  
+> 
+> - **Ở góc dưới bên trái (Team nhỏ, Dự án mới / MVP):** **Monolith với Spring Boot luôn là sự lựa chọn số 1**. Tốc độ phát triển nhanh, chi phí vận hành rẻ, cấu trúc đơn giản để đưa sản phẩm ra thị trường sớm nhất.  
+> - **Ở góc trên bên phải (Hệ thống lớn, Nhiều đội ngũ phát triển độc lập):** Lúc này bài toán mở rộng và tính sẵn sàng trở thành sống còn. **Microservices với Spring Cloud là lựa chọn bắt buộc** để các nền tảng như Netflix, Shopee hay Tiki có thể phục vụ hàng triệu người dùng mà không bị gián đoạn.  
+> 
+> Thông điệp cốt lõi là: *Đừng chọn Microservices chỉ vì trào lưu, hãy chọn kiến trúc phù hợp với bài toán của doanh nghiệp!*"
+
+---
+
+## SLIDE 14: SUMMARY & LEARNING RESOURCES (TỔNG KẾT & Q&A)
+- **Thời lượng:** ~45 giây
 - **Cues:** Cười tươi, cảm ơn và mở lời mời nhận xét.
 
 > **🗣️ LỜI THOẠI:**  
-> "Bài trình bày về Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe!  
+> "Tổng kết lại, bài chia sẻ hôm nay đã đi qua 4 trụ cột chính: Lý do chuyển dịch kiến trúc, hệ sinh thái giải pháp của Spring Cloud, mô hình giải quyết dữ liệu phân tán với Saga, và kịch bản thực nghiệm chịu lỗi với Circuit Breaker.  
+> 
+> Bài trình bày về Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe!  
 > 
 > Sau đây, em rất mong nhận được những lời nhận xét, góp ý cũng như sẵn sàng trả lời các câu hỏi phản biện từ thầy và cả lớp ạ."
 
