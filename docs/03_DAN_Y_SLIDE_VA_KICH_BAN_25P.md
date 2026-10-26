@@ -21,11 +21,11 @@
 ## II. CHI TIẾT NỘI DUNG TỪNG SLIDE (SLIDE DECK OUTLINE & VISUAL SPECIFICATION)
 
 ### Slide 1: Trang tiêu đề
-- **Tiêu đề chính:** KIẾN TRÚC VI DỊCH VỤ VỚI SPRING CLOUD (SPRING FOR MICROSERVICES)
+- **Tiêu đề chính:** KIẾN TRÚC MICROSERVICES VỚI SPRING CLOUD (SPRING FOR MICROSERVICES)
 - **Chủ đề:** Chuyên đề kiến trúc hệ thống phân tán trong Java Enterprise
 - **📐 Trực quan hóa & Bố cục (Visual Layout):**
   - Bố cục tối giản công nghệ cao (Clean Minimal Tech), nền trắng, typography hiện đại.
-  - Minh họa trung tâm: Biểu tượng mạng lưới vi dịch vụ dạng đồ thị phân tán (Distributed Network Mesh) kết nối các node với nhau, bên cạnh logo chiếc lá Spring xanh đặc trưng.
+  - Minh họa trung tâm: Biểu tượng mạng lưới microservices dạng đồ thị phân tán (Distributed Network Mesh) kết nối các node với nhau, bên cạnh logo chiếc lá Spring xanh đặc trưng.
 
 ---
 

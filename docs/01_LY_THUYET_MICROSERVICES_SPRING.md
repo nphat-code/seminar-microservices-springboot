@@ -8,7 +8,7 @@
 - **Monolith (Nguyên khối):**
   - Toàn bộ ứng dụng (UI, Business Logic, Data Access, Background Jobs) được đóng gói trong một file duy nhất (`.war` hoặc `.jar`) và chạy chung trong một tiến trình (process).
   - *Hạn chế khi mở rộng:* Khi hệ thống phình to, mã nguồn cồng kềnh, khó kiểm thử, một lỗi nhỏ (ví dụ memory leak ở một module) có thể làm sập toàn bộ ứng dụng; khó nâng cấp công nghệ và khó mở rộng theo từng tính năng cụ thể.
-- **Microservices (Vi dịch vụ):**
+- **Microservices:**
   - Phân rã ứng dụng thành một tập hợp các dịch vụ nhỏ độc lập (small, autonomous services).
   - Mỗi dịch vụ tập trung vào một nghiệp vụ cụ thể (theo nguyên tắc **Single Responsibility Principle** và **Domain-Driven Design - DDD**).
   - Các service chạy trong các tiến trình độc lập, giao tiếp với nhau qua giao thức mạng nhẹ (HTTP REST, gRPC, hoặc Message Broker như Kafka, RabbitMQ).

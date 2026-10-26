@@ -52,7 +52,7 @@
 - **Cues:** Chỉ vào sơ đồ so sánh Monolith vs. Microservices.
 
 > **🗣️ LỜI THOẠI:**  
-> "Kiến trúc **Microservices (Vi dịch vụ)** tiếp cận theo hướng phân rã ứng dụng thành một tập hợp các dịch vụ nhỏ, độc lập và tự chủ.  
+> "Kiến trúc **Microservices** tiếp cận theo hướng phân rã ứng dụng thành một tập hợp các dịch vụ nhỏ, độc lập và tự chủ.  
 > 
 > Mô hình này được xây dựng trên 3 nguyên tắc nền tảng:  
 > 1. **Nguyên tắc Đơn nhiệm (Single Responsibility):** Mỗi dịch vụ chỉ chịu trách nhiệm cho một phạm vi nghiệp vụ cụ thể. Ví dụ: Dịch vụ Đơn hàng chỉ xử lý đơn hàng, Dịch vụ Sản phẩm chỉ quản lý thông tin sản phẩm.  
