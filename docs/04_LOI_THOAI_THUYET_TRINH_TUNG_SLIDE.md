@@ -28,12 +28,12 @@
 
 ---
 
-## SLIDE 2: NỖI ĐAU CỦA KIẾN TRÚC NGUYÊN KHỐI (MONOLITHIC HELL)
+## SLIDE 2: NỖI ĐAU CỦA KIẾN TRÚC MONOLITH (MONOLITHIC HELL)
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ vào sơ đồ Monolith trên slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Trước tiên, chúng ta cùng nhìn lại kiến trúc truyền thống: **Monolith (Kiến trúc nguyên khối)**.  
+> "Trước tiên, chúng ta cùng nhìn lại kiến trúc truyền thống: **Kiến trúc Monolith**.  
 > 
 > Trong mô hình này, toàn bộ các thành phần từ giao diện, xử lý nghiệp vụ đến truy xuất cơ sở dữ liệu đều được đóng gói chung trong một khối ứng dụng duy nhất (thường là một file `WAR` hoặc `JAR`).  
 > 

@@ -5,7 +5,7 @@
 ## I. TỔNG QUAN VỀ KIẾN TRÚC MICROSERVICES
 
 ### 1. Kiến trúc Monolith vs. Kiến trúc Microservices
-- **Monolith (Nguyên khối):**
+- **Monolith:**
   - Toàn bộ ứng dụng (UI, Business Logic, Data Access, Background Jobs) được đóng gói trong một file duy nhất (`.war` hoặc `.jar`) và chạy chung trong một tiến trình (process).
   - *Hạn chế khi mở rộng:* Khi hệ thống phình to, mã nguồn cồng kềnh, khó kiểm thử, một lỗi nhỏ (ví dụ memory leak ở một module) có thể làm sập toàn bộ ứng dụng; khó nâng cấp công nghệ và khó mở rộng theo từng tính năng cụ thể.
 - **Microservices:**

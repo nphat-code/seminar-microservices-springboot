@@ -9,7 +9,7 @@
 
 | Thời gian | Nội dung | Mục tiêu |
 | :---: | :--- | :--- |
-| **00:00 - 03:00** | Đặt vấn đề & So sánh Monolith vs. Microservices | Thu hút người nghe, chỉ ra vì sao kiến trúc nguyên khối gặp nghẽn |
+| **00:00 - 03:00** | Đặt vấn đề & So sánh Monolith vs. Microservices | Thu hút người nghe, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
 | **03:00 - 08:00** | Hệ sinh thái Spring Cloud & Các thành phần cốt lõi | Trình bày kiến trúc: Eureka, API Gateway, OpenFeign, Resilience4j |
 | **08:00 - 12:00** | Phân tích Ưu điểm, Nhược điểm & Thách thức thực tế | Thể hiện tư duy phản biện (không phải lúc nào cũng nên dùng Microservices) |
 | **12:00 - 19:00** | **Live Demo Project** (Chạy trực tiếp minh họa tính năng) | Trình diễn Eureka Dashboard, gọi qua Gateway, OpenFeign, và test Circuit Breaker |
@@ -37,7 +37,7 @@
   - **Sơ đồ khối Monolith cồng kềnh:**
     ```text
     ┌──────────────────────────────────────────────────────────────────┐
-    │          KHỐI ỨNG DỤNG NGUYÊN KHỐI (MONOLITH ALL-IN-ONE)         │
+    │             ỨNG DỤNG MONOLITH (MONOLITH ALL-IN-ONE)              │
     │  [UI Controller] ── [Order Service] ── [Product Service]         │
     │  [Payment Module] ── [Report Generator (Nguy cơ rò rỉ RAM!)]     │
     └────────────────────────────────┬─────────────────────────────────┘
