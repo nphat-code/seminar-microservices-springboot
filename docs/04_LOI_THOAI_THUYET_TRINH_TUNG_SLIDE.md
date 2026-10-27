@@ -101,7 +101,7 @@
 > **🗣️ LỜI THOẠI:**  
 > "Thành phần đầu tiên là **Service Discovery & Registry**, được hiện thực thông qua **Eureka Server**.  
 > 
-> Trong môi trường điện toán đám mây hoặc container, các instance service có thể được tạo mới hoặc thay thế liên tục, khiến địa chỉ IP và cổng mạng thay đổi thường xuyên. Do đó, việc cấu hình IP cố định trong mã nguồn là không khả thi.  
+> Trong môi trường Cloud hoặc container, các instance service có thể được tạo mới hoặc thay thế liên tục, khiến địa chỉ IP và cổng mạng thay đổi thường xuyên. Do đó, việc cấu hình IP cố định trong mã nguồn là không khả thi.  
 > 
 > Eureka giải quyết vấn đề này theo quy trình sau:  
 > 1. Khi một service khởi động, nó tự động gửi thông tin đăng ký (gồm tên định danh logic, IP và Port) lên Eureka Server.  
