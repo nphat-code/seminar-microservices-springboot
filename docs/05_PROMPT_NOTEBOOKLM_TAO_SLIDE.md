@@ -29,10 +29,6 @@ Khi bấm vào nút **Slide Deck** trong NotebookLM, thiết lập các mục nh
 ```text
 Tạo slide thuyết trình trực quan, sinh động cho chuyên đề "Spring for Microservices" dựa trên tài liệu nguồn đã cung cấp.
 
-Yêu cầu bắt buộc cho Slide 1 (Trang tiêu đề):
-- Tiêu đề chính (Main Title): BẮT BUỘC hiển thị chính xác tên đề tài là: "SPRING FOR MICROSERVICES" (in hoa đậm, kích thước lớn nhất ở trung tâm).
-- Tiêu đề phụ (Subtitle): "Xây dựng hệ thống phân tán trong Java Enterprise với Spring Boot & Spring Cloud".
-
 Yêu cầu về Bố cục & Trực quan (Visual & Layout Requirements):
 - Ưu tiên tối đa hình ảnh minh họa, sơ đồ kiến trúc hệ thống (architecture schematics), lưu đồ tương tác (flowcharts) và các khối thông tin đồ họa (infographic cards).
 - Giảm thiểu văn bản dài: Tuyệt đối không tạo slide chỉ toàn gạch đầu dòng (bullet points) hay "bức tường chữ". Mỗi slide kỹ thuật cần có một sơ đồ khối hoặc hình minh họa trung tâm (visual anchor) thể hiện luồng dữ liệu và mối quan hệ giữa các thành phần.
@@ -57,10 +53,6 @@ Yêu cầu về Phong cách thiết kế (Style & Aesthetics):
 *(Khuyên dùng: Động cơ AI của NotebookLM xử lý prompt thiết kế tiếng Anh rất nhạy và sinh sơ đồ/đồ họa cực kỳ chuẩn xác)*
 ```text
 Generate a highly visual, architecture-driven presentation slide deck for "Spring for Microservices" based strictly on the uploaded source materials.
-
-Mandatory Requirement for Slide 1 (Title / Cover Slide):
-- Main Title: MUST be exactly "SPRING FOR MICROSERVICES" (prominent bold uppercase, strictly preserving the course seminar topic title).
-- Subtitle: "Building Distributed Systems in Java Enterprise with Spring Boot & Spring Cloud".
 
 Visual & Layout Directives:
 - Highly visual presentation: Transform dense technical concepts into clean architecture diagrams, process flowcharts, component node maps, and structured infographic cards instead of plain text bullet points.
