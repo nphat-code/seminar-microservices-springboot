@@ -11,10 +11,10 @@
 | :---: | :--- | :--- |
 | **00:00 - 03:00** | Đặt vấn đề & So sánh Monolith vs. Microservices | Thu hút người nghe, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
 | **03:00 - 08:00** | Hệ sinh thái Spring Cloud & Các thành phần cốt lõi | Trình bày kiến trúc: Eureka, API Gateway, OpenFeign, Resilience4j |
-| **08:00 - 12:00** | Phân tích Ưu điểm, Nhược điểm & Thách thức thực tế | Thể hiện tư duy phản biện (không phải lúc nào cũng nên dùng Microservices) |
+| **08:00 - 12:00** | Đánh giá Ưu điểm, Nhược điểm & Thách thức | Phân tích sự đánh đổi kiến trúc (Architectural Trade-offs) |
 | **12:00 - 19:00** | **Live Demo Project** (Chạy trực tiếp minh họa tính năng) | Trình diễn Eureka Dashboard, gọi qua Gateway, OpenFeign, và test Circuit Breaker |
 | **19:00 - 22:00** | Ứng dụng thực tế & Kinh nghiệm đúc kết | Liên hệ các hệ thống lớn (Netflix, Shopee, Tiki) |
-| **22:00 - 25:00** | Tổng kết & Hỏi đáp (Q&A) | Trả lời câu hỏi phản biện từ thầy cô và bạn học |
+| **22:00 - 25:00** | Tổng kết & Hỏi đáp (Q&A) | Thảo luận và giải đáp thắc mắc chuyên sâu |
 
 ---
 
@@ -199,7 +199,7 @@
 
 ---
 
-### Slide 9: Ưu điểm & Nhược điểm - Góc nhìn chuyên gia
+### Slide 9: Đánh giá kiến trúc - Ưu điểm & Thách thức thực tế (Architectural Trade-offs)
 - **Nội dung chính:** Đánh giá khách quan, đa chiều về mặt đánh đổi kiến trúc (Architectural Trade-offs).
 - **📐 Trực quan hóa & Bảng so sánh 2 cột cân bằng (Balanced Pros & Cons Table):**
 
