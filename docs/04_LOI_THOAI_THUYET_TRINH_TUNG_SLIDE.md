@@ -147,22 +147,26 @@
 
 ---
 
-## SLIDE 9: ĐÁNH GIÁ KIẾN TRÚC TRONG THỰC TẾ
+## SLIDE 9: ĐÁNH GIÁ KIẾN TRÚC - ƯU ĐIỂM & THÁCH THỨC THỰC TẾ
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Giữ góc nhìn kỹ thuật khách quan, cân bằng giữa lợi ích và thách thức.
+- **Cues:** Giữ góc nhìn kỹ thuật khách quan; vừa nói vừa chỉ tay đối sánh giữa 2 cột Ưu điểm (xanh) và Thách thức (đỏ) trên bảng slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Về mặt thực tiễn, việc lựa chọn kiến trúc phần mềm luôn đòi hỏi sự cân nhắc giữa lợi ích và sự đánh đổi:  
+> "Về mặt thực tiễn, trong kỹ thuật phần mềm không có kiến trúc nào là hoàn hảo tuyệt đối, mọi quyết định đều là sự đánh đổi (**Architectural Trade-offs**). Như bảng đối sánh trên slide:  
 > 
-> - **Ưu điểm của Microservices:** Cho phép mở rộng tài nguyên độc lập cho từng thành phần, cô lập lỗi tốt, và giúp các nhóm phát triển làm việc song song một cách tự chủ.  
-> - **Thách thức cần giải quyết:**  
->   - Độ phức tạp trong vận hành tăng lên, yêu cầu hạ tầng container hóa và hệ thống giám sát, thu thập log tập trung.  
->   - Giao tiếp qua mạng làm phát sinh độ trễ nhất định so với gọi hàm nội bộ.  
->   - Đòi hỏi các giải pháp xử lý tính nhất quán dữ liệu phân tán (như mô hình Saga Pattern) thay cho các giao dịch ACID truyền thống.  
+> **Về mặt ưu điểm (cột bên trái):**  
+> - **Thứ nhất là Mở rộng linh hoạt (Elastic Scalability):** Hệ thống có thể scale riêng service chịu tải cao (ví dụ chỉ nhân bản Product Service) mà không cần nhân bản các service khác, giúp tiết kiệm tối đa chi phí phần cứng.  
+> - **Thứ hai là Triển khai độc lập:** Cho phép release tính năng mới của một service mà không sợ ảnh hưởng đến các service còn lại.  
+> - **Thứ ba là Cô lập lỗi (Fault Isolation):** Lỗi phát sinh ở một service phụ sẽ không làm sập toàn bộ hệ thống.  
+> - **Thứ tư là Tự do công nghệ (Polyglot):** Mỗi service có thể tự do chọn phiên bản công nghệ hoặc hệ cơ sở dữ liệu tối ưu nhất cho bài toán của mình.  
 > 
-> Vì vậy, Microservices phù hợp với các hệ thống có quy mô lớn, lưu lượng truy cập cao và nghiệp vụ phức tạp. Đối với các dự án vừa và nhỏ, kiến trúc Monolith vẫn là giải pháp hiệu quả về chi phí và thời gian phát triển.  
+> **Tuy nhiên, để đổi lấy những lợi thế trên, chúng ta phải chấp nhận 4 thách thức thực tế (cột bên phải):**  
+> - **Thứ nhất là Độ trễ mạng (Network Latency):** Giao tiếp giữa các service qua HTTP/REST chắc chắn sẽ có độ trễ lớn hơn so với gọi hàm nội bộ trong RAM.  
+> - **Thứ hai là Tính nhất quán dữ liệu:** Việc chia tách database làm mất đi giao dịch `@Transactional` ACID truyền thống, buộc chúng ta phải áp dụng các mô hình phân tán phức tạp hơn như Saga Pattern.  
+> - **Thứ ba là Vận hành phức tạp:** Đòi hỏi hạ tầng container hóa và các giải pháp giám sát, theo dõi log phân tán (như Actuator, Distributed Tracing).  
+> - **Thứ tư là Kiểm thử khó khăn:** Rất khó để thiết lập toàn bộ môi trường test tích hợp end-to-end trên máy cá nhân.  
 > 
-> Tiếp theo, em xin phép chuyển sang phần **Live Demo** để minh họa cách hệ thống vận hành trên mã nguồn thực tế."
+> Để kiểm chứng các ưu điểm này và thấy cách Spring Cloud giúp chúng ta giải quyết các thách thức về mạng và chịu lỗi, em xin phép chuyển sang phần **Live Demo** trên mã nguồn thực tế."
 
 ---
 
