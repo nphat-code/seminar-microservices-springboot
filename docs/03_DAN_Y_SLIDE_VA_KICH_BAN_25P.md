@@ -57,7 +57,7 @@
 
 ### Slide 3: Giới thiệu Kiến trúc Microservices (Chia để trị)
 - **Nội dung chính:**
-  - Định nghĩa: Phân rã ứng dụng thành các dịch vụ nhỏ, độc lập, tự chủ (Autonomous Services).
+  - Định nghĩa: Phân rã ứng dụng thành các service nhỏ, độc lập, tự chủ (Autonomous Services).
   - 3 nguyên lý nền tảng: Single Responsibility, Database per Service, Giao tiếp qua mạng chuẩn hóa (REST / Message Queue).
 - **📐 Trực quan hóa & Sơ đồ đối sánh (Comparison Layout):**
   - **Sơ đồ đối sánh trực quan:**
@@ -72,7 +72,7 @@
     ```
   - **3 Huy hiệu nguyên lý (Principle Badges):**
     - 🎯 **Đơn nhiệm (Single Responsibility):** Mỗi service làm tốt một việc duy nhất.
-    - 🗄️ **Database per Service:** Không bao giờ dùng chung CSDL giữa các dịch vụ.
+    - 🗄️ **Database per Service:** Không bao giờ dùng chung CSDL giữa các service.
     - 🚀 **CI/CD độc lập:** Nâng cấp và phát hành từng service trong vài phút mà không ảnh hưởng nhau.
 
 ---
@@ -88,7 +88,7 @@
     - ⚙️ Auto-configuration tự động thiết lập cấu hình theo dependency.
     - 📊 Spring Boot Actuator cung cấp sẵn Health Check và Metrics.
   - **Cột 2 - Spring Cloud (Distributed Systems Orchestrator):**
-    - 📡 Service Discovery: Đăng ký và định vị dịch vụ động.
+    - 📡 Service Discovery: Đăng ký và định vị service động.
     - 🚪 Intelligent Routing: Cổng giao tiếp tập trung và cân bằng tải.
     - 🔌 Circuit Breaker: Tự động ngắt mạch bảo vệ hệ thống khi có lỗi.
     - 📝 Centralized Config: Quản lý cấu hình tập trung từ xa qua Git.
@@ -149,7 +149,7 @@
   ```
   - **3 Cơ chế nổi bật (Feature Callouts):**
     - 💓 **Heartbeat định kỳ:** Service gửi tín hiệu sống mỗi 30s; quá hạn Eureka tự động xóa khỏi danh bạ.
-    - 🔍 **Logic Name Lookup:** Gọi qua tên dịch vụ `http://PRODUCT-SERVICE/` thay vì IP tĩnh.
+    - 🔍 **Logic Name Lookup:** Gọi qua tên service `http://PRODUCT-SERVICE/` thay vì IP tĩnh.
     - 🛡️ **Self-Preservation Mode:** Tự bảo vệ không xóa nhầm instance khi mạng chập chờn.
 
 ---
@@ -229,8 +229,8 @@
   - **Bảng thông số 4 Service:**
     - 📡 `discovery-server` (:8761) - Trung tâm điều phối danh bạ.
     - 🚪 `api-gateway` (:8080) - Cổng tiếp nhận toàn bộ request từ người dùng.
-    - 📦 `product-service` (:8081) - Dịch vụ dữ liệu sản phẩm.
-    - 🛒 `order-service` (:8082) - Dịch vụ đơn hàng tích hợp OpenFeign & Resilience4j.
+    - 📦 `product-service` (:8081) - Service dữ liệu sản phẩm.
+    - 🛒 `order-service` (:8082) - Service đơn hàng tích hợp OpenFeign & Resilience4j.
 
 ---
 
@@ -239,7 +239,7 @@
 - **📐 Trực quan hóa & Sơ đồ luồng 3 bước (Step-by-Step Flowchart):**
   - **Bước 1: Khởi động & Giám sát**  
     🖥️ Mở `http://localhost:8761` trên trình duyệt -> Xem Dashboard Eureka hiển thị đủ 3 instance xanh (`API-GATEWAY`, `ORDER-SERVICE`, `PRODUCT-SERVICE`).
-  - **Bước 2: Định tuyến qua Gateway & Gọi liên dịch vụ**  
+  - **Bước 2: Định tuyến qua Gateway & Gọi liên service**  
     🚀 Gửi Request qua Gateway `POST http://localhost:8080/api/orders` -> Gateway định tuyến sang `order-service`, `order-service` gọi tiếp `product-service` qua OpenFeign lấy giá tiền -> Trả về đơn hàng hoàn chỉnh (Status: 200 OK).
   - **Bước 3: Thử thách chịu lỗi (Circuit Breaker kích hoạt)**  
     💥 Tắt trực tiếp `product-service` (mô phỏng sự cố server) -> Gửi lại request tạo đơn -> Circuit Breaker lập tức kích hoạt hàm Fallback, trả về đơn hàng an toàn với thông tin sản phẩm tạm thời thay vì sập lỗi 500!
