@@ -4,8 +4,15 @@
 - **Xong phần nào push lên Git ngay:** Mỗi khi hoàn thành xong một phần việc (tài liệu mới, cập nhật nội dung, sửa code demo, cấu hình,...), thực hiện kiểm tra `git status`, tạo commit rõ nghĩa và `git push` ngay lên remote repo (`origin/main`).
 - Giữ lịch sử commit sạch, thông điệp commit bằng tiếng Việt hoặc tiếng Anh rõ ràng theo chuẩn: `feat:`, `docs:`, `fix:`, `refactor:`.
 
-## 📌 Quy tắc đặt tên & Thuật ngữ (Naming & Conventions)
+## 📌 Quy tắc đặt tên và thuật ngữ
 - **Ghi "Service" rõ ràng, tuyệt đối không viết tắt/rút gọn thành "Svc":**
   - Áp dụng trên toàn bộ tài liệu (docs, slide, kịch bản, diagram/sơ đồ text, README, báo cáo).
   - Áp dụng trong mã nguồn (source code, tên class, package, service name, interface, config, endpoint).
   - Luôn viết tường minh: `Order Service`, `Product Service`, `OrderService`, `ProductService`,...
+
+## 📌 Quy tắc ngôn ngữ và trình bày
+- **Chỉ ghi một ngôn ngữ (Tiếng Việt hoặc Tiếng Anh), không viết kiểu "Tiếng Việt (Tiếng Anh)":**
+  - Xem cái nào hợp lý hơn cho ngữ cảnh thì ghi một thứ duy nhất:
+    - **Thuật ngữ kỹ thuật / Design Pattern quen thuộc:** Ưu tiên ghi thẳng Tiếng Anh chuẩn (ví dụ: `Single Responsibility`, `Database per Service`, `API Gateway`, `Circuit Breaker`, `Fallback`, `Service Discovery`, `CI/CD`).
+    - **Câu giải thích, tiêu đề, diễn đạt thông thường:** Ghi Tiếng Việt tự nhiên, gãy gọn, không kèm từ tiếng Anh trong ngoặc đơn.
+  - **Tuyệt đối không viết kiểu song ngữ kẹp ngoặc:** Không viết `Đơn nhiệm (Single Responsibility)`, `Cơ sở dữ liệu độc lập (Database per Service)`, `Mở rộng linh hoạt (Elastic Scalability)`, `Độ trễ mạng (Network Latency)`,...

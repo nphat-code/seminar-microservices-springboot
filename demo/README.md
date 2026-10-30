@@ -112,4 +112,4 @@ Khởi chạy lần lượt 4 file main theo đúng thứ tự:
       "message": "[Resilience4j Fallback] Product Service hiện không phản hồi. Đơn hàng tạm lưu ở trạng thái chờ xử lý!"
     }
     ```
-- **Điểm nhấn thuyết trình:** "Nhờ Circuit Breaker, sự cố ở một service không làm sập dây chuyền toàn bộ hệ thống (Cascading Failure), đơn hàng vẫn được tiếp nhận an toàn ở trạng thái chờ."
+- **Điểm nhấn thuyết trình:** "Nhờ Circuit Breaker, sự cố ở một service không làm sập dây chuyền toàn bộ hệ thống, đơn hàng vẫn được tiếp nhận an toàn ở trạng thái chờ."

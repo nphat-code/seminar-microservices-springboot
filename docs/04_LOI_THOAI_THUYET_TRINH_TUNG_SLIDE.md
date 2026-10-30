@@ -6,7 +6,7 @@
 
 ---
 
-## SLIDE 1: MỞ ĐẦU (TRANG TIÊU ĐỀ)
+## SLIDE 1: TRANG TIÊU ĐỀ
 - **Thời lượng:** ~20 - 30 giây
 - **Cues:** Phong thái tự tin, đứng cạnh laptop, nhìn bao quát lớp.
 
@@ -34,7 +34,7 @@
 
 ---
 
-## SLIDE 3: NỖI ĐAU CỦA KIẾN TRÚC MONOLITH (MONOLITHIC HELL)
+## SLIDE 3: NỖI ĐAU CỦA KIẾN TRÚC MONOLITH
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ vào sơ đồ Monolith trên slide.
 
@@ -45,15 +45,15 @@
 > 
 > Với các dự án quy mô nhỏ, Monolith mang lại lợi thế phát triển nhanh và triển khai đơn giản. Tuy nhiên, khi hệ thống phát triển lớn hơn và có nhiều đội ngũ cùng tham gia, kiến trúc này bộc lộ một số hạn chế rõ rệt:  
 > 
-> - **Thứ nhất là quá trình Triển khai (Deployment):** Mỗi thay đổi, dù là nhỏ nhất ở một tính năng phụ, cũng đòi hỏi phải biên dịch, kiểm thử và triển khai lại toàn bộ khối ứng dụng. Điều này làm tăng thời gian phát hành và tiềm ẩn rủi ro cho toàn hệ thống.  
-> - **Thứ hai là việc Mở rộng tài nguyên (Scaling):** Khi một tính năng cụ thể gặp tải cao (ví dụ như chức năng tra cứu sản phẩm), hệ thống không thể mở rộng riêng cho chức năng đó mà bắt buộc phải nhân bản toàn bộ ứng dụng, gây lãng phí tài nguyên máy chủ.  
-> - **Thứ ba là Rủi ro sự cố lan rộng (Single Point of Failure):** Do toàn bộ mã nguồn chạy chung một tiến trình, một lỗi phát sinh từ một module (ví dụ rò rỉ bộ nhớ từ chức năng xuất báo cáo) có thể ảnh hưởng đến toàn bộ ứng dụng, làm gián đoạn các service quan trọng khác.  
+> - **Thứ nhất là quá trình Triển khai:** Mỗi thay đổi, dù là nhỏ nhất ở một tính năng phụ, cũng đòi hỏi phải biên dịch, kiểm thử và triển khai lại toàn bộ khối ứng dụng. Điều này làm tăng thời gian phát hành và tiềm ẩn rủi ro cho toàn hệ thống.  
+> - **Thứ hai là việc Mở rộng tài nguyên:** Khi một tính năng cụ thể gặp tải cao (ví dụ như chức năng tra cứu sản phẩm), hệ thống không thể mở rộng riêng cho chức năng đó mà bắt buộc phải nhân bản toàn bộ ứng dụng, gây lãng phí tài nguyên máy chủ.  
+> - **Thứ ba là Rủi ro sự cố lan rộng:** Do toàn bộ mã nguồn chạy chung một tiến trình, một lỗi phát sinh từ một module (ví dụ rò rỉ bộ nhớ từ chức năng xuất báo cáo) có thể ảnh hưởng đến toàn bộ ứng dụng, làm gián đoạn các service quan trọng khác.  
 > 
 > Những hạn chế trên là động lực thúc đẩy sự chuyển dịch sang kiến trúc Microservices."
 
 ---
 
-## SLIDE 4: GIỚI THIỆU KIẾN TRÚC MICROSERVICES (CHIA ĐỂ TRỊ)
+## SLIDE 4: GIỚI THIỆU KIẾN TRÚC MICROSERVICES
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ vào sơ đồ so sánh Monolith vs. Microservices và 3 huy hiệu nguyên lý trên slide.
 
@@ -61,22 +61,22 @@
 > "Kiến trúc **Microservices** tiếp cận bài toán theo tư duy 'Chia để trị' — phân rã khối ứng dụng lớn thành một tập hợp các service nhỏ, độc lập và tự chủ.  
 > 
 > Như thầy và các bạn quan sát ở 3 huy hiệu nguyên lý trên slide, mô hình này được xây dựng vững chắc trên 3 trụ cột:  
-> 1. **🎯 Đơn nhiệm (Single Responsibility):** Mỗi service chỉ tập trung làm tốt một phạm vi nghiệp vụ duy nhất. Ví dụ như trên sơ đồ: Order Service chỉ chuyên xử lý đơn hàng, Product Service chỉ chuyên quản lý dữ liệu sản phẩm.  
-> 2. **🗄️ Cơ sở dữ liệu độc lập (Database per Service):** Mỗi service sở hữu hoàn toàn cơ sở dữ liệu riêng biệt. Tuyệt đối không dùng chung database, và mọi giao tiếp dữ liệu bắt buộc phải đi qua giao diện mạng chuẩn hóa như RESTful API.  
-> 3. **🚀 Triển khai độc lập (Independent CI/CD):** Nhờ tách biệt mã nguồn và tiến trình chạy, từng service có thể được nâng cấp, kiểm thử và phát hành lên môi trường thực tế chỉ trong vài phút mà không làm gián đoạn hay phụ thuộc vào các service còn lại.  
+> 1. **🎯 Single Responsibility:** Mỗi service chỉ tập trung làm tốt một phạm vi nghiệp vụ duy nhất. Ví dụ như trên sơ đồ: Order Service chỉ chuyên xử lý đơn hàng, Product Service chỉ chuyên quản lý dữ liệu sản phẩm.  
+> 2. **🗄️ Database per Service:** Mỗi service sở hữu hoàn toàn cơ sở dữ liệu riêng biệt. Tuyệt đối không dùng chung database, và mọi giao tiếp dữ liệu bắt buộc phải đi qua giao diện mạng chuẩn hóa như RESTful API.  
+> 3. **🚀 CI/CD độc lập:** Nhờ tách biệt mã nguồn và tiến trình chạy, từng service có thể được nâng cấp, kiểm thử và phát hành lên môi trường thực tế chỉ trong vài phút mà không làm gián đoạn hay phụ thuộc vào các service còn lại.  
 > 
 > Và để hiện thực hóa kiến trúc này trên nền tảng Java Enterprise, giải pháp toàn diện và tối ưu nhất hiện nay chính là bộ đôi Spring Boot và Spring Cloud."
 
 ---
 
-## SLIDE 5: TẠI SAO CHỌN SPRING CHO MICROSERVICES? (VAI TRÒ CỦA SPRING BOOT & SPRING CLOUD)
+## SLIDE 5: TẠI SAO CHỌN SPRING CHO MICROSERVICES?
 - **Thời lượng:** ~1 phút 15 giây
 - **Cues:** Hướng tay lần lượt về Cột 1 (Spring Boot) và Cột 2 (Spring Cloud) trên màn hình.
 
 > **🗣️ LỜI THOẠI:**  
 > "Để trả lời cho câu hỏi: *'Tại sao hệ sinh thái Spring lại là lựa chọn hàng đầu cho Microservices trong Java Enterprise?'*, chúng ta cùng nhìn vào sự bổ trợ hoàn hảo giữa hai công cụ: **Spring Boot** và **Spring Cloud** như thể hiện ở 2 cột trên slide:  
 > 
-> - **Ở cột bên trái — Spring Boot:** Đóng vai trò là nền tảng khởi tạo từng microservice đơn lẻ. Nhờ máy chủ nhúng sẵn (Embedded Tomcat) và cơ chế tự động cấu hình (Auto-configuration), Spring Boot giúp đóng gói toàn bộ ứng dụng thành một file JAR độc lập, loại bỏ hầu hết cấu hình rườm rà. Ngoài ra, Spring Boot Actuator cung cấp sẵn các endpoint giám sát sức khỏe (Health Check) cực kỳ tiện lợi.  
+> - **Ở cột bên trái — Spring Boot:** Đóng vai trò là nền tảng khởi tạo từng microservice đơn lẻ. Nhờ máy chủ nhúng Embedded Tomcat và cơ chế Auto-configuration, Spring Boot giúp đóng gói toàn bộ ứng dụng thành một file JAR độc lập, loại bỏ hầu hết cấu hình rườm rà. Ngoài ra, Spring Boot Actuator cung cấp sẵn các endpoint Health Check cực kỳ tiện lợi.  
 > - **Tuy nhiên, khi ráp nhiều service lại với nhau**, chúng ta phải giải quyết các bài toán hóc búa của hệ thống phân tán: định vị service, điều phối luồng truy cập, quản lý cấu hình và kiểm soát sự cố mạng.  
 > - **Đó chính là lúc chúng ta cần đến cột bên phải — Spring Cloud:** Spring Cloud cung cấp bộ giải pháp toàn diện cho các mẫu thiết kế phân tán kinh điển: **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung.  
 > 
@@ -99,7 +99,7 @@
 
 ---
 
-## SLIDE 7: THÀNH PHẦN 1 - SERVICE DISCOVERY (EUREKA SERVER)
+## SLIDE 7: SERVICE DISCOVERY VỚI EUREKA SERVER
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Giọng giải thích mạch lạc, dùng phép so sánh danh bạ logic.
 
@@ -117,7 +117,7 @@
 
 ---
 
-## SLIDE 8: THÀNH PHẦN 2 - API GATEWAY (SPRING CLOUD GATEWAY)
+## SLIDE 8: API GATEWAY VỚI SPRING CLOUD GATEWAY
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ vào vị trí trung gian của Gateway.
 
@@ -129,24 +129,24 @@
 > - **Xác thực tập trung:** Kiểm tra tính hợp lệ của token bảo mật ngay tại cửa ngõ trước khi chuyển tiếp yêu cầu vào các service bên trong.  
 > - **Định tuyến linh hoạt:** Dựa vào đường dẫn URL (ví dụ `/api/products` hoặc `/api/orders`) để chuyển tiếp chính xác đến service đích tương ứng.  
 > 
-> Về mặt hiệu năng, Spring Cloud Gateway được xây dựng trên nền tảng **Spring WebFlux (Project Reactor)** theo mô hình **Non-blocking Reactive I/O**. Khác với mô hình Blocking I/O truyền thống (mỗi kết nối chiếm dụng một thread), mô hình này sử dụng ít tài nguyên hơn và có khả năng xử lý đồng thời số lượng lớn yêu cầu."
+> Về mặt hiệu năng, Spring Cloud Gateway được xây dựng trên nền tảng **Spring WebFlux** theo mô hình **Non-blocking Reactive I/O**. Khác với mô hình Blocking I/O truyền thống (mỗi kết nối chiếm dụng một thread), mô hình này sử dụng ít tài nguyên hơn và có khả năng xử lý đồng thời số lượng lớn yêu cầu."
 
 ---
 
-## SLIDE 9: THÀNH PHẦN 3 - GIAO TIẾP VÀ CHỊU LỖI (OPENFEIGN & RESILIENCE4J)
+## SLIDE 9: GIAO TIẾP VÀ CHỊU LỖI VỚI OPENFEIGN VÀ RESILIENCE4J
 - **Thời lượng:** ~1 phút 45 giây
 - **Cues:** Giải thích cơ chế chuyển trạng thái của Circuit Breaker.
 
 > **🗣️ LỜI THOẠI:**  
 > "Để giao tiếp giữa các service, Spring Cloud cung cấp thư viện **OpenFeign**.  
-> Thay vì viết mã gọi HTTP thủ công, OpenFeign cho phép định nghĩa các giao diện (Interface) với cú pháp khai báo rõ ràng, Spring sẽ tự động sinh mã thực thi ngầm định.  
+> Thay vì viết mã gọi HTTP thủ công, OpenFeign cho phép định nghĩa các interface với cú pháp khai báo rõ ràng, Spring sẽ tự động sinh mã thực thi ngầm định.  
 > 
-> Tuy nhiên, trong môi trường phân tán, các sự cố mạng hoặc việc một service phản hồi chậm có thể làm tắc nghẽn luồng xử lý của service gọi, dẫn đến nguy cơ **sập dây chuyền (Cascading Failure)**.  
+> Tuy nhiên, trong môi trường phân tán, các sự cố mạng hoặc việc một service phản hồi chậm có thể làm tắc nghẽn luồng xử lý của service gọi, dẫn đến nguy cơ **sập dây chuyền**.  
 > 
 > Để kiểm soát rủi ro này, chúng ta tích hợp **Resilience4j Circuit Breaker** — hoạt động theo mô hình ngắt mạch:  
-> - **Trạng thái CLOSED (Đóng):** Trạng thái bình thường, các yêu cầu được chuyển tiếp thông suốt.  
-> - **Trạng thái OPEN (Ngắt mạch):** Khi tỉ lệ lỗi vượt quá ngưỡng cho phép (ví dụ trên 50%), mạch sẽ tự động ngắt. Các yêu cầu mới được chuyển hướng ngay lập tức đến hàm dự phòng (**Fallback Method**) mà không gửi qua mạng, giúp service đích có thời gian phục hồi và tránh tắc nghẽn tài nguyên.  
-> - **Trạng thái HALF-OPEN (Thăm dò):** Sau một khoảng thời gian chờ, mạch cho phép một số lượng nhỏ yêu cầu đi qua để kiểm tra. Nếu thành công, mạch quay về trạng thái CLOSED; nếu vẫn phát sinh lỗi, mạch tiếp tục duy trì trạng thái OPEN.  
+> - **Trạng thái CLOSED:** Trạng thái bình thường, các yêu cầu được chuyển tiếp thông suốt.  
+> - **Trạng thái OPEN:** Khi tỉ lệ lỗi vượt quá ngưỡng cho phép (ví dụ trên 50%), mạch sẽ tự động ngắt. Các yêu cầu mới được chuyển hướng ngay lập tức đến hàm dự phòng **Fallback** mà không gửi qua mạng, giúp service đích có thời gian phục hồi và tránh tắc nghẽn tài nguyên.  
+> - **Trạng thái HALF-OPEN:** Sau một khoảng thời gian chờ, mạch cho phép một số lượng nhỏ yêu cầu đi qua để kiểm tra. Nếu thành công, mạch quay về trạng thái CLOSED; nếu vẫn phát sinh lỗi, mạch tiếp tục duy trì trạng thái OPEN.  
 > 
 > Cơ chế này đảm bảo tính sẵn sàng của toàn hệ thống khi có service thành phần gặp sự cố."
 
@@ -157,16 +157,16 @@
 - **Cues:** Giữ góc nhìn kỹ thuật khách quan; vừa nói vừa chỉ tay đối sánh giữa 2 cột Ưu điểm (xanh) và Thách thức (đỏ) trên bảng slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Về mặt thực tiễn, trong kỹ thuật phần mềm không có kiến trúc nào là hoàn hảo tuyệt đối, mọi quyết định đều là sự đánh đổi (**Architectural Trade-offs**). Như bảng đối sánh trên slide:  
+> "Về mặt thực tiễn, trong kỹ thuật phần mềm không có kiến trúc nào là hoàn hảo tuyệt đối, mọi quyết định đều là **sự đánh đổi kiến trúc**. Như bảng đối sánh trên slide:  
 > 
 > **Về mặt ưu điểm (cột bên trái):**  
-> - **Thứ nhất là Mở rộng linh hoạt (Elastic Scalability):** Hệ thống có thể scale riêng service chịu tải cao (ví dụ chỉ nhân bản Product Service) mà không cần nhân bản các service khác, giúp tiết kiệm tối đa chi phí phần cứng.  
+> - **Thứ nhất là Mở rộng linh hoạt:** Hệ thống có thể scale riêng service chịu tải cao (ví dụ chỉ nhân bản Product Service) mà không cần nhân bản các service khác, giúp tiết kiệm tối đa chi phí phần cứng.  
 > - **Thứ hai là Triển khai độc lập:** Cho phép release tính năng mới của một service mà không sợ ảnh hưởng đến các service còn lại.  
-> - **Thứ ba là Cô lập lỗi (Fault Isolation):** Lỗi phát sinh ở một service phụ sẽ không làm sập toàn bộ hệ thống.  
-> - **Thứ tư là Tự do công nghệ (Polyglot):** Mỗi service có thể tự do chọn phiên bản công nghệ hoặc hệ cơ sở dữ liệu tối ưu nhất cho bài toán của mình.  
+> - **Thứ ba là Cô lập lỗi:** Lỗi phát sinh ở một service phụ sẽ không làm sập toàn bộ hệ thống.  
+> - **Thứ tư là Tự do công nghệ:** Mỗi service có thể tự do chọn phiên bản công nghệ hoặc hệ cơ sở dữ liệu tối ưu nhất cho bài toán của mình.  
 > 
 > **Tuy nhiên, để đổi lấy những lợi thế trên, chúng ta phải chấp nhận 4 thách thức thực tế (cột bên phải):**  
-> - **Thứ nhất là Độ trễ mạng (Network Latency):** Giao tiếp giữa các service qua HTTP/REST chắc chắn sẽ có độ trễ lớn hơn so với gọi hàm nội bộ trong RAM.  
+> - **Thứ nhất là Độ trễ mạng:** Giao tiếp giữa các service qua HTTP/REST chắc chắn sẽ có độ trễ lớn hơn so với gọi hàm nội bộ trong RAM.  
 > - **Thứ hai là Tính nhất quán dữ liệu:** Việc chia tách database làm mất đi giao dịch `@Transactional` ACID truyền thống, buộc chúng ta phải áp dụng các mô hình phân tán phức tạp hơn như Saga Pattern.  
 > - **Thứ ba là Vận hành phức tạp:** Đòi hỏi hạ tầng container hóa và các giải pháp giám sát, theo dõi log phân tán (như Actuator, Distributed Tracing).  
 > - **Thứ tư là Kiểm thử khó khăn:** Rất khó để thiết lập toàn bộ môi trường test tích hợp end-to-end trên máy cá nhân.  
@@ -190,7 +190,7 @@
 
 ---
 
-## SLIDE 12: KỊCH BẢN LIVE DEMO (THAO TÁC TRÊN MÀN HÌNH)
+## SLIDE 12: KỊCH BẢN LIVE DEMO
 - **Thời lượng:** ~6 phút
 - **Cues:** Thao tác rõ ràng, giải thích ngắn gọn dựa trên dữ liệu hiển thị.
 
@@ -243,7 +243,7 @@
 
 ---
 
-## SLIDE 14: TỔNG KẾT & CÂU HỎI (Q&A)
+## SLIDE 14: TỔNG KẾT VÀ HỎI ĐÁP
 - **Thời lượng:** ~30 giây
 - **Cues:** Cảm ơn và chuyển sang phần thảo luận.
 
@@ -254,26 +254,26 @@
 
 ---
 
-## 🛡️ HƯỚNG TRẢ LỜI CÂU HỎI PHẢN BIỆN (RÕ RÀNG & CHUẨN XÁC)
+## 🛡️ HƯỚNG TRẢ LỜI CÂU HỎI PHẢN BIỆN
 
-### ❓ Thầy hỏi: *"Làm sao đảm bảo tính toàn vẹn dữ liệu khi mỗi Microservice có Database riêng? (Không dùng được `@Transactional` thông thường)"*
+### ❓ Thầy hỏi: *"Làm sao đảm bảo tính toàn vẹn dữ liệu khi mỗi Microservice có Database riêng thay vì dùng `@Transactional` thông thường?"*
 > **🗣️ Trả lời:**  
-> "Dạ thưa thầy, trong Microservices với nguyên tắc Database per Service, việc sử dụng các giao dịch phân tán 2 pha (Two-Phase Commit) làm tăng độ trễ và giảm tính sẵn sàng của hệ thống.  
-> Vì vậy, phương pháp phổ biến là áp dụng nguyên lý **Tính nhất quán cuối cùng (Eventual Consistency)** thông qua mẫu thiết kế **Saga Pattern**.  
-> Một giao dịch tổng thể được phân rã thành chuỗi các giao dịch cục bộ tại từng service. Nếu một bước xử lý phát sinh lỗi, hệ thống sẽ thực thi các **Giao dịch bù trừ (Compensating Transactions)** để hoàn tác trạng thái trước đó về mặt logic (ví dụ: cập nhật trạng thái hủy đơn và hoàn trả số lượng giữ chỗ trong kho). Cơ chế này thường được điều phối thông qua hàng đợi thông điệp như Kafka hoặc RabbitMQ ạ."
+> "Dạ thưa thầy, trong Microservices với nguyên tắc Database per Service, việc sử dụng các giao dịch phân tán Two-Phase Commit làm tăng độ trễ và giảm tính sẵn sàng của hệ thống.  
+> Vì vậy, phương pháp phổ biến là áp dụng nguyên lý **Tính nhất quán cuối cùng** thông qua mẫu thiết kế **Saga Pattern**.  
+> Một giao dịch tổng thể được phân rã thành chuỗi các giao dịch cục bộ tại từng service. Nếu một bước xử lý phát sinh lỗi, hệ thống sẽ thực thi các **Giao dịch bù trừ** để hoàn tác trạng thái trước đó về mặt logic (ví dụ: cập nhật trạng thái hủy đơn và hoàn trả số lượng giữ chỗ trong kho). Cơ chế này thường được điều phối thông qua hàng đợi thông điệp như Kafka hoặc RabbitMQ ạ."
 
 ---
 
 ### ❓ Thầy hỏi: *"Tại sao Spring Cloud Gateway lại được sử dụng thay thế cho Netflix Zuul 1.x?"*
 > **🗣️ Trả lời:**  
-> "Dạ thưa thầy, Netflix Zuul 1.x hoạt động theo mô hình **Blocking I/O (Thread-per-request)**, nghĩa là mỗi kết nối sẽ chiếm dụng một luồng xử lý riêng biệt. Khi hệ thống chịu tải cao hoặc các service phía sau phản hồi chậm, số lượng thread sẽ nhanh chóng bị cạn kiệt, gây nghẽn hệ thống.  
-> Trong khi đó, **Spring Cloud Gateway** được phát triển trên nền tảng **Spring WebFlux (Project Reactor)** theo cơ chế **Non-blocking Reactive I/O**, cho phép một số lượng nhỏ luồng xử lý đồng thời hàng chục nghìn kết nối mà không bị khóa tài nguyên. Ngoài ra, Spring Cloud Gateway tích hợp sâu với Spring Boot 3 và hỗ trợ các bộ lọc Filter linh hoạt hơn ạ."
+> "Dạ thưa thầy, Netflix Zuul 1.x hoạt động theo mô hình **Blocking I/O**, nghĩa là mỗi kết nối sẽ chiếm dụng một luồng xử lý riêng biệt. Khi hệ thống chịu tải cao hoặc các service phía sau phản hồi chậm, số lượng thread sẽ nhanh chóng bị cạn kiệt, gây nghẽn hệ thống.  
+> Trong khi đó, **Spring Cloud Gateway** được phát triển trên nền tảng **Spring WebFlux** theo cơ chế **Non-blocking Reactive I/O**, cho phép một số lượng nhỏ luồng xử lý đồng thời hàng chục nghìn kết nối mà không bị khóa tài nguyên. Ngoài ra, Spring Cloud Gateway tích hợp sâu với Spring Boot 3 và hỗ trợ các bộ lọc Filter linh hoạt hơn ạ."
 
 ---
 
 ### ❓ Thầy hỏi: *"Circuit Breaker có những trạng thái nào và chuyển đổi ra sao?"*
 > **🗣️ Trả lời:**  
 > "Dạ thưa thầy, trong Resilience4j, Circuit Breaker quản lý theo 3 trạng thái chính:  
-> 1. **CLOSED (Đóng mạch):** Trạng thái bình thường, các yêu cầu được chuyển tiếp thông suốt đến service đích. Tỉ lệ lỗi được theo dõi liên tục trong một cửa sổ trượt (sliding window).  
-> 2. **OPEN (Ngắt mạch):** Khi tỉ lệ lỗi vượt qua ngưỡng cấu hình (ví dụ trên 50%), mạch chuyển sang trạng thái OPEN. Mọi yêu cầu mới đều bị chặn ngay lập tức và chuyển vào hàm Fallback để giảm tải cho service đích.  
-> 3. **HALF-OPEN (Thăm dò):** Sau một khoảng thời gian chờ cấu hình trước (ví dụ 10 giây), mạch cho phép một số lượng nhỏ yêu cầu thử nghiệm đi qua. Nếu các yêu cầu này thành công, mạch tự động chuyển về trạng thái **CLOSED**; nếu tiếp tục phát sinh lỗi, mạch quay lại trạng thái **OPEN** để duy trì cách ly ạ."
+> 1. **CLOSED:** Trạng thái bình thường, các yêu cầu được chuyển tiếp thông suốt đến service đích. Tỉ lệ lỗi được theo dõi liên tục trong một cửa sổ trượt.  
+> 2. **OPEN:** Khi tỉ lệ lỗi vượt qua ngưỡng cấu hình (ví dụ trên 50%), mạch chuyển sang trạng thái OPEN. Mọi yêu cầu mới đều bị chặn ngay lập tức và chuyển vào hàm Fallback để giảm tải cho service đích.  
+> 3. **HALF-OPEN:** Sau một khoảng thời gian chờ cấu hình trước (ví dụ 10 giây), mạch cho phép một số lượng nhỏ yêu cầu thử nghiệm đi qua. Nếu các yêu cầu này thành công, mạch tự động chuyển về trạng thái **CLOSED**; nếu tiếp tục phát sinh lỗi, mạch quay lại trạng thái **OPEN** để duy trì cách ly ạ."

@@ -17,23 +17,23 @@ Khi bấm vào nút **Slide Deck** trong NotebookLM, thiết lập các mục nh
 | **Choose language** | **Vietnamese** *(hoặc English tùy nhu cầu)* | Để toàn bộ tiêu đề và nội dung slide sinh ra bằng tiếng Việt chuẩn xác (các thuật ngữ công nghệ AI vẫn giữ nguyên tiếng Anh). |
 | **Length** | **Default** | Độ dài mặc định khớp tối ưu với 14 slide đã có trong tài liệu nguồn. |
 | **Sources** | **2 sources** | Chọn 2 file `03_DAN_Y...` và `04_LOI_THOAI...`. |
-| **Review slide outline** | **BẬT (ON - Màu xanh)** | Cho phép xem trước và điều chỉnh dàn ý từng slide trước khi hệ thống tạo slide chính thức. |
+| **Review slide outline** | **BẬT** | Cho phép xem trước và điều chỉnh dàn ý từng slide trước khi hệ thống tạo slide chính thức. |
 
 ---
 
-## 📝 II. PROMPT DÁN VÀO Ô MÔ TẢ (DESCRIBE THE SLIDE DECK YOU WANT TO CREATE)
+## 📝 II. PROMPT DÁN VÀO Ô MÔ TẢ
 
 Để NotebookLM kích hoạt bộ sinh giao diện trực quan và tự động tạo sơ đồ kiến trúc, hình khối minh họa sinh động (thay vì các slide toàn chữ hoặc gạch đầu dòng nhàm chán), sử dụng các mẫu prompt tối ưu hóa hình ảnh dưới đây:
 
-### 📌 Lựa chọn 1: Bản Tiếng Việt (Trực quan hóa sinh động & Chuẩn mực kỹ thuật):
+### 📌 Lựa chọn 1: Bản Tiếng Việt:
 ```text
 Tạo slide thuyết trình trực quan, sinh động cho chuyên đề "Spring for Microservices" dựa trên tài liệu nguồn đã cung cấp.
 
-Yêu cầu về Bố cục & Trực quan (Visual & Layout Requirements):
-- Ưu tiên tối đa hình ảnh minh họa, sơ đồ kiến trúc hệ thống (architecture schematics), lưu đồ tương tác (flowcharts) và các khối thông tin đồ họa (infographic cards).
-- Giảm thiểu văn bản dài: Tuyệt đối không tạo slide chỉ toàn gạch đầu dòng (bullet points) hay "bức tường chữ". Mỗi slide kỹ thuật cần có một sơ đồ khối hoặc hình minh họa trung tâm (visual anchor) thể hiện luồng dữ liệu và mối quan hệ giữa các thành phần.
+Yêu cầu về Bố cục & Trực quan:
+- Ưu tiên tối đa hình ảnh minh họa, sơ đồ kiến trúc hệ thống, lưu đồ tương tác và các khối thông tin đồ họa.
+- Giảm thiểu văn bản dài: Tuyệt đối không tạo slide chỉ toàn gạch đầu dòng hay "bức tường chữ". Mỗi slide kỹ thuật cần có một sơ đồ khối hoặc hình minh họa trung tâm thể hiện luồng dữ liệu và mối quan hệ giữa các thành phần.
 - Các sơ đồ cần thể hiện trực quan:
-  + Slide Nội dung trình bày gồm 3 phần dạng 3 thẻ cột trực quan (3-column milestone cards).
+  + Slide Nội dung trình bày gồm 3 phần dạng 3 thẻ cột trực quan.
   + Đối sánh Monolith (1 khối chung DB) vs Microservices (các service độc lập với DB riêng).
   + Sơ đồ kiến trúc tổng thể Spring Cloud (Client -> Gateway -> Eureka -> Services -> DBs).
   + Quy trình Heartbeat & Tra cứu của Eureka Server.
@@ -42,15 +42,15 @@ Yêu cầu về Bố cục & Trực quan (Visual & Layout Requirements):
   + Topology 4-node của dự án Demo (Discovery, Gateway, Product, Order).
   + Bảng đối sánh 2 cột trực quan cho Ưu/Nhược điểm và Ma trận quyết định Nên/Không nên dùng.
 
-Yêu cầu về Phong cách thiết kế (Style & Aesthetics):
-- Nền slide màu trắng (White background). Phong cách thiết kế công nghệ cao tối giản, thanh lịch (Clean Modern Tech / Swiss Minimalist).
-- Đường nét sắc sảo, độ tương phản rõ ràng, bố cục cân đối, nhiều khoảng trắng thoáng đãng (negative space).
+Yêu cầu về Phong cách thiết kế:
+- Nền slide màu trắng. Phong cách thiết kế công nghệ cao tối giản, thanh lịch theo trường phái Swiss Minimalist.
+- Đường nét sắc sảo, độ tương phản rõ ràng, bố cục cân đối, nhiều khoảng trắng thoáng đãng.
 - Ngôn ngữ: Điềm đạm, khách quan, chuẩn mực kỹ thuật chuyên ngành; không dùng từ ngữ phóng đại hay giật gân.
 ```
 
 ---
 
-### 📌 Lựa chọn 2: Bản Tiếng Anh (Visual Architecture & Technical Diagram Rich):
+### 📌 Lựa chọn 2: Bản Tiếng Anh:
 *(Khuyên dùng: Động cơ AI của NotebookLM xử lý prompt thiết kế tiếng Anh rất nhạy và sinh sơ đồ/đồ họa cực kỳ chuẩn xác)*
 ```text
 Generate a highly visual, architecture-driven presentation slide deck for "Spring for Microservices" based strictly on the uploaded source materials.
