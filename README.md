@@ -15,7 +15,8 @@ c:/Study/HK1Nam3/J2EE/Seminar/
 │   ├── 02_TONG_HOP_TAI_LIEU_SACH_YOUTUBE.md    # Danh mục sách kinh điển, kênh YouTube, bài viết uy tín và dự án mẫu
 │   ├── 03_DAN_Y_SLIDE_VA_KICH_BAN_25P.md       # Dàn ý chi tiết 14 slide, phân bổ thời gian dưới 25 phút và câu hỏi phản biện
 │   ├── 04_LOI_THOAI_THUYET_TRINH_TUNG_SLIDE.md # Lời thoại chi tiết từng slide kèm kịch bản nói khi Live Demo
-│   └── 05_PROMPT_NOTEBOOKLM_TAO_SLIDE.md       # Hướng dẫn cấu hình và prompt chuẩn mực để sinh slide trên NotebookLM
+│   ├── 05_PROMPT_NOTEBOOKLM_TAO_SLIDE.md       # Hướng dẫn cấu hình và prompt chuẩn mực để sinh slide trên NotebookLM
+│   └── 06_HUONG_DAN_LIVE_DEMO_CHI_TIET.md      # Sổ tay kịch bản thao tác và hướng dẫn chi tiết từng bước Live Demo
 │
 ├── demo/                                       # Dự án mã nguồn thực chiến minh họa
 │   ├── pom.xml                                 # Maven parent cấu hình Spring Boot 3 và Spring Cloud

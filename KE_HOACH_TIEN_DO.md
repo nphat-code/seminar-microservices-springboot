@@ -52,7 +52,7 @@
   - `api-gateway` (Port 8080): Spring Cloud Gateway điều hướng tập trung.
   - `product-service` (Port 8081): REST API sản phẩm.
   - `order-service` (Port 8082): Gọi sang Product qua Spring Cloud OpenFeign, bọc Resilience4j Circuit Breaker.
-- [x] Đã viết tài liệu hướng dẫn và kịch bản 3 bước Live Demo: [demo/README.md](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/README.md).
+- [x] Đã viết tài liệu hướng dẫn và kịch bản 3 bước Live Demo: [demo/README.md](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/README.md) cùng sổ tay thao tác chi tiết: [06_HUONG_DAN_LIVE_DEMO_CHI_TIET.md](file:///c:/Study/HK1Nam3/J2EE/Seminar/docs/06_HUONG_DAN_LIVE_DEMO_CHI_TIET.md).
 
 ---
 
