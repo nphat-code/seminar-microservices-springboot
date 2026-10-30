@@ -19,9 +19,9 @@
 
 ---
 
-## SLIDE 2: CẤU TRÚC BÀI BÁO CÁO (AGENDA)
+## SLIDE 2: NỘI DUNG TRÌNH BÀY
 - **Thời lượng:** ~20 - 30 giây
-- **Cues:** Chuyển sang slide Agenda, hướng tay về 3 cột nội dung trên màn hình.
+- **Cues:** Chuyển sang slide Nội dung trình bày, hướng tay về 3 cột nội dung trên màn hình.
 
 > **🗣️ LỜI THOẠI:**  
 > "Bài trình bày hôm nay của em sẽ gồm 3 phần chính:  

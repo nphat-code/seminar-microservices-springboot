@@ -9,7 +9,7 @@
 
 | Thời gian | Nội dung | Mục tiêu |
 | :---: | :--- | :--- |
-| **00:00 - 03:00** | Mở đầu, Agenda & So sánh Monolith vs. Microservices | Giới thiệu đề tài, lộ trình 3 phần, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
+| **00:00 - 03:00** | Mở đầu, Nội dung trình bày & So sánh Monolith vs. Microservices | Giới thiệu đề tài, cấu trúc 3 phần, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
 | **03:00 - 08:00** | Hệ sinh thái Spring Cloud & Các thành phần cốt lõi | Trình bày kiến trúc: Eureka, API Gateway, OpenFeign, Resilience4j |
 | **08:00 - 12:00** | Đánh giá Ưu điểm, Nhược điểm & Thách thức | Phân tích sự đánh đổi kiến trúc (Architectural Trade-offs) |
 | **12:00 - 19:00** | **Live Demo Project** (Chạy trực tiếp minh họa tính năng) | Trình diễn Eureka Dashboard, gọi qua Gateway, OpenFeign, và test Circuit Breaker |
@@ -32,9 +32,8 @@
 
 ---
 
-### Slide 2: Cấu trúc bài báo cáo (Agenda & Lộ trình 3 phần)
-- **Tiêu đề chính:** NỘI DUNG CHÍNH (AGENDA)
-- **Tiêu đề phụ:** Lộ trình 3 trụ cột xuyên suốt bài báo cáo seminar
+### Slide 2: Nội dung trình bày
+- **Tiêu đề chính:** NỘI DUNG TRÌNH BÀY
 - **Nội dung chính:**
   - 1. Bối cảnh & Lý do chuyển dịch (Monolith ➔ Microservices).
   - 2. Hệ sinh thái Spring Cloud & Các thành phần kiến trúc cốt lõi.

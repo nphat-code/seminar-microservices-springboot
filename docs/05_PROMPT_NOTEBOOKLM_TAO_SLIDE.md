@@ -33,7 +33,7 @@ Yêu cầu về Bố cục & Trực quan (Visual & Layout Requirements):
 - Ưu tiên tối đa hình ảnh minh họa, sơ đồ kiến trúc hệ thống (architecture schematics), lưu đồ tương tác (flowcharts) và các khối thông tin đồ họa (infographic cards).
 - Giảm thiểu văn bản dài: Tuyệt đối không tạo slide chỉ toàn gạch đầu dòng (bullet points) hay "bức tường chữ". Mỗi slide kỹ thuật cần có một sơ đồ khối hoặc hình minh họa trung tâm (visual anchor) thể hiện luồng dữ liệu và mối quan hệ giữa các thành phần.
 - Các sơ đồ cần thể hiện trực quan:
-  + Lộ trình 3 phần Agenda dạng 3 thẻ cột trực quan (3-column milestone cards).
+  + Slide Nội dung trình bày gồm 3 phần dạng 3 thẻ cột trực quan (3-column milestone cards).
   + Đối sánh Monolith (1 khối chung DB) vs Microservices (các service độc lập với DB riêng).
   + Sơ đồ kiến trúc tổng thể Spring Cloud (Client -> Gateway -> Eureka -> Services -> DBs).
   + Quy trình Heartbeat & Tra cứu của Eureka Server.
