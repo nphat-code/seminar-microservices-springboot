@@ -53,19 +53,19 @@
 
 ---
 
-## SLIDE 4: CHIA ĐỂ TRỊ VỚI MICROSERVICES
+## SLIDE 4: GIỚI THIỆU KIẾN TRÚC MICROSERVICES (CHIA ĐỂ TRỊ)
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Chỉ vào sơ đồ so sánh Monolith vs. Microservices.
+- **Cues:** Chỉ vào sơ đồ so sánh Monolith vs. Microservices và 3 huy hiệu nguyên lý trên slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Kiến trúc **Microservices** tiếp cận theo hướng phân rã ứng dụng thành một tập hợp các service nhỏ, độc lập và tự chủ.  
+> "Kiến trúc **Microservices** tiếp cận bài toán theo tư duy 'Chia để trị' — phân rã khối ứng dụng lớn thành một tập hợp các service nhỏ, độc lập và tự chủ.  
 > 
-> Mô hình này được xây dựng trên 3 nguyên tắc nền tảng:  
-> 1. **Nguyên tắc Đơn nhiệm (Single Responsibility):** Mỗi service chỉ chịu trách nhiệm cho một phạm vi nghiệp vụ cụ thể. Ví dụ: Order Service chỉ xử lý đơn hàng, Product Service chỉ quản lý thông tin sản phẩm.  
-> 2. **Cơ sở dữ liệu độc lập (Database per Service):** Mỗi service sở hữu cơ sở dữ liệu riêng. Các service không truy cập trực tiếp vào cơ sở dữ liệu của nhau mà giao tiếp thông qua giao diện mạng chuẩn hóa như RESTful API.  
-> 3. **Độc lập triển khai và công nghệ:** Các service có thể được phát triển, kiểm thử, triển khai và mở rộng riêng biệt mà không làm gián đoạn các thành phần khác.  
+> Như thầy và các bạn quan sát ở 3 huy hiệu nguyên lý trên slide, mô hình này được xây dựng vững chắc trên 3 trụ cột:  
+> 1. **🎯 Đơn nhiệm (Single Responsibility):** Mỗi service chỉ tập trung làm tốt một phạm vi nghiệp vụ duy nhất. Ví dụ như trên sơ đồ: Order Service chỉ chuyên xử lý đơn hàng, Product Service chỉ chuyên quản lý dữ liệu sản phẩm.  
+> 2. **🗄️ Cơ sở dữ liệu độc lập (Database per Service):** Mỗi service sở hữu hoàn toàn cơ sở dữ liệu riêng biệt. Tuyệt đối không dùng chung database, và mọi giao tiếp dữ liệu bắt buộc phải đi qua giao diện mạng chuẩn hóa như RESTful API.  
+> 3. **🚀 Triển khai độc lập (Independent CI/CD):** Nhờ tách biệt mã nguồn và tiến trình chạy, từng service có thể được nâng cấp, kiểm thử và phát hành lên môi trường thực tế chỉ trong vài phút mà không làm gián đoạn hay phụ thuộc vào các service còn lại.  
 > 
-> Để hiện thực hóa kiến trúc này trên nền tảng Java, giải pháp toàn diện và phổ biến nhất hiện nay là bộ đôi Spring Boot và Spring Cloud."
+> Và để hiện thực hóa kiến trúc này trên nền tảng Java Enterprise, giải pháp toàn diện và tối ưu nhất hiện nay chính là bộ đôi Spring Boot và Spring Cloud."
 
 ---
 

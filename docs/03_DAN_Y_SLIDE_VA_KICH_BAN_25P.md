@@ -75,9 +75,10 @@
 ---
 
 ### Slide 4: Giới thiệu Kiến trúc Microservices (Chia để trị)
+- **Tiêu đề chính:** KIẾN TRÚC MICROSERVICES (CHIA ĐỂ TRỊ)
 - **Nội dung chính:**
   - Định nghĩa: Phân rã ứng dụng thành các service nhỏ, độc lập, tự chủ (Autonomous Services).
-  - 3 nguyên lý nền tảng: Single Responsibility, Database per Service, Giao tiếp qua mạng chuẩn hóa (REST / Message Queue).
+  - 3 nguyên lý nền tảng: Single Responsibility (Đơn nhiệm), Database per Service (CSDL riêng), Independent CI/CD (Triển khai độc lập).
 - **📐 Trực quan hóa & Sơ đồ đối sánh (Comparison Layout):**
   - **Sơ đồ đối sánh trực quan:**
     ```text
@@ -91,8 +92,8 @@
     ```
   - **3 Huy hiệu nguyên lý (Principle Badges):**
     - 🎯 **Đơn nhiệm (Single Responsibility):** Mỗi service làm tốt một việc duy nhất.
-    - 🗄️ **Database per Service:** Không bao giờ dùng chung CSDL giữa các service.
-    - 🚀 **CI/CD độc lập:** Nâng cấp và phát hành từng service trong vài phút mà không ảnh hưởng nhau.
+    - 🗄️ **Cơ sở dữ liệu độc lập (Database per Service):** Không bao giờ dùng chung CSDL giữa các service.
+    - 🚀 **Triển khai độc lập (Independent CI/CD):** Nâng cấp và phát hành từng service trong vài phút mà không ảnh hưởng nhau.
 
 ---
 
