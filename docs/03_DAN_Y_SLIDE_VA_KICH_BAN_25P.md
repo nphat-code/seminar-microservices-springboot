@@ -63,12 +63,12 @@
   - **Sơ đồ đối sánh trực quan:**
     ```text
     KIẾN TRÚC MONOLITH                          KIẾN TRÚC MICROSERVICES
-    ┌───────────────────────────────┐           ┌──────────────┐    ┌──────────────┐
-    │  Order + Product + Payment    │           │  Order Svc   │    │ Product Svc  │
-    └───────────────┬───────────────┘           └──────┬───────┘    └──────┬───────┘
-                    ▼                                  ▼                   ▼
-       [( Shared Large Database )]               [( Order DB )]      [( Product DB )]
-       (Ràng buộc chặt, khó scale)               (Độc lập hoàn toàn, tự do lựa chọn DB)
+    ┌───────────────────────────────┐           ┌─────────────────┐    ┌─────────────────┐
+    │  Order + Product + Payment    │           │  Order Service  │    │ Product Service │
+    └───────────────┬───────────────┘           └────────┬────────┘    └────────┬────────┘
+                    ▼                                    ▼                      ▼
+       [( Shared Large Database )]                 [( Order DB )]         [( Product DB )]
+       (Ràng buộc chặt, khó scale)                 (Độc lập hoàn toàn, tự do lựa chọn DB)
     ```
   - **3 Huy hiệu nguyên lý (Principle Badges):**
     - 🎯 **Đơn nhiệm (Single Responsibility):** Mỗi service làm tốt một việc duy nhất.
@@ -104,26 +104,26 @@
                   [ 📱 Mobile App / 💻 Web Client ]
                                   │ (HTTP / HTTPS)
                                   ▼
-          ┌──────────────────────────────────────────────┐
-          │       SPRING CLOUD GATEWAY (Port 8080)       │
-          │   (Reverse Proxy, Token Filter, Rate Limit)  │
-          └───────┬───────────────────────────────┬──────┘
-                  │ Tra cứu Route                 │
-                  ▼                               │
-        ┌──────────────────┐                      │
-        │  EUREKA SERVER   │                      │
-        │(Service Registry)│                      │
-        └─────────▲────────┘                      │
-                  │ Heartbeat / Register          │
-          ┌───────┴───────────────────────────────┴──────┐
-          │          CÁC MICROSERVICES NGHIỆP VỤ         │
-          │  ┌──────────────────┐    OpenFeign     ┌───────────┐ │
-          │  │  Order Service   │ ───────────────► │Product Svc│ │
-          │  │   (Resilience4j) │ ◄- (Fallback) ── │           │ │
-          │  └────────┬─────────┘                  └─────┬─────┘ │
-          └───────────┼──────────────────────────────────┼───────┘
-                      ▼                                  ▼
-               [( Order DB )]                     [( Product DB )]
+          ┌────────────────────────────────────────────────────────┐
+          │            SPRING CLOUD GATEWAY (Port 8080)            │
+          │        (Reverse Proxy, Token Filter, Rate Limit)       │
+          └───────────┬────────────────────────────────┬───────────┘
+                      │ Tra cứu Route                  │
+                      ▼                                │
+            ┌──────────────────┐                       │
+            │  EUREKA SERVER   │                       │
+            │(Service Registry)│                       │
+            └─────────▲────────┘                       │
+                      │ Heartbeat / Register           │
+          ┌───────────┴────────────────────────────────┴───────────┐
+          │               CÁC MICROSERVICES NGHIỆP VỤ              │
+          │ ┌──────────────────┐  OpenFeign   ┌──────────────────┐ │
+          │ │  Order Service   │ ───────────► │ Product Service  │ │
+          │ │   (Resilience4j) │ ◄(Fallback)─ │                  │ │
+          │ └────────┬─────────┘              └────────┬─────────┘ │
+          └──────────┼─────────────────────────────────┼───────────┘
+                     ▼                                 ▼
+              [( Order DB )]                   [( Product DB )]
   ```
 
 ---
