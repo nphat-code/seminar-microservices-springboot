@@ -13,18 +13,16 @@
 > **🗣️ LỜI THOẠI:**  
 > "Chào thầy và chào các bạn!  
 > 
-> Trong thực tế phát triển phần mềm, khi các ứng dụng thương mại điện tử hoặc dịch vụ trực tuyến phải phục vụ lượng truy cập lớn trong cùng một thời điểm, bài toán đảm bảo hệ thống mở rộng linh hoạt và duy trì tính sẵn sàng luôn là một thách thức quan trọng.  
+> Hôm nay, em xin phép được trình bày bài báo cáo seminar với đề tài: **'Spring for Microservices'** – Xây dựng hệ thống phân tán trong Java Enterprise với Spring Boot và Spring Cloud.  
 > 
-> Một trong những kiến trúc phổ biến được áp dụng để giải quyết bài toán này chính là kiến trúc **Microservices**. Và trong hệ sinh thái Java, **Spring Cloud** là bộ công cụ được ứng dụng rộng rãi nhất để hiện thực hóa mô hình này.  
+> Trong thực tế phát triển phần mềm hiện đại, khi các ứng dụng thương mại điện tử hay dịch vụ trực tuyến phải phục vụ lượng truy cập lớn trong cùng một thời điểm, bài toán đảm bảo hệ thống có thể mở rộng linh hoạt và duy trì tính sẵn sàng cao luôn là một thách thức vô cùng quan trọng. Kiến trúc **Microservices** cùng bộ công cụ toàn diện **Spring Cloud** chính là một trong những giải pháp chuẩn mực và mạnh mẽ nhất được các doanh nghiệp lựa chọn để giải quyết bài toán này.  
 > 
-> Hôm nay, em xin phép trình bày đề tài: **'Spring for Microservices'**.  
+> Bài trình bày hôm nay của em sẽ gồm 3 phần chính:  
+> 1. Bối cảnh và lý do vì sao chúng ta chuyển dịch từ kiến trúc Monolith sang Microservices.  
+> 2. Các thành phần kiến trúc cốt lõi trong hệ sinh thái Spring Cloud (như Eureka Server, Spring Cloud Gateway, OpenFeign và Circuit Breaker).  
+> 3. **Live Demo** trực tiếp mô hình 4 microservices thực tế để cùng quan sát cơ chế định tuyến và khả năng chịu lỗi, tự phục hồi khi có sự cố.  
 > 
-> Bài trình bày gồm 3 phần:  
-> 1. Bối cảnh và lý do chuyển dịch từ Monolith sang Microservices.  
-> 2. Các thành phần cốt lõi trong hệ sinh thái Spring Cloud.  
-> 3. **Live Demo** mô hình 4 microservices thực tế để quan sát cơ chế định tuyến và chịu lỗi của hệ thống.  
-> 
-> Em xin phép đi vào nội dung đầu tiên."
+> Và ngay sau đây, em xin phép đi vào nội dung đầu tiên."
 
 ---
 
