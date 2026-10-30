@@ -18,7 +18,7 @@
 [Monolith]                       [Microservices Architecture]
 +-------------------------+      +------------------+     +------------------+
 |   All-In-One Application|      | Product Service  |     |  Order Service   |
-| (UI + Order + Product)  |      |   (DB Product)   |     |    (DB Order)    |
+| (UI + Order + Product)  |      |   (DB Product)   | ◄─REST API─ |    (DB Order)    |
 +-------------------------+      +------------------+     +------------------+
              |                                     \       /
       (Shared Database)                         [ API Gateway ]

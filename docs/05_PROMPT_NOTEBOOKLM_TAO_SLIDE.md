@@ -34,7 +34,7 @@ Yêu cầu về Bố cục & Trực quan:
 - Giảm thiểu văn bản dài: Tuyệt đối không tạo slide chỉ toàn gạch đầu dòng hay "bức tường chữ". Mỗi slide kỹ thuật cần có một sơ đồ khối hoặc hình minh họa trung tâm thể hiện luồng dữ liệu và mối quan hệ giữa các thành phần.
 - Các sơ đồ cần thể hiện trực quan:
   + Slide Nội dung trình bày gồm 3 phần dạng 3 thẻ cột trực quan.
-  + Đối sánh Monolith (1 khối chung DB) vs Microservices (các service độc lập với DB riêng).
+  + Đối sánh Monolith (1 khối chung DB) vs Microservices (các service độc lập với DB riêng, giao tiếp qua REST API).
   + Sơ đồ kiến trúc tổng thể Spring Cloud (Client -> Gateway -> Eureka -> Services -> DBs).
   + Quy trình Heartbeat & Tra cứu của Eureka Server.
   + Sơ đồ Cổng bảo vệ Spring Cloud Gateway (xác thực, định tuyến).
@@ -60,7 +60,7 @@ Visual & Layout Directives:
 - Strictly avoid text walls or bullet-heavy slides. Every technical slide must be anchored around a central visual illustration/diagram depicting components, relationships, and data flows.
 - Visual diagram specifics to render:
   + 3-column milestone cards for Agenda roadmap.
-  + Side-by-side contrast between Monolith (shared DB) vs Microservices (database-per-service).
+  + Side-by-side contrast between Monolith (shared DB) vs Microservices (database-per-service with REST API communication).
   + Full Spring Cloud system architecture topology (Client -> API Gateway -> Eureka Registry -> Business Services -> DBs).
   + 3-step Eureka Service Discovery & Heartbeat flow.
   + Spring Cloud Gateway reverse-proxy funnel with token authentication and dynamic routing.

@@ -83,12 +83,12 @@
   - **Sơ đồ đối sánh trực quan:**
     ```text
     KIẾN TRÚC MONOLITH                          KIẾN TRÚC MICROSERVICES
-    ┌───────────────────────────────┐           ┌─────────────────┐    ┌─────────────────┐
-    │  Order + Product + Payment    │           │  Order Service  │    │ Product Service │
-    └───────────────┬───────────────┘           └────────┬────────┘    └────────┬────────┘
-                    ▼                                    ▼                      ▼
-       [( Shared Large Database )]                 [( Order DB )]         [( Product DB )]
-       (Ràng buộc chặt, khó scale)                 (Độc lập hoàn toàn, tự do lựa chọn DB)
+    ┌───────────────────────────────┐           ┌─────────────────┐  REST API   ┌─────────────────┐
+    │  Order + Product + Payment    │           │  Order Service  │ ──────────► │ Product Service │
+    └───────────────┬───────────────┘           └────────┬────────┘             └────────┬────────┘
+                    ▼                                    ▼                               ▼
+       [( Shared Large Database )]                 [( Order DB )]                  [( Product DB )]
+       (Ràng buộc chặt, khó scale)                 (Cơ sở dữ liệu riêng, giao tiếp hoàn toàn qua mạng)
     ```
   - **3 Huy hiệu nguyên lý:**
     - 🎯 **Single Responsibility:** Mỗi service làm tốt một việc duy nhất.
