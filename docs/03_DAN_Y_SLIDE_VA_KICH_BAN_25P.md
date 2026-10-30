@@ -43,11 +43,11 @@
     - 🏛️ Bối cảnh chuyển dịch từ khối Monolith cồng kềnh sang Microservices.
     - 🎯 3 nguyên lý nền tảng: Single Responsibility, Database per Service, Giao tiếp chuẩn hóa.
   - **Cột 2 - Hệ sinh thái Spring Cloud:**
-    - 🍃 4 thành phần trụ cột: Eureka Server, Spring Cloud Gateway, OpenFeign, Resilience4j.
+    - 🍃 4 thành phần trụ cột: Eureka Server, Spring Cloud Gateway, OpenFeign, Resilience4j Circuit Breaker.
     - ⚖️ Phân tích khách quan: Ưu điểm và thách thức thực tế.
   - **Cột 3 - Thực nghiệm Live Demo:**
     - 💻 Mô phỏng hệ thống 4 Microservices thực chiến trên Spring Boot 3.
-    - 💥 Thử thách chịu lỗi trực tiếp: Gateway Routing & Circuit Breaker tự ngắt/phục hồi khi service tắt.
+    - 💥 Thử thách chịu lỗi trực tiếp: Gateway Routing & Resilience4j Circuit Breaker tự ngắt/phục hồi khi service tắt.
 
 ---
 
@@ -111,7 +111,7 @@
   - **Cột 2 - Spring Cloud:**
     - 📡 Service Discovery: Đăng ký và định vị service động.
     - 🚪 Intelligent Routing: Cổng giao tiếp tập trung và cân bằng tải.
-    - 🔌 Circuit Breaker: Tự động ngắt mạch bảo vệ hệ thống khi có lỗi.
+    - 🔌 Resilience4j Circuit Breaker: Tự động ngắt mạch bảo vệ hệ thống khi có lỗi.
     - 📝 Centralized Config: Quản lý cấu hình tập trung từ xa qua Git.
 
 ---
@@ -251,7 +251,7 @@
     - 📡 `discovery-server` (:8761) - Trung tâm điều phối danh bạ.
     - 🚪 `api-gateway` (:8080) - Cổng tiếp nhận toàn bộ request từ người dùng.
     - 📦 `product-service` (:8081) - Service dữ liệu sản phẩm.
-    - 🛒 `order-service` (:8082) - Service đơn hàng tích hợp OpenFeign & Resilience4j.
+    - 🛒 `order-service` (:8082) - Service đơn hàng tích hợp OpenFeign & Resilience4j Circuit Breaker.
 
 ---
 
@@ -262,8 +262,8 @@
     🖥️ Mở `http://localhost:8761` trên trình duyệt -> Xem Dashboard Eureka hiển thị đủ 3 instance xanh (`API-GATEWAY`, `ORDER-SERVICE`, `PRODUCT-SERVICE`).
   - **Bước 2: Định tuyến qua Gateway & Gọi liên service**  
     🚀 Gửi Request qua Gateway `POST http://localhost:8080/api/orders` -> Gateway định tuyến sang `order-service`, `order-service` gọi tiếp `product-service` qua OpenFeign lấy giá tiền -> Trả về đơn hàng hoàn chỉnh (Status: 200 OK).
-  - **Bước 3: Thử thách chịu lỗi (Circuit Breaker kích hoạt)**  
-    💥 Tắt trực tiếp `product-service` (mô phỏng sự cố server) -> Gửi lại request tạo đơn -> Circuit Breaker lập tức kích hoạt hàm Fallback, trả về đơn hàng an toàn với thông tin sản phẩm tạm thời thay vì sập lỗi 500!
+  - **Bước 3: Thử thách chịu lỗi (Resilience4j Circuit Breaker kích hoạt)**  
+    💥 Tắt trực tiếp `product-service` (mô phỏng sự cố server) -> Gửi lại request tạo đơn -> Resilience4j Circuit Breaker lập tức kích hoạt hàm Fallback, trả về đơn hàng an toàn với thông tin sản phẩm tạm thời thay vì sập lỗi 500!
 
 ---
 

@@ -27,7 +27,7 @@
 > "Bài trình bày hôm nay của em sẽ gồm 3 phần chính:  
 > 
 > - **Phần thứ nhất:** Bối cảnh và lý do vì sao chúng ta chuyển dịch từ kiến trúc Monolith sang Microservices.  
-> - **Phần thứ hai:** Các thành phần kiến trúc cốt lõi trong hệ sinh thái Spring Cloud (như Eureka Server, Spring Cloud Gateway, OpenFeign và Circuit Breaker).  
+> - **Phần thứ hai:** Các thành phần kiến trúc cốt lõi trong hệ sinh thái Spring Cloud (như Eureka Server, Spring Cloud Gateway, OpenFeign và Resilience4j Circuit Breaker).  
 > - **Và phần thứ ba:** **Live Demo** trực tiếp mô hình 4 microservices thực tế để cùng quan sát cơ chế định tuyến và khả năng chịu lỗi, tự phục hồi khi có sự cố.  
 > 
 > Và ngay sau đây, em xin phép đi vào phần đầu tiên: Nỗi đau của kiến trúc Monolith."
@@ -78,7 +78,7 @@
 > 
 > - **Ở cột bên trái — Spring Boot:** Đóng vai trò là nền tảng khởi tạo từng microservice đơn lẻ. Nhờ máy chủ nhúng Embedded Tomcat và cơ chế Auto-configuration, Spring Boot giúp đóng gói toàn bộ ứng dụng thành một file JAR độc lập, loại bỏ hầu hết cấu hình rườm rà. Ngoài ra, Spring Boot Actuator cung cấp sẵn các endpoint Health Check cực kỳ tiện lợi.  
 > - **Tuy nhiên, khi ráp nhiều service lại với nhau**, chúng ta phải giải quyết các bài toán hóc búa của hệ thống phân tán: định vị service, điều phối luồng truy cập, quản lý cấu hình và kiểm soát sự cố mạng.  
-> - **Đó chính là lúc chúng ta cần đến cột bên phải — Spring Cloud:** Spring Cloud cung cấp bộ giải pháp toàn diện cho các mẫu thiết kế phân tán kinh điển: **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung.  
+> - **Đó chính là lúc chúng ta cần đến cột bên phải — Spring Cloud:** Spring Cloud cung cấp bộ giải pháp toàn diện cho các mẫu thiết kế phân tán kinh điển: **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Resilience4j Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung.  
 > 
 > Và để hình dung cách các thành phần này phối hợp với nhau trên thực tế, em xin mời thầy và các bạn cùng quan sát sơ đồ kiến trúc tổng thể ở slide tiếp theo."
 
@@ -92,7 +92,7 @@
 > "Đây là sơ đồ kiến trúc tổng thể của một hệ thống Spring Microservices:  
 > 
 > - Ở lớp ngoài cùng, các yêu cầu từ phía người dùng đều đi qua **Spring Cloud Gateway**. Gateway đóng vai trò là điểm tiếp nhận duy nhất, chịu trách nhiệm xác thực, kiểm soát lưu lượng và định tuyến yêu cầu vào đúng service nội bộ.  
-> - Ở lớp nghiệp vụ, các service như **Product Service**, **Order Service** hoạt động độc lập với cơ sở dữ liệu riêng. Khi cần trao đổi dữ liệu, các service sử dụng **OpenFeign** kết hợp với **Resilience4j** để duy trì tính ổn định.  
+> - Ở lớp nghiệp vụ, các service như **Product Service**, **Order Service** hoạt động độc lập với cơ sở dữ liệu riêng. Khi cần trao đổi dữ liệu, các service sử dụng **OpenFeign** kết hợp với **Resilience4j Circuit Breaker** để duy trì tính ổn định.  
 > - Ở lớp quản trị hệ thống, **Eureka Server** đảm nhận vai trò quản lý danh bạ service động, giúp các thành phần tự động nhận diện địa chỉ mạng của nhau.  
 > 
 > Tiếp theo, em xin đi sâu vào cơ chế hoạt động của từng thành phần cốt lõi."
@@ -216,7 +216,7 @@
 > ---
 > 
 > *(Chuyển sang IDE)*  
-> **Kịch bản 3: Kiểm nghiệm cơ chế chịu lỗi của Circuit Breaker.**  
+> **Kịch bản 3: Kiểm nghiệm cơ chế chịu lỗi của Resilience4j Circuit Breaker.**  
 > Trong kịch bản này, chúng ta giả lập tình huống `product-service` gặp sự cố bằng cách dừng tiến trình của service này.  
 > *(Bấm Stop ProductServiceApplication trên IDE, quay lại Postman)*  
 > 
@@ -226,7 +226,7 @@
 > Nội dung JSON trả về trạng thái `"PENDING_CIRCUIT_BREAKER"`, kèm thông báo từ hàm Fallback:  
 > *'[Resilience4j Fallback] Product Service hiện không phản hồi. Đơn hàng tạm lưu ở trạng thái chờ xử lý!'*.  
 > 
-> Circuit Breaker đã nhận diện service đích gián đoạn, tự động ngắt mạch và kích hoạt phương thức dự phòng để bảo vệ tính ổn định của service gọi."
+> Resilience4j Circuit Breaker đã nhận diện service đích gián đoạn, tự động ngắt mạch và kích hoạt phương thức dự phòng để bảo vệ tính ổn định của service gọi."
 
 ---
 

@@ -38,7 +38,7 @@ Yêu cầu về Bố cục & Trực quan:
   + Sơ đồ kiến trúc tổng thể Spring Cloud (Client -> Gateway -> Eureka -> Services -> DBs).
   + Quy trình Heartbeat & Tra cứu của Eureka Server.
   + Sơ đồ Cổng bảo vệ Spring Cloud Gateway (xác thực, định tuyến).
-  + Máy trạng thái Circuit Breaker (Closed -> Open -> Half-Open) và cơ chế Fallback.
+  + Máy trạng thái Resilience4j Circuit Breaker (Closed -> Open -> Half-Open) và cơ chế Fallback.
   + Topology 4-node của dự án Demo (Discovery, Gateway, Product, Order).
   + Bảng đối sánh 2 cột trực quan cho Ưu/Nhược điểm và Ma trận quyết định Nên/Không nên dùng.
 
