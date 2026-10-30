@@ -96,7 +96,8 @@
 
 ---
 
-### Slide 5: Tại sao chọn Spring cho Microservices?
+### Slide 5: Tại sao chọn Spring cho Microservices? (Vai trò của Spring Boot & Spring Cloud)
+- **Tiêu đề chính:** TẠI SAO CHỌN SPRING CHO MICROSERVICES?
 - **Nội dung chính:**
   - Spring Boot: Nền tảng xây dựng microservice độc lập cực nhanh chỉ trong vài phút.
   - Spring Cloud: Bộ công cụ toàn diện giải quyết toàn bộ bài toán hóc búa của hệ thống phân tán (Distributed Patterns).
