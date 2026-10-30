@@ -9,7 +9,7 @@
 
 | Thời gian | Nội dung | Mục tiêu |
 | :---: | :--- | :--- |
-| **00:00 - 03:00** | Đặt vấn đề & So sánh Monolith vs. Microservices | Thu hút người nghe, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
+| **00:00 - 03:00** | Mở đầu, Agenda & So sánh Monolith vs. Microservices | Giới thiệu đề tài, lộ trình 3 phần, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
 | **03:00 - 08:00** | Hệ sinh thái Spring Cloud & Các thành phần cốt lõi | Trình bày kiến trúc: Eureka, API Gateway, OpenFeign, Resilience4j |
 | **08:00 - 12:00** | Đánh giá Ưu điểm, Nhược điểm & Thách thức | Phân tích sự đánh đổi kiến trúc (Architectural Trade-offs) |
 | **12:00 - 19:00** | **Live Demo Project** (Chạy trực tiếp minh họa tính năng) | Trình diễn Eureka Dashboard, gọi qua Gateway, OpenFeign, và test Circuit Breaker |
@@ -32,7 +32,27 @@
 
 ---
 
-### Slide 2: Đặt vấn đề - Nỗi đau của kiến trúc Monolith (Monolithic Hell)
+### Slide 2: Cấu trúc bài báo cáo (Agenda & Lộ trình 3 phần)
+- **Tiêu đề chính:** NỘI DUNG CHÍNH (AGENDA)
+- **Tiêu đề phụ:** Lộ trình 3 trụ cột xuyên suốt bài báo cáo seminar
+- **Nội dung chính:**
+  - 1. Bối cảnh & Lý do chuyển dịch (Monolith ➔ Microservices).
+  - 2. Hệ sinh thái Spring Cloud & Các thành phần kiến trúc cốt lõi.
+  - 3. Live Demo thực chiến mô hình 4 microservices (Định tuyến & Chịu lỗi).
+- **📐 Trực quan hóa & Bố cục 3 Thẻ Lộ trình (3-Column Milestone Roadmap Cards):**
+  - **Cột 1 - Bối cảnh & Kiến trúc nền tảng:**
+    - 🏛️ Bối cảnh chuyển dịch từ khối Monolith cồng kềnh sang Microservices.
+    - 🎯 3 nguyên lý nền tảng: Single Responsibility, Database per Service, Giao tiếp chuẩn hóa.
+  - **Cột 2 - Hệ sinh thái Spring Cloud:**
+    - 🍃 4 thành phần trụ cột: Eureka Server, Spring Cloud Gateway, OpenFeign, Resilience4j.
+    - ⚖️ Phân tích khách quan: Ưu điểm & Thách thức thực tế (Architectural Trade-offs).
+  - **Cột 3 - Thực nghiệm Live Demo:**
+    - 💻 Mô phỏng hệ thống 4 Microservices thực chiến trên Spring Boot 3.
+    - 💥 Thử thách chịu lỗi trực tiếp: Gateway Routing & Circuit Breaker tự ngắt/phục hồi khi service tắt.
+
+---
+
+### Slide 3: Đặt vấn đề - Nỗi đau của kiến trúc Monolith (Monolithic Hell)
 - **Nội dung chính:**
   - Một ứng dụng Web Java truyền thống (`WAR/JAR` gom chung Controller, Service, DAO vào một khối duy nhất).
   - 3 hạn chế chí mạng: Triển khai chậm chạp, Không thể mở rộng chọn lọc, Nguy cơ sập dây chuyền (Single Point of Failure).
@@ -55,7 +75,7 @@
 
 ---
 
-### Slide 3: Giới thiệu Kiến trúc Microservices (Chia để trị)
+### Slide 4: Giới thiệu Kiến trúc Microservices (Chia để trị)
 - **Nội dung chính:**
   - Định nghĩa: Phân rã ứng dụng thành các service nhỏ, độc lập, tự chủ (Autonomous Services).
   - 3 nguyên lý nền tảng: Single Responsibility, Database per Service, Giao tiếp qua mạng chuẩn hóa (REST / Message Queue).
@@ -77,7 +97,7 @@
 
 ---
 
-### Slide 4: Tại sao chọn Spring cho Microservices?
+### Slide 5: Tại sao chọn Spring cho Microservices?
 - **Nội dung chính:**
   - Spring Boot: Nền tảng xây dựng microservice độc lập cực nhanh chỉ trong vài phút.
   - Spring Cloud: Bộ công cụ toàn diện giải quyết toàn bộ bài toán hóc búa của hệ thống phân tán (Distributed Patterns).
@@ -95,7 +115,7 @@
 
 ---
 
-### Slide 5: Kiến trúc tổng thể hệ sinh thái Spring Cloud (Sơ đồ kiến trúc)
+### Slide 6: Kiến trúc tổng thể hệ sinh thái Spring Cloud (Sơ đồ kiến trúc)
 - **Nội dung chính:**
   - Toàn cảnh một hệ thống Microservices chuẩn mực xây dựng trên nền tảng Spring Cloud.
   - Các thành phần phối hợp nhịp nhàng: Client -> Gateway -> Service Registry -> Business Services -> DBs.
@@ -128,7 +148,7 @@
 
 ---
 
-### Slide 6: Thành phần 1 - Service Discovery (Eureka Server)
+### Slide 7: Thành phần 1 - Service Discovery (Eureka Server)
 - **Nội dung chính:**
   - Bài toán: Trong Cloud/Docker/K8s, địa chỉ IP và Port của container thay đổi liên tục khi scale hoặc restart.
   - Giải pháp: Eureka đóng vai trò như cuốn "Danh bạ thông minh" tự động cập nhật.
@@ -154,7 +174,7 @@
 
 ---
 
-### Slide 7: Thành phần 2 - API Gateway (Spring Cloud Gateway)
+### Slide 8: Thành phần 2 - API Gateway (Spring Cloud Gateway)
 - **Nội dung chính:**
   - Cổng kiểm soát truy cập duy nhất (Single Entry Point) cho toàn bộ hệ thống từ phía ngoài.
   - Xử lý các mối quan tâm chéo (Cross-cutting Concerns) tập trung.
@@ -176,7 +196,7 @@
 
 ---
 
-### Slide 8: Thành phần 3 - Giao tiếp giữa các Service (OpenFeign & Resilience4j)
+### Slide 9: Thành phần 3 - Giao tiếp giữa các Service (OpenFeign & Resilience4j)
 - **Nội dung chính:**
   - **OpenFeign:** Gọi REST API dạng khai báo giao diện (Declarative REST Client), loại bỏ hoàn toàn code boilerplate của RestTemplate.
   - **Resilience4j Circuit Breaker:** Cơ chế ngắt mạch chống sập dây chuyền (Cascading Failure).
@@ -199,7 +219,7 @@
 
 ---
 
-### Slide 9: Đánh giá kiến trúc - Ưu điểm & Thách thức thực tế (Architectural Trade-offs)
+### Slide 10: Đánh giá kiến trúc - Ưu điểm & Thách thức thực tế (Architectural Trade-offs)
 - **Nội dung chính:** Đánh giá khách quan, đa chiều về mặt đánh đổi kiến trúc (Architectural Trade-offs).
 - **📐 Trực quan hóa & Bảng so sánh 2 cột cân bằng (Balanced Pros & Cons Table):**
 
@@ -212,7 +232,7 @@
 
 ---
 
-### Slide 10: Giới thiệu Kiến trúc Demo Project
+### Slide 11: Giới thiệu Kiến trúc Demo Project
 - **Nội dung chính:** Mô hình 4 microservices thực chiến được xây dựng trong chuyên đề.
 - **📐 Trực quan hóa & Sơ đồ Topology Demo Lab (4-Node Cluster Layout):**
   ```text
@@ -234,7 +254,7 @@
 
 ---
 
-### Slide 11: Kịch bản Live Demo (3 Bước trực quan trên màn hình)
+### Slide 12: Kịch bản Live Demo (3 Bước trực quan trên màn hình)
 - **Nội dung chính:** 3 tình huống thử nghiệm trực tiếp trên màn hình chiếu.
 - **📐 Trực quan hóa & Sơ đồ luồng 3 bước (Step-by-Step Flowchart):**
   - **Bước 1: Khởi động & Giám sát**  
@@ -246,7 +266,7 @@
 
 ---
 
-### Slide 12: Ứng dụng thực tế & Khi nào NÊN / KHÔNG NÊN dùng?
+### Slide 13: Ứng dụng thực tế & Khi nào NÊN / KHÔNG NÊN dùng?
 - **Nội dung chính:** Ma trận quyết định kiến trúc cho các doanh nghiệp và dự án phần mềm.
 - **📐 Trực quan hóa & Ma trận quyết định (Decision Matrix Cards):**
   - 🟢 **KHI NÀO NÊN DÙNG (THỰC TẾ ÁP DỤNG THÀNH CÔNG):**
@@ -260,7 +280,7 @@
 
 ---
 
-### Slide 13: Tổng kết & Hỏi đáp (Q&A)
+### Slide 14: Tổng kết & Hỏi đáp (Q&A)
 - **Nội dung chính:**
   - Tóm tắt 3 thông điệp kỹ thuật then chốt của bài seminar.
   - Tài liệu tham khảo chuẩn chỉnh & Lời cảm ơn.

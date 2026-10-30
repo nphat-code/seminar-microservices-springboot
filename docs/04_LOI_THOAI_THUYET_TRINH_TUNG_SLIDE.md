@@ -7,7 +7,7 @@
 ---
 
 ## SLIDE 1: MỞ ĐẦU (TRANG TIÊU ĐỀ)
-- **Thời lượng:** ~30 - 45 giây
+- **Thời lượng:** ~20 - 30 giây
 - **Cues:** Phong thái tự tin, đứng cạnh laptop, nhìn bao quát lớp.
 
 > **🗣️ LỜI THOẠI:**  
@@ -17,16 +17,26 @@
 > 
 > Trong thực tế phát triển phần mềm hiện đại, khi các ứng dụng thương mại điện tử hay dịch vụ trực tuyến phải phục vụ lượng truy cập lớn trong cùng một thời điểm, bài toán đảm bảo hệ thống có thể mở rộng linh hoạt và duy trì tính sẵn sàng cao luôn là một thách thức vô cùng quan trọng. Kiến trúc **Microservices** cùng bộ công cụ toàn diện **Spring Cloud** chính là một trong những giải pháp chuẩn mực và mạnh mẽ nhất được các doanh nghiệp lựa chọn để giải quyết bài toán này.  
 > 
-> Bài trình bày hôm nay của em sẽ gồm 3 phần chính:  
-> 1. Bối cảnh và lý do vì sao chúng ta chuyển dịch từ kiến trúc Monolith sang Microservices.  
-> 2. Các thành phần kiến trúc cốt lõi trong hệ sinh thái Spring Cloud (như Eureka Server, Spring Cloud Gateway, OpenFeign và Circuit Breaker).  
-> 3. **Live Demo** trực tiếp mô hình 4 microservices thực tế để cùng quan sát cơ chế định tuyến và khả năng chịu lỗi, tự phục hồi khi có sự cố.  
-> 
-> Và ngay sau đây, em xin phép đi vào nội dung đầu tiên."
+> Trước khi đi vào nội dung chi tiết, em xin phép điểm qua cấu trúc của bài báo cáo hôm nay."
 
 ---
 
-## SLIDE 2: NỖI ĐAU CỦA KIẾN TRÚC MONOLITH (MONOLITHIC HELL)
+## SLIDE 2: CẤU TRÚC BÀI BÁO CÁO (AGENDA)
+- **Thời lượng:** ~20 - 30 giây
+- **Cues:** Chuyển sang slide Agenda, hướng tay về 3 cột nội dung trên màn hình.
+
+> **🗣️ LỜI THOẠI:**  
+> "Bài trình bày hôm nay của em sẽ gồm 3 phần chính:  
+> 
+> - **Phần thứ nhất:** Bối cảnh và lý do vì sao chúng ta chuyển dịch từ kiến trúc Monolith sang Microservices.  
+> - **Phần thứ hai:** Các thành phần kiến trúc cốt lõi trong hệ sinh thái Spring Cloud (như Eureka Server, Spring Cloud Gateway, OpenFeign và Circuit Breaker).  
+> - **Và phần thứ ba:** **Live Demo** trực tiếp mô hình 4 microservices thực tế để cùng quan sát cơ chế định tuyến và khả năng chịu lỗi, tự phục hồi khi có sự cố.  
+> 
+> Và ngay sau đây, em xin phép đi vào phần đầu tiên: Nỗi đau của kiến trúc Monolith."
+
+---
+
+## SLIDE 3: NỖI ĐAU CỦA KIẾN TRÚC MONOLITH (MONOLITHIC HELL)
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ vào sơ đồ Monolith trên slide.
 
@@ -45,7 +55,7 @@
 
 ---
 
-## SLIDE 3: CHIA ĐỂ TRỊ VỚI MICROSERVICES
+## SLIDE 4: CHIA ĐỂ TRỊ VỚI MICROSERVICES
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ vào sơ đồ so sánh Monolith vs. Microservices.
 
@@ -61,7 +71,7 @@
 
 ---
 
-## SLIDE 4: VAI TRÒ CỦA SPRING BOOT & SPRING CLOUD
+## SLIDE 5: VAI TRÒ CỦA SPRING BOOT & SPRING CLOUD
 - **Thời lượng:** ~1 phút 15 giây
 - **Cues:** Phân biệt rõ vai trò của Spring Boot và Spring Cloud.
 
@@ -77,7 +87,7 @@
 
 ---
 
-## SLIDE 5: KIẾN TRÚC TỔNG THỂ SPRING CLOUD
+## SLIDE 6: KIẾN TRÚC TỔNG THỂ SPRING CLOUD
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ theo luồng dữ liệu từ Client qua Gateway vào Services.
 
@@ -92,7 +102,7 @@
 
 ---
 
-## SLIDE 6: THÀNH PHẦN 1 - SERVICE DISCOVERY (EUREKA SERVER)
+## SLIDE 7: THÀNH PHẦN 1 - SERVICE DISCOVERY (EUREKA SERVER)
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Giọng giải thích mạch lạc, dùng phép so sánh danh bạ logic.
 
@@ -110,7 +120,7 @@
 
 ---
 
-## SLIDE 7: THÀNH PHẦN 2 - API GATEWAY (SPRING CLOUD GATEWAY)
+## SLIDE 8: THÀNH PHẦN 2 - API GATEWAY (SPRING CLOUD GATEWAY)
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Chỉ vào vị trí trung gian của Gateway.
 
@@ -126,7 +136,7 @@
 
 ---
 
-## SLIDE 8: THÀNH PHẦN 3 - GIAO TIẾP VÀ CHỊU LỖI (OPENFEIGN & RESILIENCE4J)
+## SLIDE 9: THÀNH PHẦN 3 - GIAO TIẾP VÀ CHỊU LỖI (OPENFEIGN & RESILIENCE4J)
 - **Thời lượng:** ~1 phút 45 giây
 - **Cues:** Giải thích cơ chế chuyển trạng thái của Circuit Breaker.
 
@@ -145,7 +155,7 @@
 
 ---
 
-## SLIDE 9: ĐÁNH GIÁ KIẾN TRÚC - ƯU ĐIỂM & THÁCH THỨC THỰC TẾ
+## SLIDE 10: ĐÁNH GIÁ KIẾN TRÚC - ƯU ĐIỂM & THÁCH THỨC THỰC TẾ
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Giữ góc nhìn kỹ thuật khách quan; vừa nói vừa chỉ tay đối sánh giữa 2 cột Ưu điểm (xanh) và Thách thức (đỏ) trên bảng slide.
 
@@ -168,7 +178,7 @@
 
 ---
 
-## SLIDE 10: MÔ HÌNH HỆ THỐNG DEMO
+## SLIDE 11: MÔ HÌNH HỆ THỐNG DEMO
 - **Thời lượng:** ~1 phút
 - **Cues:** Chuyển sang tư thế thao tác máy tính, mở sẵn các cửa sổ cần thiết.
 
@@ -183,7 +193,7 @@
 
 ---
 
-## SLIDE 11: KỊCH BẢN LIVE DEMO (THAO TÁC TRÊN MÀN HÌNH)
+## SLIDE 12: KỊCH BẢN LIVE DEMO (THAO TÁC TRÊN MÀN HÌNH)
 - **Thời lượng:** ~6 phút
 - **Cues:** Thao tác rõ ràng, giải thích ngắn gọn dựa trên dữ liệu hiển thị.
 
@@ -223,7 +233,7 @@
 
 ---
 
-## SLIDE 12: KẾT LUẬN & ỨNG DỤNG THỰC TẾ
+## SLIDE 13: KẾT LUẬN & ỨNG DỤNG THỰC TẾ
 - **Thời lượng:** ~1 phút 30 giây
 - **Cues:** Quay lại màn hình slide, đúc kết ngắn gọn.
 
@@ -236,7 +246,7 @@
 
 ---
 
-## SLIDE 13: TỔNG KẾT & CÂU HỎI (Q&A)
+## SLIDE 14: TỔNG KẾT & CÂU HỎI (Q&A)
 - **Thời lượng:** ~30 giây
 - **Cues:** Cảm ơn và chuyển sang phần thảo luận.
 
