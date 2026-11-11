@@ -9,12 +9,12 @@
 
 | Thời gian | Nội dung | Mục tiêu |
 | :---: | :--- | :--- |
-| **00:00 - 03:00** | Mở đầu, Nội dung trình bày & So sánh Monolith vs. Microservices | Giới thiệu đề tài, cấu trúc 3 phần, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
-| **03:00 - 08:00** | Hệ sinh thái Spring Cloud & Các thành phần cốt lõi | Trình bày kiến trúc: Eureka, API Gateway, OpenFeign, Resilience4j |
-| **08:00 - 12:00** | Đánh giá Ưu điểm, Nhược điểm & Thách thức | Phân tích sự đánh đổi kiến trúc |
-| **12:00 - 19:00** | **Live Demo Project** (Chạy trực tiếp minh họa tính năng) | Trình diễn Eureka Dashboard, gọi qua Gateway, OpenFeign, và test Circuit Breaker |
-| **19:00 - 22:00** | Ứng dụng thực tế & Kinh nghiệm đúc kết | Liên hệ các hệ thống lớn (Netflix, Shopee, Tiki) |
-| **22:00 - 25:00** | Tổng kết và hỏi đáp | Thảo luận và giải đáp thắc mắc chuyên sâu |
+| **00:00 - 03:30** | Mở đầu, Nội dung trình bày & So sánh Monolith vs. Microservices | Giới thiệu đề tài, cấu trúc 3 phần, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
+| **03:30 - 10:30** | Hệ sinh thái Spring Cloud & Các thành phần cốt lõi | Trình bày kiến trúc: Eureka, API Gateway, OpenFeign, Resilience4j |
+| **10:30 - 12:00** | Đánh giá Ưu điểm, Nhược điểm & Thách thức | Phân tích sự đánh đổi kiến trúc |
+| **12:00 - 19:00** | **Live Demo Project** | Trình diễn Eureka Dashboard, gọi qua Gateway, OpenFeign và kiểm thử Circuit Breaker |
+| **19:00 - 21:30** | Ứng dụng thực tế & Ma trận quyết định | Liên hệ các hệ thống lớn và nêu trường hợp nên hoặc không nên dùng |
+| **21:30 - 25:00** | Tổng kết và hỏi đáp | Đúc kết 3 thông điệp chính, giải đáp thắc mắc chuyên sâu |
 
 ---
 
@@ -41,7 +41,7 @@
 - **📐 Bố cục 3 thẻ lộ trình:**
   - **Cột 1 - Bối cảnh & Kiến trúc nền tảng:**
     - 🏛️ Bối cảnh chuyển dịch từ khối Monolith cồng kềnh sang Microservices.
-    - 🎯 3 nguyên lý nền tảng: Single Responsibility, Database per Service, Giao tiếp chuẩn hóa.
+    - 🎯 3 nguyên lý nền tảng: Single Responsibility, Database per Service, CI/CD độc lập.
   - **Cột 2 - Hệ sinh thái Spring Cloud:**
     - 🍃 4 thành phần trụ cột: Eureka Server, Spring Cloud Gateway, OpenFeign, Resilience4j Circuit Breaker.
     - ⚖️ Phân tích khách quan: Ưu điểm và thách thức thực tế.

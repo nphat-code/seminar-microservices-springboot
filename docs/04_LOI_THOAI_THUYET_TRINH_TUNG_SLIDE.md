@@ -110,7 +110,7 @@
 > 
 > Eureka giải quyết vấn đề này theo quy trình sau:  
 > 1. Khi một service khởi động, nó tự động gửi thông tin đăng ký (gồm tên định danh logic, IP và Port) lên Eureka Server.  
-> 2. Định kỳ mỗi 30 giây, service gửi tín hiệu nhịp tim (**Heartbeat**) về Eureka để xác nhận trạng thái hoạt động. Nếu quá thời gian quy định không nhận được tín hiệu, Eureka sẽ tự động loại bỏ instance đó khỏi danh sách.  
+> 2. Định kỳ mỗi 30 giây, service gửi tín hiệu nhịp tim (**Heartbeat**) về Eureka để xác nhận trạng thái hoạt động. Nếu quá thời gian quy định không nhận được tín hiệu, Eureka sẽ tự động loại bỏ instance đó khỏi danh sách. Ngoài ra, khi mạng chập chờn diện rộng khiến nhiều service mất tín hiệu cùng lúc, Eureka kích hoạt **Self-Preservation Mode** để tạm giữ lại danh sách thay vì xóa nhầm các service vẫn đang chạy.  
 > 3. Khi Order Service cần gọi Product Service, nó tra cứu qua Eureka bằng tên định danh `PRODUCT-SERVICE` để nhận danh sách địa chỉ khả dụng.  
 > 
 > Nhờ cơ chế này, hệ thống đạt được khả năng cân bằng tải động mà không cần can thiệp cấu hình thủ công."
@@ -124,10 +124,11 @@
 > **🗣️ LỜI THOẠI:**  
 > "Thành phần thứ hai là **Spring Cloud Gateway** — cổng tiếp nhận duy nhất của hệ thống.  
 > 
-> Gateway giải quyết 3 yêu cầu kiến trúc quan trọng:  
-> - **Bảo mật:** Giấu kín cấu trúc mạng nội bộ, chỉ mở duy nhất một cổng ra bên ngoài.  
-> - **Xác thực tập trung:** Kiểm tra tính hợp lệ của token bảo mật ngay tại cửa ngõ trước khi chuyển tiếp yêu cầu vào các service bên trong.  
-> - **Định tuyến linh hoạt:** Dựa vào đường dẫn URL (ví dụ `/api/products` hoặc `/api/orders`) để chuyển tiếp chính xác đến service đích tương ứng.  
+> Gateway giải quyết các yêu cầu kiến trúc trọng yếu sau:  
+> - **Bảo mật mạng nội bộ:** Giấu kín cấu trúc mạng nội bộ, chỉ mở duy nhất một cổng ra bên ngoài.  
+> - **Authentication tập trung:** Kiểm tra tính hợp lệ của JWT Token ngay tại cửa ngõ trước khi chuyển tiếp yêu cầu vào các service bên trong.  
+> - **Rate Limiter:** Giới hạn tần suất gọi API nhằm chống spam và bảo vệ các service phía sau trước lưu lượng tăng đột biến.  
+> - **Dynamic Routing:** Dựa vào đường dẫn URL như `/api/products` hoặc `/api/orders` để chuyển tiếp chính xác đến service đích tương ứng.  
 > 
 > Về mặt hiệu năng, Spring Cloud Gateway được xây dựng trên nền tảng **Spring WebFlux** theo mô hình **Non-blocking Reactive I/O**. Khác với mô hình Blocking I/O truyền thống (mỗi kết nối chiếm dụng một thread), mô hình này sử dụng ít tài nguyên hơn và có khả năng xử lý đồng thời số lượng lớn yêu cầu."
 
@@ -230,27 +231,32 @@
 
 ---
 
-## SLIDE 13: KẾT LUẬN & ỨNG DỤNG THỰC TẾ
+## SLIDE 13: ỨNG DỤNG THỰC TẾ & KHI NÀO NÊN / KHÔNG NÊN DÙNG
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Quay lại màn hình slide, đúc kết ngắn gọn.
+- **Cues:** Quay lại màn hình slide, chỉ lần lượt vào phần màu xanh và phần màu đỏ của ma trận quyết định.
 
 > **🗣️ LỜI THOẠI:**  
-> "Như vậy, qua nội dung tìm hiểu và thực nghiệm vừa rồi, chúng ta có thể thấy kiến trúc Microservices giải quyết hiệu quả bài toán về tính sẵn sàng và khả năng co giãn cho các hệ thống lớn.  
+> "Từ phần lý thuyết và thực nghiệm vừa rồi, câu hỏi quan trọng nhất là khi nào nên áp dụng Microservices trong thực tế? Như ma trận quyết định trên slide:  
 > 
-> Các nền tảng có lưu lượng truy cập cao như Netflix, Shopee hay Tiki áp dụng mô hình này để đảm bảo hệ thống và các service vận hành ổn định trong các thời điểm tải tăng đột biến.  
+> - **Ở nửa trên — Khi nào nên dùng:** Kiến trúc này phát huy hiệu quả rõ rệt với các hệ thống có lưu lượng truy cập lớn như Netflix, Amazon, Shopee, Tiki hay các hệ thống Core Banking; dự án có từ 3 nhóm phát triển trở lên làm việc song song và đòi hỏi độ sẵn sàng cao 99,99%.  
+> - **Ở nửa dưới — Khi nào không nên dùng:** Với các dự án khởi nghiệp ở giai đoạn MVP khi nghiệp vụ còn thay đổi liên tục, hoặc đội ngũ nhỏ dưới 5 lập trình viên, chi phí vận hành và gỡ lỗi phân tán sẽ vượt quá lợi ích mang lại.  
 > 
-> Tuy nhiên, việc áp dụng kiến trúc cần căn cứ vào nhu cầu cụ thể của dự án và nguồn lực của đội ngũ phát triển, nhằm đạt được sự cân bằng tối ưu giữa tính năng và chi phí vận hành."
+> Như lời khuyên nổi tiếng của Martin Fowler: *'Đừng bắt đầu bằng Microservices nếu ứng dụng của bạn chưa thực sự cần nó. Hãy bắt đầu từ một Monolith được thiết kế tốt.'*"
 
 ---
 
 ## SLIDE 14: TỔNG KẾT VÀ HỎI ĐÁP
-- **Thời lượng:** ~30 giây
-- **Cues:** Cảm ơn và chuyển sang phần thảo luận.
+- **Thời lượng:** ~1 phút và ~3 phút Hỏi - Đáp
+- **Cues:** Chỉ lần lượt vào 3 thẻ đúc kết trên slide, sau đó chào kết thúc và mời đặt câu hỏi.
 
 > **🗣️ LỜI THOẠI:**  
-> "Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe.  
+> "Để kết thúc bài trình bày hôm nay, em xin đúc kết lại 3 thông điệp kỹ thuật cốt lõi:  
 > 
-> Sau đây, em xin phép tiếp nhận các ý kiến nhận xét và giải đáp các câu hỏi từ thầy cùng cả lớp ạ."
+> 1. **Chia tách hợp lý:** Microservices không đơn thuần là chia nhỏ mã nguồn, mà là chia rõ ranh giới nghiệp vụ gắn với cơ sở dữ liệu độc lập cho từng service.  
+> 2. **Spring Cloud là tiêu chuẩn thực tiễn:** Bộ công cụ trên Java giúp giải quyết trọn vẹn từ Eureka, API Gateway, OpenFeign cho tới Resilience4j Circuit Breaker.  
+> 3. **Kiến trúc luôn là sự đánh đổi:** Không có kiến trúc hoàn hảo tuyệt đối, chỉ có kiến trúc phù hợp với bài toán, quy mô hệ thống và nguồn lực đội ngũ.  
+> 
+> Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe. Sau đây, em xin phép tiếp nhận các ý kiến nhận xét và giải đáp câu hỏi từ thầy cùng cả lớp ạ."
 
 ---
 
