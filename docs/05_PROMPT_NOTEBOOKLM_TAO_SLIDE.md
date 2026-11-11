@@ -39,7 +39,7 @@ Yêu cầu về Bố cục & Trực quan:
   + Quy trình Heartbeat & Tra cứu của Eureka Server.
   + Sơ đồ Cổng bảo vệ Spring Cloud Gateway (xác thực, định tuyến).
   + Máy trạng thái Resilience4j Circuit Breaker (Closed -> Open -> Half-Open) và cơ chế Fallback.
-  + Topology 4-node của dự án Demo (Discovery, Gateway, Product, Order).
+  + Topology 4-node của dự án Demo (Eureka Server :8761, Gateway :8080, Product :8081, Order :8082).
   + Bảng đối sánh 2 cột trực quan cho Ưu/Nhược điểm và Ma trận quyết định Nên/Không nên dùng.
 
 Yêu cầu về Phong cách thiết kế:
@@ -65,7 +65,7 @@ Visual & Layout Directives:
   + 3-step Eureka Service Discovery & Heartbeat flow.
   + Spring Cloud Gateway reverse-proxy funnel with token authentication and dynamic routing.
   + Resilience4j Circuit Breaker 3-state machine (Closed, Open, Half-Open) and safe fallback path.
-  + 4-node cluster demo topology (Discovery Server :8761, Gateway :8080, Product :8081, Order :8082).
+  + 4-node cluster demo topology (Eureka Server :8761, Gateway :8080, Product :8081, Order :8082).
   + Balanced 2-column comparison tables for Pros & Cons and Adoption Decision Matrix.
 
 Design & Aesthetic Style:

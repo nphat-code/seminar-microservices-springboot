@@ -181,7 +181,7 @@
 
 > **🗣️ LỜI THOẠI:**  
 > "Hệ thống demo được xây dựng gồm 4 service trên nền tảng Spring Boot 3 và Spring Cloud:  
-> 1. **`discovery-server`** (cổng 8761): Đóng vai trò là Eureka Server.  
+> 1. **`eureka-server`** (cổng 8761): Đóng vai trò là Service Discovery và Service Registry trung tâm.  
 > 2. **`api-gateway`** (cổng 8080): Đóng vai trò là cổng tiếp nhận và định tuyến tập trung.  
 > 3. **`product-service`** (cổng 8081): Service quản lý thông tin sản phẩm.  
 > 4. **`order-service`** (cổng 8082): Service tiếp nhận đơn hàng, gọi sang Product Service qua OpenFeign và được bảo vệ bởi Resilience4j Circuit Breaker.  

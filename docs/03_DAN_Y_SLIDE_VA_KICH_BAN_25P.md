@@ -212,11 +212,11 @@
       │         (Thử nghiệm đạt)                      (Timeout 10s)  │
       │               │                                      ▼       │
       │               └───────── [ HALF-OPEN ] ◄─────────────┘       │
-      │                          (Cho 5 request                      │
+      │                          (Cho 2 request                      │
       │                           thăm dò phục hồi)                  │
       └──────────────────────────────────────────────────────────────┘
   ```
-  - **Minh họa Fallback:** Khi Product Service gặp sự cố -> Order Service lập tức trả về thông tin rỗng an toàn mà không bị treo connection.
+  - **Minh họa Fallback:** Khi Product Service gặp sự cố -> Order Service lập tức trả về đơn hàng ở trạng thái chờ xử lý `PENDING_CIRCUIT_BREAKER` mà không bị treo connection.
 
 ---
 
@@ -244,11 +244,11 @@
               [ order-service ] ─────(OpenFeign + CB)─────► [ product-service ]
                       │                                             │
                       └──────────────► :8761 ◄──────────────────────┘
-                                [ discovery-server ]
-                                  (Eureka Server)
+                                 [ eureka-server ]
+                                (Service Discovery)
   ```
   - **Bảng thông số 4 Service:**
-    - 📡 `discovery-server` (:8761) - Trung tâm điều phối danh bạ.
+    - 📡 `eureka-server` (:8761) - Trung tâm điều phối danh bạ.
     - 🚪 `api-gateway` (:8080) - Cổng tiếp nhận toàn bộ request từ người dùng.
     - 📦 `product-service` (:8081) - Service dữ liệu sản phẩm.
     - 🛒 `order-service` (:8082) - Service đơn hàng tích hợp OpenFeign & Resilience4j Circuit Breaker.
@@ -261,9 +261,9 @@
   - **Bước 1: Khởi động & Giám sát**  
     🖥️ Mở `http://localhost:8761` trên trình duyệt -> Xem Dashboard Eureka hiển thị đủ 3 instance xanh (`API-GATEWAY`, `ORDER-SERVICE`, `PRODUCT-SERVICE`).
   - **Bước 2: Định tuyến qua Gateway & Gọi liên service**  
-    🚀 Gửi Request qua Gateway `POST http://localhost:8080/api/orders` -> Gateway định tuyến sang `order-service`, `order-service` gọi tiếp `product-service` qua OpenFeign lấy giá tiền -> Trả về đơn hàng hoàn chỉnh (Status: 200 OK).
+    🚀 Gửi Request qua Gateway `POST http://localhost:8080/api/orders?productId=1&quantity=2` -> Gateway định tuyến sang `order-service`, `order-service` gọi tiếp `product-service` qua OpenFeign lấy giá tiền -> Trả về đơn hàng hoàn chỉnh (Status: 200 OK).
   - **Bước 3: Thử thách chịu lỗi (Resilience4j Circuit Breaker kích hoạt)**  
-    💥 Tắt trực tiếp `product-service` (mô phỏng sự cố server) -> Gửi lại request tạo đơn -> Resilience4j Circuit Breaker lập tức kích hoạt hàm Fallback, trả về đơn hàng an toàn với thông tin sản phẩm tạm thời thay vì sập lỗi 500!
+    💥 Tắt trực tiếp `product-service` (mô phỏng sự cố server) -> Gửi lại request tạo đơn -> Resilience4j Circuit Breaker lập tức kích hoạt hàm Fallback, trả về đơn hàng tạm ở trạng thái chờ xử lý thay vì sập lỗi 500!
 
 ---
 
