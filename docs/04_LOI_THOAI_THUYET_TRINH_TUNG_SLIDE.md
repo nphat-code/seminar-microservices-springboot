@@ -77,8 +77,8 @@
 > "Để trả lời cho câu hỏi: *'Tại sao hệ sinh thái Spring lại là lựa chọn hàng đầu cho Microservices trong Java Enterprise?'*, chúng ta cùng nhìn vào sự bổ trợ hoàn hảo giữa hai công cụ: **Spring Boot** và **Spring Cloud** như thể hiện ở 2 cột trên slide:  
 > 
 > - **Ở cột bên trái — Spring Boot:** Đóng vai trò là nền tảng khởi tạo từng microservice đơn lẻ. Nhờ máy chủ nhúng Embedded Tomcat và cơ chế Auto-configuration, Spring Boot giúp đóng gói toàn bộ ứng dụng thành một file JAR độc lập, loại bỏ hầu hết cấu hình rườm rà. Ngoài ra, Spring Boot Actuator cung cấp sẵn các endpoint Health Check cực kỳ tiện lợi.  
-> - **Tuy nhiên, khi ráp nhiều service lại với nhau**, chúng ta phải giải quyết các bài toán hóc búa của hệ thống phân tán: định vị service, điều phối luồng truy cập, quản lý cấu hình và kiểm soát sự cố mạng.  
-> - **Đó chính là lúc chúng ta cần đến cột bên phải — Spring Cloud:** Spring Cloud cung cấp bộ giải pháp toàn diện cho các mẫu thiết kế phân tán kinh điển: **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Resilience4j Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung.  
+> - **Tuy nhiên, khi ráp nhiều service lại với nhau**, chúng ta phải giải quyết các bài toán phức tạp của hệ thống phân tán: định vị service, điều phối luồng truy cập, quản lý cấu hình và kiểm soát sự cố mạng.  
+> - **Đó chính là lúc chúng ta cần đến cột bên phải — Spring Cloud:** Spring Cloud cung cấp sẵn bộ công cụ để xử lý trọn vẹn các bài toán này: **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Resilience4j Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung.  
 > 
 > Và để hình dung cách các thành phần này phối hợp với nhau trên thực tế, em xin mời thầy và các bạn cùng quan sát sơ đồ kiến trúc tổng thể ở slide tiếp theo."
 
