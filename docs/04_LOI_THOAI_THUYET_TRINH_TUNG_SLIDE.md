@@ -55,12 +55,12 @@
 
 ## SLIDE 4: GIỚI THIỆU KIẾN TRÚC MICROSERVICES
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Chỉ vào sơ đồ so sánh Monolith vs. Microservices và 3 huy hiệu nguyên lý trên slide.
+- **Cues:** Chỉ vào sơ đồ so sánh Monolith vs. Microservices và 3 thẻ nguyên lý trên slide.
 
 > **🗣️ LỜI THOẠI:**  
 > "Kiến trúc **Microservices** tiếp cận bài toán theo tư duy 'Chia để trị' — phân rã khối ứng dụng lớn thành một tập hợp các service nhỏ, độc lập và tự chủ.  
 > 
-> Như thầy và các bạn quan sát ở 3 huy hiệu nguyên lý trên slide, mô hình này được xây dựng vững chắc trên 3 trụ cột:  
+> Như thầy và các bạn quan sát trên slide, mô hình này được xây dựng vững chắc trên 3 nguyên lý cốt lõi:  
 > 1. **🎯 Single Responsibility:** Mỗi service chỉ tập trung làm tốt một phạm vi nghiệp vụ duy nhất. Ví dụ như trên sơ đồ: Order Service chỉ chuyên xử lý đơn hàng, Product Service chỉ chuyên quản lý dữ liệu sản phẩm.  
 > 2. **🗄️ Database per Service:** Mỗi service sở hữu hoàn toàn cơ sở dữ liệu riêng biệt. Tuyệt đối không dùng chung database, và mọi giao tiếp dữ liệu bắt buộc phải đi qua giao diện mạng chuẩn hóa như RESTful API.  
 > 3. **🚀 CI/CD độc lập:** Nhờ tách biệt mã nguồn và tiến trình chạy, từng service có thể được nâng cấp, kiểm thử và phát hành lên môi trường thực tế chỉ trong vài phút mà không làm gián đoạn hay phụ thuộc vào các service còn lại.  

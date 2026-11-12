@@ -90,7 +90,7 @@
        [( Shared Large Database )]                 [( Order DB )]                  [( Product DB )]
        (Ràng buộc chặt, khó scale)                 (Cơ sở dữ liệu riêng, giao tiếp hoàn toàn qua mạng)
     ```
-  - **3 Huy hiệu nguyên lý:**
+  - **3 Thẻ nguyên lý:**
     - 🎯 **Single Responsibility:** Mỗi service làm tốt một việc duy nhất.
     - 🗄️ **Database per Service:** Không bao giờ dùng chung cơ sở dữ liệu giữa các service.
     - 🚀 **CI/CD độc lập:** Nâng cấp và phát hành từng service trong vài phút mà không ảnh hưởng nhau.
