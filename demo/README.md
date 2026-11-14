@@ -113,3 +113,53 @@ Khởi chạy lần lượt 4 file main theo đúng thứ tự:
     }
     ```
 - **Điểm nhấn thuyết trình:** "Nhờ Circuit Breaker, sự cố ở một service không làm sập dây chuyền toàn bộ hệ thống, đơn hàng vẫn được tiếp nhận an toàn ở trạng thái chờ."
+
+---
+
+## 🛠️ HƯỚNG DẪN PHÁT TRIỂN VÀ MỞ RỘNG DỰ ÁN
+
+### 1. Môi trường và công cụ cần thiết
+- **JDK 17** trở lên (`java.version` đang cấu hình `17` trong `pom.xml`).
+- **Maven 3.8+** để build dự án multi-module.
+- Dự án sử dụng **Spring Boot `3.2.5`** và **Spring Cloud `2023.0.1`**.
+
+### 2. Build và chạy bằng dòng lệnh
+Tại thư mục `demo/`, biên dịch toàn bộ 4 module:
+```bash
+mvn clean compile
+```
+
+Nếu muốn chạy từng service bằng Maven thay vì bấm Run trên IDE, mở 4 terminal riêng và chạy lần lượt:
+```bash
+mvn -pl eureka-server spring-boot:run
+mvn -pl product-service spring-boot:run
+mvn -pl order-service spring-boot:run
+mvn -pl api-gateway spring-boot:run
+```
+
+### 3. Quy trình thêm một Service mới
+Ví dụ cần bổ sung `payment-service` vào hệ thống:
+1. **Khai báo module:** Tạo thư mục `payment-service/` ngang hàng với các service hiện tại, thêm `<module>payment-service</module>` vào `demo/pom.xml`.
+2. **Thêm dependency:** Trong `payment-service/pom.xml`, khai báo `spring-boot-starter-web` và `spring-cloud-starter-netflix-eureka-client`.
+3. **Cấu hình đăng ký Eureka:** Tạo `payment-service/src/main/resources/application.yml` với cổng mới chưa bị trùng (ví dụ `8083`), đặt `spring.application.name: payment-service` và trỏ `eureka.client.service-url.defaultZone` về `http://localhost:8761/eureka/`.
+4. **Mở route trên API Gateway:** Thêm một route mới trong `api-gateway/src/main/resources/application.yml`:
+   ```yaml
+   - id: payment-service-route
+     uri: lb://PAYMENT-SERVICE
+     predicates:
+       - Path=/api/payments/**
+   ```
+
+### 4. Giao tiếp giữa các Service bằng OpenFeign
+1. Ở service gọi đi, thêm `@EnableFeignClients` trên class `@SpringBootApplication` (tham khảo `OrderServiceApplication.java`).
+2. Tạo interface client gắn `@FeignClient(name = "ten-service-dich")` và khai báo chữ ký endpoint cần gọi (tham khảo `ProductClient.java`). Không cần ghi cứng IP hay Port vì Eureka sẽ tự phân giải địa chỉ.
+
+### 5. Bảo vệ lời gọi bằng Resilience4j Circuit Breaker
+1. Gắn `@CircuitBreaker(name = "tenInstance", fallbackMethod = "tenHamFallback")` lên method có gọi sang service khác.
+2. Viết hàm `Fallback` cùng kiểu trả về, cùng danh sách tham số với method gốc và thêm tham số cuối `Throwable` để nhận ngoại lệ khi service đích gặp sự cố.
+3. Khai báo ngưỡng ngắt mạch và thời gian chờ phục hồi dưới `resilience4j.circuitbreaker.instances` trong `application.yml` của service đó (tham khảo `order-service/src/main/resources/application.yml`).
+
+### 6. Lưu ý khi phát triển
+- Mỗi service phải dùng một `server.port` khác nhau khi chạy local (`8761`, `8080`, `8081`, `8082`).
+- Khi sửa `pom.xml` gốc hoặc thêm module mới, nhớ chạy `mvn clean compile` để kiểm tra toàn bộ cây phụ thuộc trước khi commit.
+- Đặt tên class, package và tài liệu luôn ghi rõ `Service`, không viết tắt.
