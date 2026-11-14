@@ -116,50 +116,53 @@ Khởi chạy lần lượt 4 file main theo đúng thứ tự:
 
 ---
 
-## 🛠️ HƯỚNG DẪN PHÁT TRIỂN VÀ MỞ RỘNG DỰ ÁN
+## 🛠️ CÁCH PHÁT TRIỂN HỆ THỐNG HIỆN TẠI
 
-### 1. Môi trường và công cụ cần thiết
-- **JDK 17** trở lên (`java.version` đang cấu hình `17` trong `pom.xml`).
-- **Maven 3.8+** để build dự án multi-module.
-- Dự án sử dụng **Spring Boot `3.2.5`** và **Spring Cloud `2023.0.1`**.
+Hệ thống demo được xây dựng theo cấu trúc Maven Multi-Module gồm 1 `pom.xml` gốc quản lý chung phiên bản Java 17, Spring Boot `3.2.5` và Spring Cloud `2023.0.1`, bên dưới chia thành 4 module độc lập được phát triển theo thứ tự từ hạ tầng điều phối đến các service nghiệp vụ và cổng vào.
 
-### 2. Build và chạy bằng dòng lệnh
-Tại thư mục `demo/`, biên dịch toàn bộ 4 module:
+### Bước 1: Tạo `pom.xml` gốc quản lý phiên bản chung
+- Khai báo `<packaging>pom</packaging>` tại `demo/pom.xml`.
+- Kế thừa `spring-boot-starter-parent` phiên bản `3.2.5`.
+- Import `spring-cloud-dependencies` phiên bản `2023.0.1` trong `<dependencyManagement>` để đồng bộ thư viện cho toàn bộ 4 module con: `eureka-server`, `api-gateway`, `product-service`, `order-service`.
+
+### Bước 2: Phát triển `eureka-server` (Service Discovery)
+- **Mục đích:** Tạo trung tâm đăng ký và tra cứu địa chỉ mạng cho các service.
+- **Mã nguồn:** [EurekaServerApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/java/com/seminar/eureka/EurekaServerApplication.java) chỉ cần gắn annotation `@EnableEurekaServer`.
+- **Cấu hình:** Trong [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/resources/application.yml):
+  - Đặt `server.port: 8761`.
+  - Tắt tự đăng ký lên chính nó bằng `register-with-eureka: false` và `fetch-registry: false`.
+
+### Bước 3: Phát triển `product-service` (Service cung cấp dữ liệu)
+- **Mục đích:** Quản lý danh mục sản phẩm và cung cấp REST API cho hệ thống.
+- **Mã nguồn:** [ProductServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/product-service/src/main/java/com/seminar/product/ProductServiceApplication.java) sử dụng `Map<Long, Product>` lưu dữ liệu mẫu trên bộ nhớ và mở 2 endpoint dưới `/api/products`:
+  - `GET /api/products`: trả về toàn bộ danh sách sản phẩm.
+  - `GET /api/products/{id}`: trả về chi tiết một sản phẩm theo `id`.
+- **Cấu hình:** Trong [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/product-service/src/main/resources/application.yml):
+  - Đặt `server.port: 8081` và `spring.application.name: product-service`.
+  - Khai báo `eureka.client.service-url.defaultZone: http://localhost:8761/eureka/` để tự động đăng ký khi khởi động.
+
+### Bước 4: Phát triển `order-service` (Service nghiệp vụ gọi liên service và chịu lỗi)
+- **Mục đích:** Tiếp nhận đơn hàng, gọi sang `product-service` lấy giá sản phẩm và tự bảo vệ khi service đích gặp sự cố.
+- **Kết nối OpenFeign:**
+  - Tạo interface [ProductClient.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/client/ProductClient.java) gắn `@FeignClient(name = "product-service")` để gọi `GET /api/products/{id}` thông qua tên logic trên Eureka mà không cần ghi cứng IP.
+  - Bật `@EnableFeignClients` tại [OrderServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/OrderServiceApplication.java).
+- **Chịu lỗi với Resilience4j:**
+  - Gắn `@CircuitBreaker(name = "productServiceCB", fallbackMethod = "createOrderFallback")` trên hàm `createOrder`.
+  - Khi `product-service` tắt hoặc lỗi, hàm `createOrderFallback` tự động chạy và trả về trạng thái `PENDING_CIRCUIT_BREAKER` thay vì làm treo hoặc sập `order-service`.
+- **Cấu hình:** Trong [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/resources/application.yml), đặt `server.port: 8082`, `spring.application.name: order-service`, đăng ký Eureka và cấu hình `resilience4j.circuitbreaker.instances.productServiceCB`.
+
+### Bước 5: Phát triển `api-gateway` (Cổng vào duy nhất)
+- **Mục đích:** Định tuyến mọi request từ Client vào đúng service phía sau và cân bằng tải.
+- **Mã nguồn:** [ApiGatewayApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/api-gateway/src/main/java/com/seminar/gateway/ApiGatewayApplication.java) chỉ cần `@SpringBootApplication`.
+- **Cấu hình:** Trong [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/api-gateway/src/main/resources/application.yml):
+  - Đặt `server.port: 8080` và `spring.application.name: api-gateway`.
+  - Định nghĩa 2 route dùng tiền tố `lb://` kết hợp Eureka để cân bằng tải:
+    - `/api/products/**` trỏ về `lb://PRODUCT-SERVICE`
+    - `/api/orders/**` trỏ về `lb://ORDER-SERVICE`
+
+### Bước 6: Biên dịch và kiểm thử cục bộ
+Tại thư mục `demo/`, biên dịch toàn bộ 4 module bằng Maven:
 ```bash
 mvn clean compile
 ```
-
-Nếu muốn chạy từng service bằng Maven thay vì bấm Run trên IDE, mở 4 terminal riêng và chạy lần lượt:
-```bash
-mvn -pl eureka-server spring-boot:run
-mvn -pl product-service spring-boot:run
-mvn -pl order-service spring-boot:run
-mvn -pl api-gateway spring-boot:run
-```
-
-### 3. Quy trình thêm một Service mới
-Ví dụ cần bổ sung `payment-service` vào hệ thống:
-1. **Khai báo module:** Tạo thư mục `payment-service/` ngang hàng với các service hiện tại, thêm `<module>payment-service</module>` vào `demo/pom.xml`.
-2. **Thêm dependency:** Trong `payment-service/pom.xml`, khai báo `spring-boot-starter-web` và `spring-cloud-starter-netflix-eureka-client`.
-3. **Cấu hình đăng ký Eureka:** Tạo `payment-service/src/main/resources/application.yml` với cổng mới chưa bị trùng (ví dụ `8083`), đặt `spring.application.name: payment-service` và trỏ `eureka.client.service-url.defaultZone` về `http://localhost:8761/eureka/`.
-4. **Mở route trên API Gateway:** Thêm một route mới trong `api-gateway/src/main/resources/application.yml`:
-   ```yaml
-   - id: payment-service-route
-     uri: lb://PAYMENT-SERVICE
-     predicates:
-       - Path=/api/payments/**
-   ```
-
-### 4. Giao tiếp giữa các Service bằng OpenFeign
-1. Ở service gọi đi, thêm `@EnableFeignClients` trên class `@SpringBootApplication` (tham khảo `OrderServiceApplication.java`).
-2. Tạo interface client gắn `@FeignClient(name = "ten-service-dich")` và khai báo chữ ký endpoint cần gọi (tham khảo `ProductClient.java`). Không cần ghi cứng IP hay Port vì Eureka sẽ tự phân giải địa chỉ.
-
-### 5. Bảo vệ lời gọi bằng Resilience4j Circuit Breaker
-1. Gắn `@CircuitBreaker(name = "tenInstance", fallbackMethod = "tenHamFallback")` lên method có gọi sang service khác.
-2. Viết hàm `Fallback` cùng kiểu trả về, cùng danh sách tham số với method gốc và thêm tham số cuối `Throwable` để nhận ngoại lệ khi service đích gặp sự cố.
-3. Khai báo ngưỡng ngắt mạch và thời gian chờ phục hồi dưới `resilience4j.circuitbreaker.instances` trong `application.yml` của service đó (tham khảo `order-service/src/main/resources/application.yml`).
-
-### 6. Lưu ý khi phát triển
-- Mỗi service phải dùng một `server.port` khác nhau khi chạy local (`8761`, `8080`, `8081`, `8082`).
-- Khi sửa `pom.xml` gốc hoặc thêm module mới, nhớ chạy `mvn clean compile` để kiểm tra toàn bộ cây phụ thuộc trước khi commit.
-- Đặt tên class, package và tài liệu luôn ghi rõ `Service`, không viết tắt.
+Sau đó chạy lần lượt 4 service theo thứ tự `eureka-server` → `product-service` → `order-service` → `api-gateway` (qua IDE hoặc `mvn -pl <ten-module> spring-boot:run`) và kiểm tra trên `http://localhost:8761`.
