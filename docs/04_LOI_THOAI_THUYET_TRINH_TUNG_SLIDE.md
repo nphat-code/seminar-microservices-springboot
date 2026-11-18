@@ -41,7 +41,7 @@
 > 
 > Trong mô hình này, toàn bộ các thành phần từ giao diện, xử lý nghiệp vụ đến truy xuất cơ sở dữ liệu đều được đóng gói chung trong một khối ứng dụng duy nhất (thường là một file `WAR` hoặc `JAR`).  
 > 
-> Với các dự án quy mô nhỏ, Monolith mang lại lợi thế phát triển nhanh và triển khai đơn giản. Tuy nhiên, khi hệ thống phát triển lớn hơn và có nhiều đội ngũ cùng tham gia, kiến trúc này bộc lộ một số hạn chế rõ rệt:  
+> Với các dự án quy mô nhỏ, Monolith mang lại lợi thế phát triển nhanh và triển khai đơn giản. Tuy nhiên, khi hệ thống phát triển lớn hơn và có nhiều đội ngũ cùng tham gia, mô hình này bắt đầu gặp phải mấy vấn đề lớn:  
 > 
 > - Đầu tiên là **vấn đề triển khai** — mỗi thay đổi, dù là nhỏ nhất ở một tính năng phụ, cũng đòi hỏi phải biên dịch, kiểm thử và triển khai lại toàn bộ khối ứng dụng. Điều này làm tăng thời gian phát hành và tiềm ẩn rủi ro cho toàn hệ thống.  
 > - Thứ hai là **việc mở rộng tài nguyên** — khi chỉ một tính năng cụ thể gặp tải cao như chức năng tra cứu sản phẩm, hệ thống không thể mở rộng riêng cho chức năng đó mà bắt buộc phải nhân bản toàn bộ ứng dụng, gây lãng phí tài nguyên máy chủ.  
