@@ -63,7 +63,7 @@
 > 2. Nguyên lý thứ hai là **🗄️ Database per Service** — mỗi service sở hữu hoàn toàn cơ sở dữ liệu riêng biệt, tuyệt đối không dùng chung database và mọi giao tiếp dữ liệu bắt buộc phải đi qua giao diện mạng chuẩn hóa như RESTful API.  
 > 3. Và nguyên lý thứ ba là **🚀 CI/CD độc lập** — nhờ tách biệt mã nguồn và tiến trình chạy, từng service có thể được nâng cấp, kiểm thử và phát hành lên môi trường thực tế chỉ trong vài phút mà không làm gián đoạn hay phụ thuộc vào các service còn lại.  
 > 
-> Và để hiện thực hóa kiến trúc này trên nền tảng Java Enterprise, giải pháp toàn diện và tối ưu nhất hiện nay chính là bộ đôi Spring Boot và Spring Cloud."
+> Và để hiện thực hóa kiến trúc này trên nền tảng Java Enterprise, thì bộ đôi **Spring Boot và Spring Cloud** đang là lựa chọn hàng đầu hiện nay."
 
 ---
 
