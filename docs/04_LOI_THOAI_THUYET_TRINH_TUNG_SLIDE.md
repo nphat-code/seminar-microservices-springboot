@@ -28,9 +28,7 @@
 > 
 > - Phần đầu tiên, em sẽ nói về bối cảnh và lý do vì sao chúng ta chuyển dịch từ kiến trúc Monolith sang Microservices.  
 > - Tiếp theo ở phần thứ hai, chúng ta sẽ cùng tìm hiểu các thành phần kiến trúc cốt lõi trong hệ sinh thái Spring Cloud như Eureka Server, Spring Cloud Gateway, OpenFeign và Resilience4j Circuit Breaker.  
-> - Và phần thứ ba, em sẽ **demo** trực tiếp một hệ thống gồm 4 service để mọi người cùng xem cách định tuyến và khả năng chịu lỗi khi có sự cố.  
-> 
-> Và ngay sau đây, em xin phép đi vào phần đầu tiên: Nỗi đau của kiến trúc Monolith."
+> - Và phần thứ ba, em sẽ **demo** trực tiếp một hệ thống gồm 4 service để mọi người cùng xem cách định tuyến và khả năng chịu lỗi khi có sự cố."
 
 ---
 
@@ -39,7 +37,7 @@
 - **Cues:** Chỉ vào sơ đồ Monolith trên slide.
 
 > **🗣️ LỜI THOẠI:**  
-> "Trước tiên, chúng ta cùng nhìn lại kiến trúc truyền thống: **Kiến trúc Monolith**.  
+> "Mở đầu phần thứ nhất, chúng ta cùng nhìn lại kiến trúc **Monolith** truyền thống và những hạn chế của nó.  
 > 
 > Trong mô hình này, toàn bộ các thành phần từ giao diện, xử lý nghiệp vụ đến truy xuất cơ sở dữ liệu đều được đóng gói chung trong một khối ứng dụng duy nhất (thường là một file `WAR` hoặc `JAR`).  
 > 
