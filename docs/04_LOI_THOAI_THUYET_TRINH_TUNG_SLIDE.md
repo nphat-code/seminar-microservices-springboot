@@ -256,7 +256,7 @@
 > 2. Thứ hai là **Spring Cloud là tiêu chuẩn thực tiễn** — bộ công cụ trên Java này giúp giải quyết trọn vẹn từ Eureka, API Gateway, OpenFeign cho tới Resilience4j Circuit Breaker.  
 > 3. Và cuối cùng, **kiến trúc luôn là sự đánh đổi** — không có kiến trúc hoàn hảo tuyệt đối, chỉ có kiến trúc phù hợp với bài toán, quy mô hệ thống và nguồn lực đội ngũ.  
 > 
-> Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe. Sau đây, em xin phép tiếp nhận các ý kiến nhận xét và giải đáp câu hỏi từ thầy cùng cả lớp ạ."
+> Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe."
 
 ---
 
