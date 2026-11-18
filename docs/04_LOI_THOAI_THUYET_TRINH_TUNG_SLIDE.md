@@ -63,7 +63,7 @@
 > 2. Nguyên lý thứ hai là **🗄️ Database per Service** — mỗi service sở hữu hoàn toàn cơ sở dữ liệu riêng biệt, tuyệt đối không dùng chung database và mọi giao tiếp dữ liệu bắt buộc phải đi qua giao diện mạng chuẩn hóa như RESTful API.  
 > 3. Và nguyên lý thứ ba là **🚀 CI/CD độc lập** — nhờ tách biệt mã nguồn và tiến trình chạy, từng service có thể được nâng cấp, kiểm thử và phát hành lên môi trường thực tế chỉ trong vài phút mà không làm gián đoạn hay phụ thuộc vào các service còn lại.  
 > 
-> Và để hiện thực hóa kiến trúc này trên nền tảng Java Enterprise, thì bộ đôi **Spring Boot và Spring Cloud** đang là lựa chọn hàng đầu hiện nay."
+> Và để hiện thực hóa kiến trúc này trên nền tảng Java Enterprise, bộ đôi **Spring Boot và Spring Cloud** đang là lựa chọn hàng đầu hiện nay."
 
 ---
 
@@ -72,7 +72,7 @@
 - **Cues:** Hướng tay lần lượt về Cột 1 (Spring Boot) và Cột 2 (Spring Cloud) trên màn hình.
 
 > **🗣️ LỜI THOẠI:**  
-> "Để trả lời cho câu hỏi: *'Tại sao hệ sinh thái Spring lại là lựa chọn hàng đầu cho Microservices trong Java Enterprise?'*, chúng ta cùng nhìn vào sự bổ trợ hoàn hảo giữa hai công cụ: **Spring Boot** và **Spring Cloud** như thể hiện ở 2 cột trên slide:  
+> "Vậy hai công cụ này phối hợp với nhau như thế nào? Chúng ta cùng nhìn vào 2 cột trên slide:  
 > 
 > - **Ở cột bên trái — Spring Boot:** Đóng vai trò là nền tảng khởi tạo từng microservice đơn lẻ. Nhờ máy chủ nhúng Embedded Tomcat và cơ chế Auto-configuration, Spring Boot giúp đóng gói toàn bộ ứng dụng thành một file JAR độc lập, loại bỏ hầu hết cấu hình rườm rà. Ngoài ra, Spring Boot Actuator cung cấp sẵn các endpoint Health Check cực kỳ tiện lợi.  
 > - **Tuy nhiên, khi ráp nhiều service lại với nhau**, chúng ta phải giải quyết các bài toán phức tạp của hệ thống phân tán: định vị service, điều phối luồng truy cập, quản lý cấu hình và kiểm soát sự cố mạng.  
