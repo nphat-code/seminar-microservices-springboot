@@ -15,7 +15,7 @@
 > 
 > Hôm nay, em xin phép được trình bày bài báo cáo seminar với đề tài: **'Spring for Microservices'** – Xây dựng hệ thống phân tán trong Java Enterprise với Spring Boot và Spring Cloud.  
 > 
-> Trong thực tế phát triển phần mềm hiện đại, khi các ứng dụng thương mại điện tử hay dịch vụ trực tuyến phải phục vụ lượng truy cập lớn trong cùng một thời điểm, việc giúp hệ thống vừa dễ mở rộng, vừa hoạt động ổn định liên tục luôn là bài toán lớn. Và **Microservices kết hợp với Spring Cloud** là một trong những hướng tiếp cận phổ biến mà nhiều doanh nghiệp đang dùng để xử lý vấn đề này."
+> Trong thực tế phát triển phần mềm hiện đại, khi các ứng dụng thương mại điện tử hay dịch vụ trực tuyến phải phục vụ lượng truy cập lớn trong cùng một thời điểm, bài toán đảm bảo hệ thống có thể mở rộng linh hoạt và duy trì tính sẵn sàng cao luôn là một thách thức vô cùng quan trọng. Và **Microservices kết hợp với Spring Cloud** là một trong những hướng tiếp cận phổ biến mà nhiều doanh nghiệp đang dùng để xử lý vấn đề này."
 
 ---
 
