@@ -138,7 +138,7 @@
 > "Để giao tiếp giữa các service, Spring Cloud cung cấp thư viện **OpenFeign**.  
 > Thay vì viết mã gọi HTTP thủ công, OpenFeign cho phép định nghĩa các interface với cú pháp khai báo rõ ràng, Spring sẽ tự động sinh mã thực thi ngầm định.  
 > 
-> Tuy nhiên, trong môi trường phân tán, các sự cố mạng hoặc việc một service phản hồi chậm có thể làm tắc nghẽn luồng xử lý của service gọi, dẫn đến nguy cơ **sập dây chuyền**.  
+> Tuy nhiên, trong môi trường Microservices, các sự cố mạng hoặc việc một service phản hồi chậm có thể làm tắc nghẽn luồng xử lý của service gọi, dẫn đến nguy cơ **sập dây chuyền**.  
 > 
 > Để kiểm soát rủi ro này, chúng ta tích hợp **Resilience4j Circuit Breaker**, hoạt động theo 3 trạng thái ngắt mạch:  
 > - Ở trạng thái **CLOSED**, mọi thứ diễn ra bình thường và các yêu cầu được chuyển tiếp thông suốt.  
