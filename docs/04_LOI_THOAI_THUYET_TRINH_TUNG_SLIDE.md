@@ -189,41 +189,40 @@
 
 ## PHẦN DEMO THỰC TẾ TRÊN MÁY TÍNH (KHÔNG DÙNG SLIDE)
 - **Thời lượng:** ~5 - 6 phút
-- **Cues:** Chuyển màn hình chiếu sang cửa sổ máy tính (Trình duyệt, Postman và IDE). Thao tác rõ ràng, giải thích ngắn gọn dựa trên dữ liệu hiển thị.
+- **Cues:** Chuyển màn hình chiếu sang máy tính (mở sẵn Trình duyệt, Postman và IDE). Vừa thao tác vừa nói chậm rãi, chỉ vào đúng khu vực trên màn hình.
 
-> **🗣️ LỜI THOẠI TRỰC TIẾP:**  
-> 
-> *(Mở trình duyệt tab `http://localhost:8761`)*  
-> "**Kịch bản 1: Kiểm tra Service Discovery trên Eureka Dashboard.**  
-> Trên giao diện quản lý của Eureka Server, ở danh sách các instance đang hoạt động, cả 3 service `API-GATEWAY`, `PRODUCT-SERVICE` và `ORDER-SERVICE` đều đang hiển thị trạng thái **UP**.  
-> Các service đã tự động nhận diện và liên kết với nhau thông qua tên logic mà không cần cấu hình IP tĩnh.  
-> 
-> ---
-> 
-> *(Chuyển sang Postman)*  
-> **Kịch bản 2: Kiểm tra Định tuyến qua Gateway và giao tiếp OpenFeign.**  
-> Yêu cầu từ Client chỉ cần gửi tới địa chỉ của **Gateway (cổng 8080)**:  
-> - Đầu tiên, gửi yêu cầu tra cứu danh mục sản phẩm: `GET http://localhost:8080/api/products`.  
->   *(Bấm Send)*  
->   Gateway nhận diện tiền tố đường dẫn và chuyển tiếp yêu cầu đến `PRODUCT-SERVICE` để trả về danh sách sản phẩm.  
-> - Tiếp theo, gửi yêu cầu đặt hàng: `POST http://localhost:8080/api/orders?productId=1&quantity=2`.  
->   *(Bấm Send)*  
->   Kết quả trả về đơn hàng được xác nhận thành công. Trong quá trình này, `order-service` đã tự động gọi sang `product-service` qua OpenFeign để xác thực thông tin đơn giá và tính toán tổng tiền một cách thông suốt.  
-> 
-> ---
-> 
-> *(Chuyển sang IDE)*  
-> **Kịch bản 3: Kiểm nghiệm cơ chế chịu lỗi của Resilience4j Circuit Breaker.**  
-> Trong kịch bản này, chúng ta giả lập tình huống `product-service` gặp sự cố bằng cách dừng tiến trình của service này.  
-> *(Bấm Stop ProductServiceApplication trên IDE, quay lại Postman)*  
-> 
-> Khi `product-service` không còn hoạt động, chúng ta gửi lại yêu cầu tạo đơn hàng:  
-> *(Bấm Send)*  
-> Thay vì bị treo thời gian chờ hoặc trả về lỗi 500, yêu cầu nhận được phản hồi ngay lập tức với mã HTTP 200.  
-> Nội dung JSON trả về trạng thái `"PENDING_CIRCUIT_BREAKER"`, kèm thông báo từ hàm Fallback:  
-> *'[Resilience4j Fallback] Product Service hiện không phản hồi. Đơn hàng tạm lưu ở trạng thái chờ xử lý!'*.  
-> 
-> Resilience4j Circuit Breaker đã nhận diện service đích gián đoạn, tự động ngắt mạch và kích hoạt phương thức dự phòng để bảo vệ tính ổn định của service gọi."
+### 📌 Kịch bản 1: Service Discovery trên Eureka Dashboard
+- **Thao tác:** Mở trình duyệt tab `http://localhost:8761`, bấm **F5**, chỉ vào bảng **Instances currently registered with Eureka**.
+- **Lời nói:**
+> "Đầu tiên là giao diện của `Eureka Server`. Thầy và các bạn có thể thấy cả 3 service là `API-GATEWAY`, `PRODUCT-SERVICE` và `ORDER-SERVICE` đều đang hiển thị trạng thái **UP**. Khi khởi động, các service tự động đăng ký địa chỉ lên đây và giao tiếp với nhau thông qua tên logic mà không cần cấu hình cứng địa chỉ IP."
+
+---
+
+### 📌 Kịch bản 2: API Gateway Routing và OpenFeign
+- **Thao tác 1:** Chuyển sang Postman (hoặc Terminal), chạy `GET http://localhost:8080/api/products` rồi bấm **Send**.
+- **Lời nói:**
+> "Tiếp theo, client sẽ chỉ gửi request vào một đầu mối duy nhất là `API Gateway` ở cổng `8080`. Khi em gọi `/api/products`, Gateway tự động định tuyến yêu cầu xuống `Product Service` ở cổng `8081` để trả về danh sách 3 sản phẩm như trên màn hình."
+
+- **Thao tác 2:** Chạy `POST http://localhost:8080/api/orders?productId=1&quantity=2` rồi bấm **Send**.
+- **Lời nói:**
+> "Bây giờ em thử tạo đơn hàng với mã sản phẩm `1` và số lượng `2`. Gateway chuyển request sang `Order Service`. Vì `Order Service` không lưu dữ liệu sản phẩm, nó dùng `OpenFeign` gọi sang `Product Service` để lấy đơn giá `35 triệu`, nhân với `2` và trả về tổng tiền `70 triệu` với trạng thái `SUCCESS`."
+
+---
+
+### 📌 Kịch bản 3: Chịu lỗi với Resilience4j Circuit Breaker (Điểm nhấn)
+- **Thao tác 1:** Chuyển sang IDE, tìm tiến trình [ProductServiceApplication.java](../demo/product-service/src/main/java/com/seminar/product/ProductServiceApplication.java) và bấm nút **Stop** màu đỏ.
+- **Lời nói:**
+> "Bây giờ em giả lập tình huống thực tế: `Product Service` bị sập đột ngột do sự cố máy chủ hoặc đứt mạng."
+
+- **Thao tác 2:** Quay lại Postman, giữ nguyên request `POST http://localhost:8080/api/orders?productId=1&quantity=2` rồi bấm **Send** lại. Chỉ vào mã `200 OK` và dòng `PENDING_CIRCUIT_BREAKER` trong JSON trả về.
+- **Lời nói:**
+> "Thầy và các bạn thấy dù `Product Service` đã tắt hoàn toàn, hệ thống không hề bị treo hay văng lỗi `500`. Request phản hồi ngay lập tức với mã `200 OK` và trạng thái `PENDING_CIRCUIT_BREAKER`. Nhờ `Resilience4j Circuit Breaker`, sự cố đã được cách ly và hàm `Fallback` kích hoạt để tạm lưu đơn hàng ở trạng thái chờ xử lý, giúp `Order Service` vẫn hoạt động ổn định. Khi `Product Service` chạy lại, hệ thống sẽ tự động khôi phục bình thường."
+
+---
+
+### 💡 Mẹo xử lý nhanh khi trình bày
+- Lúc bấm **Send** ở Kịch bản 3, nhớ nhấn mạnh cụm **"phản hồi ngay lập tức, không bị treo"** để giảng viên thấy rõ tác dụng của `Circuit Breaker`.
+- Nếu bấm **F5** trên Eureka mà chưa thấy đủ 3 service, chỉ cần nói *"Eureka cần vài giây nhận heartbeat từ các service"* rồi chờ 5 đến 10 giây bấm **F5** lại.
 
 ---
 

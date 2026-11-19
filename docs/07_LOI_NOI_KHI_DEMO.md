@@ -6,7 +6,7 @@ Tài liệu tóm tắt ngắn gọn thao tác và lời thoại từng bước �
 
 ## 1. Mở đầu khi chuyển sang màn hình máy tính
 
-> "Thưa thầy và các bạn, hệ thống demo của nhóm em gồm 4 service: `Eureka Server` ở cổng `8761`, `API Gateway` ở cổng `8080`, `Product Service` ở cổng `8081` và `Order Service` ở cổng `8082`. Cả 4 service hiện đã được khởi chạy sẵn. Sau đây em xin phép đi vào 3 kịch bản kiểm thử thực tế."
+> "Thưa thầy và các bạn, hệ thống demo của em gồm 4 service: `Eureka Server` ở cổng `8761`, `API Gateway` ở cổng `8080`, `Product Service` ở cổng `8081` và `Order Service` ở cổng `8082`. Cả 4 service hiện đã được khởi chạy sẵn. Sau đây em xin phép đi vào 3 kịch bản kiểm thử thực tế."
 
 ---
 
@@ -51,3 +51,4 @@ Tài liệu tóm tắt ngắn gọn thao tác và lời thoại từng bước �
 
 - Lúc bấm **Send** ở Kịch bản 3, nhấn mạnh cụm **"phản hồi ngay lập tức, không bị treo"** để giảng viên thấy rõ tác dụng của `Circuit Breaker`.
 - Nếu bấm **F5** trên Eureka mà chưa thấy đủ 3 service, chỉ cần nói *"Eureka cần vài giây nhận heartbeat từ các service"* rồi chờ 5 đến 10 giây bấm **F5** lại.
+
