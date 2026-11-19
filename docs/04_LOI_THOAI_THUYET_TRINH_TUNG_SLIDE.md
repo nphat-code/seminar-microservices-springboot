@@ -226,9 +226,9 @@
 
 ---
 
-## SLIDE 12: ỨNG DỤNG THỰC TẾ & KHI NÀO NÊN / KHÔNG NÊN DÙNG
+## SLIDE 12: ỨNG DỤNG THỰC TẾ & KHI NÀO NÊN / KHÔNG NÊN DÙNG (SLIDE KẾT THÚC)
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Quay lại màn hình slide (Slide 12), chỉ lần lượt vào phần màu xanh và phần màu đỏ của ma trận quyết định.
+- **Cues:** Quay lại màn hình slide (Slide 12), chỉ lần lượt vào phần màu xanh và phần màu đỏ của ma trận quyết định. Đọc câu danh ngôn đúc kết và chào kết thúc bài.
 
 > **🗣️ LỜI THOẠI:**  
 > "Từ phần lý thuyết và thực nghiệm vừa rồi, câu hỏi quan trọng nhất là khi nào nên áp dụng Microservices trong thực tế? Như ma trận quyết định trên slide:  
@@ -236,20 +236,7 @@
 > - **Ở nửa trên — Khi nào nên dùng:** Kiến trúc này phát huy hiệu quả rõ rệt với các hệ thống có lưu lượng truy cập lớn như Netflix, Amazon, Shopee, Tiki hay các hệ thống Core Banking; dự án có từ 3 nhóm phát triển trở lên làm việc song song và đòi hỏi độ sẵn sàng cao 99,99%.  
 > - **Ở nửa dưới — Khi nào không nên dùng:** Với các dự án khởi nghiệp ở giai đoạn MVP khi nghiệp vụ còn thay đổi liên tục, hoặc đội ngũ nhỏ dưới 5 lập trình viên, chi phí vận hành và gỡ lỗi phân tán sẽ vượt quá lợi ích mang lại.  
 > 
-> Như lời khuyên nổi tiếng của Martin Fowler: *'Đừng bắt đầu bằng Microservices nếu ứng dụng của bạn chưa thực sự cần nó. Hãy bắt đầu từ một Monolith được thiết kế tốt.'*"
-
----
-
-## SLIDE 13: TỔNG KẾT VÀ HỎI ĐÁP
-- **Thời lượng:** ~1 phút và ~3 phút Hỏi - Đáp
-- **Cues:** Chỉ lần lượt vào 3 thẻ đúc kết trên slide, sau đó chào kết thúc và mời đặt câu hỏi.
-
-> **🗣️ LỜI THOẠI:**  
-> "Để kết thúc bài trình bày hôm nay, em xin đúc kết lại 3 thông điệp kỹ thuật cốt lõi:  
-> 
-> 1. Thứ nhất là **chia tách hợp lý** — Microservices không đơn thuần là chia nhỏ mã nguồn, mà là chia rõ ranh giới nghiệp vụ gắn với cơ sở dữ liệu độc lập cho từng service.  
-> 2. Thứ hai là **Spring Cloud là tiêu chuẩn thực tiễn** — bộ công cụ trên Java này giúp giải quyết trọn vẹn từ Eureka, API Gateway, OpenFeign cho tới Resilience4j Circuit Breaker.  
-> 3. Và cuối cùng, **kiến trúc luôn là sự đánh đổi** — không có kiến trúc hoàn hảo tuyệt đối, chỉ có kiến trúc phù hợp với bài toán, quy mô hệ thống và nguồn lực đội ngũ.  
+> Như lời khuyên nổi tiếng của Martin Fowler: *'Đừng bắt đầu bằng Microservices nếu ứng dụng của bạn chưa thực sự cần nó. Hãy bắt đầu từ một Monolith được thiết kế tốt.'*  
 > 
 > Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe."
 

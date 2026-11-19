@@ -15,7 +15,7 @@ Khi bấm vào nút **Slide Deck** trong NotebookLM, thiết lập các mục nh
 | :--- | :--- | :--- |
 | **Format** | **Presenter Slides** | Slide thoáng, ít chữ, làm nổi bật từ khóa và sơ đồ để diễn giả tự do thuyết trình; tránh biến slide thành "bức tường chữ". |
 | **Choose language** | **Vietnamese** *(hoặc English tùy nhu cầu)* | Để toàn bộ tiêu đề và nội dung slide sinh ra bằng tiếng Việt chuẩn xác (các thuật ngữ công nghệ AI vẫn giữ nguyên tiếng Anh). |
-| **Length** | **Default** | Độ dài mặc định khớp tối ưu với 13 slide đã có trong tài liệu nguồn. |
+| **Length** | **Default** | Độ dài mặc định khớp tối ưu với 12 slide đã có trong tài liệu nguồn. |
 | **Sources** | **2 sources** | Chọn 2 file `03_DAN_Y...` và `04_LOI_THOAI...`. |
 | **Review slide outline** | **BẬT** | Cho phép xem trước và điều chỉnh dàn ý từng slide trước khi hệ thống tạo slide chính thức. |
 
@@ -82,7 +82,7 @@ Design & Aesthetic Style:
 2. Bấm vào nút **Slide Deck** -> chọn **Customize**.
 3. Sao chép một trong hai đoạn prompt trên dán vào ô mô tả của NotebookLM.
 4. Bấm nút **Generate now**.
-5. Khi dàn ý hiển thị, duyệt nhanh 13 slide và bấm tiếp tục để hệ thống sinh slide hoàn chỉnh kèm sơ đồ và minh họa trực quan.
+5. Khi dàn ý hiển thị, duyệt nhanh 12 slide và bấm tiếp tục để hệ thống sinh slide hoàn chỉnh kèm sơ đồ và minh họa trực quan.
 6. Xuất file slide ra **Google Slides** hoặc tải về định dạng **PowerPoint (.pptx)**:
    - Bạn có thể tùy chỉnh thêm icon, logo Spring chính thức, hoặc thay thế các sơ đồ vector nếu muốn bài thuyết trình càng thêm chuyên nghiệp.
 
