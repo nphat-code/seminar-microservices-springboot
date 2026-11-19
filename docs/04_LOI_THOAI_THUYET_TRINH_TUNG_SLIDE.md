@@ -122,7 +122,7 @@
 > 
 > Gateway giải quyết các yêu cầu kiến trúc trọng yếu sau:  
 > - Thứ nhất là **bảo mật mạng nội bộ** — Gateway giấu kín cấu trúc mạng bên trong và chỉ mở duy nhất một cổng ra bên ngoài.  
-> - Thứ hai là **Authentication tập trung** — toàn bộ việc kiểm tra tính hợp lệ của JWT Token được xử lý ngay tại cửa ngõ trước khi chuyển tiếp yêu cầu vào các service bên trong.  
+> - Thứ hai là **Authentication tập trung** — toàn bộ việc kiểm tra tính hợp lệ của JWT Token được xử lý ngay tại Gateway trước khi chuyển tiếp yêu cầu vào các service bên trong.  
 > - Thứ ba là **Rate Limiter** — giúp giới hạn tần suất gọi API nhằm chống spam và bảo vệ các service phía sau trước lưu lượng tăng đột biến.  
 > - Và cuối cùng là **Dynamic Routing** — dựa vào đường dẫn URL như `/api/products` hoặc `/api/orders` để chuyển tiếp chính xác đến service đích tương ứng.  
 > 
