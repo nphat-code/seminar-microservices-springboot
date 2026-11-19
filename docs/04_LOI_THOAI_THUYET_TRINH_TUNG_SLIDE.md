@@ -72,11 +72,11 @@
 - **Cues:** Hướng tay lần lượt về Cột 1 (Spring Boot) và Cột 2 (Spring Cloud) trên màn hình.
 
 > **🗣️ LỜI THOẠI:**  
-> "Vậy hai công cụ này phối hợp với nhau như thế nào? Chúng ta cùng nhìn vào 2 cột trên slide:  
+> "Vậy hai công cụ này phối hợp với nhau như thế nào?  
 > 
-> - **Ở cột bên trái — Spring Boot:** Đóng vai trò là nền tảng khởi tạo từng microservice đơn lẻ. Nhờ máy chủ nhúng Embedded Tomcat và cơ chế Auto-configuration, Spring Boot giúp đóng gói toàn bộ ứng dụng thành một file JAR độc lập, loại bỏ hầu hết cấu hình rườm rà. Ngoài ra, Spring Boot Actuator cung cấp sẵn các endpoint Health Check cực kỳ tiện lợi.  
-> - **Tuy nhiên, khi ráp nhiều service lại với nhau**, chúng ta phải giải quyết các bài toán phức tạp của hệ thống phân tán: định vị service, điều phối luồng truy cập, quản lý cấu hình và kiểm soát sự cố mạng.  
-> - **Đó chính là lúc chúng ta cần đến cột bên phải — Spring Cloud:** Spring Cloud cung cấp sẵn bộ công cụ để xử lý trọn vẹn các bài toán này: **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Resilience4j Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung.  
+> - Đầu tiên là **Spring Boot**, đóng vai trò làm nền tảng khởi tạo từng microservice đơn lẻ. Nhờ máy chủ nhúng Embedded Tomcat và cơ chế Auto-configuration, Spring Boot giúp đóng gói toàn bộ ứng dụng thành một file JAR độc lập, loại bỏ hầu hết cấu hình rườm rà. Ngoài ra, Spring Boot Actuator cũng cung cấp sẵn các endpoint Health Check cực kỳ tiện lợi.  
+> - Tuy nhiên, khi ráp nhiều service lại với nhau, chúng ta phải giải quyết các bài toán phức tạp của hệ thống phân tán như định vị service, điều phối luồng truy cập, quản lý cấu hình và kiểm soát sự cố mạng.  
+> - Để xử lý những bài toán đó, chúng ta dùng đến **Spring Cloud** — bộ công cụ này cung cấp sẵn **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Resilience4j Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung.  
 > 
 > Và để hình dung cách các thành phần này phối hợp với nhau trên thực tế, em xin mời thầy và các bạn cùng quan sát sơ đồ kiến trúc tổng thể ở slide tiếp theo."
 
