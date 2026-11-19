@@ -231,10 +231,10 @@
 - **Cues:** Quay lại màn hình slide (Slide 12), chỉ lần lượt vào phần màu xanh và phần màu đỏ của ma trận quyết định. Đọc câu danh ngôn đúc kết và chào kết thúc bài.
 
 > **🗣️ LỜI THOẠI:**  
-> "Từ phần lý thuyết và thực nghiệm vừa rồi, câu hỏi quan trọng nhất là khi nào nên áp dụng Microservices trong thực tế? Như ma trận quyết định trên slide:  
+> "Từ phần lý thuyết và thực nghiệm vừa rồi, câu hỏi quan trọng nhất là khi nào nên áp dụng Microservices trong thực tế? Chúng ta có thể thấy rõ qua hai trường hợp sau:  
 > 
-> - **Ở nửa trên — Khi nào nên dùng:** Kiến trúc này phát huy hiệu quả rõ rệt với các hệ thống có lưu lượng truy cập lớn như Netflix, Amazon, Shopee, Tiki hay các hệ thống Core Banking; dự án có từ 3 nhóm phát triển trở lên làm việc song song và đòi hỏi độ sẵn sàng cao 99,99%.  
-> - **Ở nửa dưới — Khi nào không nên dùng:** Với các dự án khởi nghiệp ở giai đoạn MVP khi nghiệp vụ còn thay đổi liên tục, hoặc đội ngũ nhỏ dưới 5 lập trình viên, chi phí vận hành và gỡ lỗi phân tán sẽ vượt quá lợi ích mang lại.  
+> - Đầu tiên là **khi nào nên dùng** — kiến trúc này phát huy hiệu quả rõ rệt với các hệ thống có lưu lượng truy cập lớn như Netflix, Amazon, Shopee, Tiki hay các hệ thống Core Banking; dự án có từ 3 nhóm phát triển trở lên làm việc song song và đòi hỏi độ sẵn sàng cao 99,99%.  
+> - Ngược lại là **khi nào không nên dùng** — với các dự án khởi nghiệp ở giai đoạn MVP khi nghiệp vụ còn thay đổi liên tục, hoặc đội ngũ nhỏ dưới 5 lập trình viên, chi phí vận hành và gỡ lỗi phân tán sẽ vượt quá lợi ích mang lại.  
 > 
 > Như lời khuyên nổi tiếng của Martin Fowler: *'Đừng bắt đầu bằng Microservices nếu ứng dụng của bạn chưa thực sự cần nó. Hãy bắt đầu từ một Monolith được thiết kế tốt.'*  
 > 
