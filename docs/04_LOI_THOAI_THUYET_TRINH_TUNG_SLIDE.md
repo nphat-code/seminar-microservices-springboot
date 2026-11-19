@@ -76,9 +76,7 @@
 > 
 > - Đầu tiên là **Spring Boot**, đóng vai trò làm nền tảng khởi tạo từng microservice đơn lẻ. Nhờ máy chủ nhúng Embedded Tomcat và cơ chế Auto-configuration, Spring Boot giúp đóng gói toàn bộ ứng dụng thành một file JAR độc lập, loại bỏ hầu hết cấu hình rườm rà. Ngoài ra, Spring Boot Actuator cũng cung cấp sẵn các endpoint Health Check cực kỳ tiện lợi.  
 > - Tuy nhiên, khi ráp nhiều service lại với nhau, chúng ta phải giải quyết các bài toán phức tạp của hệ thống phân tán như định vị service, điều phối luồng truy cập, quản lý cấu hình và kiểm soát sự cố mạng.  
-> - Để xử lý những bài toán đó, chúng ta dùng đến **Spring Cloud** — bộ công cụ này cung cấp sẵn **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Resilience4j Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung.  
-> 
-> Và để hình dung cách các thành phần này phối hợp với nhau trên thực tế, em xin mời thầy và các bạn cùng quan sát sơ đồ kiến trúc tổng thể ở slide tiếp theo."
+> - Để xử lý những bài toán đó, chúng ta dùng đến **Spring Cloud** — bộ công cụ này cung cấp sẵn **Service Discovery** để tự động tìm kiếm vị trí service, **Intelligent Routing** để định tuyến lưu lượng, **Resilience4j Circuit Breaker** để ngắt mạch chống sập dây chuyền, và **Centralized Config** để quản lý cấu hình tập trung."
 
 ---
 
@@ -87,7 +85,7 @@
 - **Cues:** Chỉ theo luồng dữ liệu từ Client qua Gateway vào Services.
 
 > **🗣️ LỜI THOẠI:**  
-> "Đây là sơ đồ kiến trúc tổng thể của một hệ thống Spring Microservices:  
+> "Và để dễ hình dung hơn, đây là sơ đồ kiến trúc tổng thể của một hệ thống Spring Microservices:  
 > 
 > - Ở lớp ngoài cùng, các yêu cầu từ phía người dùng đều đi qua **Spring Cloud Gateway**. Gateway đóng vai trò là điểm tiếp nhận duy nhất, chịu trách nhiệm xác thực, kiểm soát lưu lượng và định tuyến yêu cầu vào đúng service nội bộ.  
 > - Ở lớp nghiệp vụ, các service như **Product Service**, **Order Service** hoạt động độc lập với cơ sở dữ liệu riêng. Khi cần trao đổi dữ liệu, các service sử dụng **OpenFeign** kết hợp với **Resilience4j Circuit Breaker** để duy trì tính ổn định.  
