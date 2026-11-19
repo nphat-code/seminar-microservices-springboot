@@ -174,7 +174,7 @@
 
 ## SLIDE 11: MÔ HÌNH HỆ THỐNG DEMO
 - **Thời lượng:** ~1 phút
-- **Cues:** Chuyển sang tư thế thao tác máy tính, mở sẵn các cửa sổ cần thiết.
+- **Cues:** Chiếu sơ đồ 4 node trên slide để cả lớp nắm cấu trúc trước, sau đó chuyển sang thao tác máy tính.
 
 > **🗣️ LỜI THOẠI:**  
 > "Hệ thống demo được xây dựng gồm 4 service trên nền tảng Spring Boot 3 và Spring Cloud:  
@@ -183,13 +183,13 @@
 > 3. **`product-service`** (cổng 8081): Service quản lý thông tin sản phẩm.  
 > 4. **`order-service`** (cổng 8082): Service tiếp nhận đơn hàng, gọi sang Product Service qua OpenFeign và được bảo vệ bởi Resilience4j Circuit Breaker.  
 > 
-> Cả 4 service hiện đã được khởi chạy trên máy. Em xin phép chuyển sang màn hình thao tác để thực hiện 3 kịch bản kiểm thử."
+> Cả 4 service hiện đã được khởi chạy trên máy. Em xin phép chuyển sang màn hình thao tác để thực hiện 3 kịch bản kiểm thử trực tiếp."
 
 ---
 
-## SLIDE 12: KỊCH BẢN LIVE DEMO
-- **Thời lượng:** ~6 phút
-- **Cues:** Thao tác rõ ràng, giải thích ngắn gọn dựa trên dữ liệu hiển thị.
+## PHẦN DEMO THỰC TẾ TRÊN MÁY TÍNH (KHÔNG DÙNG SLIDE)
+- **Thời lượng:** ~5 - 6 phút
+- **Cues:** Chuyển màn hình chiếu sang cửa sổ máy tính (Trình duyệt, Postman và IDE). Thao tác rõ ràng, giải thích ngắn gọn dựa trên dữ liệu hiển thị.
 
 > **🗣️ LỜI THOẠI TRỰC TIẾP:**  
 > 
@@ -227,9 +227,9 @@
 
 ---
 
-## SLIDE 13: ỨNG DỤNG THỰC TẾ & KHI NÀO NÊN / KHÔNG NÊN DÙNG
+## SLIDE 12: ỨNG DỤNG THỰC TẾ & KHI NÀO NÊN / KHÔNG NÊN DÙNG
 - **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Quay lại màn hình slide, chỉ lần lượt vào phần màu xanh và phần màu đỏ của ma trận quyết định.
+- **Cues:** Quay lại màn hình slide (Slide 12), chỉ lần lượt vào phần màu xanh và phần màu đỏ của ma trận quyết định.
 
 > **🗣️ LỜI THOẠI:**  
 > "Từ phần lý thuyết và thực nghiệm vừa rồi, câu hỏi quan trọng nhất là khi nào nên áp dụng Microservices trong thực tế? Như ma trận quyết định trên slide:  
@@ -241,7 +241,7 @@
 
 ---
 
-## SLIDE 14: TỔNG KẾT VÀ HỎI ĐÁP
+## SLIDE 13: TỔNG KẾT VÀ HỎI ĐÁP
 - **Thời lượng:** ~1 phút và ~3 phút Hỏi - Đáp
 - **Cues:** Chỉ lần lượt vào 3 thẻ đúc kết trên slide, sau đó chào kết thúc và mời đặt câu hỏi.
 

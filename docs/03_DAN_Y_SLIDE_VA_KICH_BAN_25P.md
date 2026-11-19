@@ -12,7 +12,7 @@
 | **00:00 - 03:30** | Mở đầu, Nội dung trình bày & So sánh Monolith vs. Microservices | Giới thiệu đề tài, cấu trúc 3 phần, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
 | **03:30 - 10:30** | Hệ sinh thái Spring Cloud & Các thành phần cốt lõi | Trình bày kiến trúc: Eureka, API Gateway, OpenFeign, Resilience4j |
 | **10:30 - 12:00** | Đánh giá Ưu điểm, Nhược điểm & Thách thức | Phân tích sự đánh đổi kiến trúc |
-| **12:00 - 19:00** | **Live Demo Project** | Trình diễn Eureka Dashboard, gọi qua Gateway, OpenFeign và kiểm thử Circuit Breaker |
+| **12:00 - 19:00** | **Thực nghiệm Demo trực tiếp** | Thao tác trên IDE, Eureka Dashboard, Postman và kiểm thử Circuit Breaker |
 | **19:00 - 21:30** | Ứng dụng thực tế & Ma trận quyết định | Liên hệ các hệ thống lớn và nêu trường hợp nên hoặc không nên dùng |
 | **21:30 - 25:00** | Tổng kết và hỏi đáp | Đúc kết 3 thông điệp chính, giải đáp thắc mắc chuyên sâu |
 
@@ -37,7 +37,7 @@
 - **Nội dung chính:**
   - 1. Bối cảnh & Lý do chuyển dịch (Monolith ➔ Microservices).
   - 2. Hệ sinh thái Spring Cloud & Các thành phần kiến trúc cốt lõi.
-  - 3. Live Demo thực chiến mô hình 4 microservices (Định tuyến & Chịu lỗi).
+  - 3. Demo mô hình 4 microservices (Định tuyến & Chịu lỗi).
 - **📐 Bố cục 3 thẻ lộ trình:**
   - **Cột 1 - Bối cảnh & Kiến trúc nền tảng:**
     - 🏛️ Bối cảnh chuyển dịch từ khối Monolith cồng kềnh sang Microservices.
@@ -45,7 +45,7 @@
   - **Cột 2 - Hệ sinh thái Spring Cloud:**
     - 🍃 4 thành phần trụ cột: Eureka Server, Spring Cloud Gateway, OpenFeign, Resilience4j Circuit Breaker.
     - ⚖️ Phân tích khách quan: Ưu điểm và thách thức thực tế.
-  - **Cột 3 - Thực nghiệm Live Demo:**
+  - **Cột 3 - Thực nghiệm Demo:**
     - 💻 Mô phỏng hệ thống 4 Microservices thực chiến trên Spring Boot 3.
     - 💥 Thử thách chịu lỗi trực tiếp: Gateway Routing & Resilience4j Circuit Breaker tự ngắt/phục hồi khi service tắt.
 
@@ -252,22 +252,11 @@
     - 🚪 `api-gateway` (:8080) - Cổng tiếp nhận toàn bộ request từ người dùng.
     - 📦 `product-service` (:8081) - Service dữ liệu sản phẩm.
     - 🛒 `order-service` (:8082) - Service đơn hàng tích hợp OpenFeign & Resilience4j Circuit Breaker.
+  - 💡 *Sau khi trình bày sơ đồ tổng quan trên slide này, người thuyết trình chuyển màn hình sang IDE và Postman để thực hiện phần Demo trực tiếp (xem chi tiết kịch bản thao tác tại tài liệu hướng dẫn demo).*
 
 ---
 
-### Slide 12: Kịch bản Live Demo
-- **Nội dung chính:** 3 tình huống thử nghiệm trực tiếp trên màn hình chiếu.
-- **📐 Sơ đồ 3 bước thử nghiệm:**
-  - **Bước 1: Khởi động & Giám sát**  
-    🖥️ Mở `http://localhost:8761` trên trình duyệt -> Xem Dashboard Eureka hiển thị đủ 3 instance xanh (`API-GATEWAY`, `ORDER-SERVICE`, `PRODUCT-SERVICE`).
-  - **Bước 2: Định tuyến qua Gateway & Gọi liên service**  
-    🚀 Gửi Request qua Gateway `POST http://localhost:8080/api/orders?productId=1&quantity=2` -> Gateway định tuyến sang `order-service`, `order-service` gọi tiếp `product-service` qua OpenFeign lấy giá tiền -> Trả về đơn hàng hoàn chỉnh (Status: 200 OK).
-  - **Bước 3: Thử thách chịu lỗi (Resilience4j Circuit Breaker kích hoạt)**  
-    💥 Tắt trực tiếp `product-service` (mô phỏng sự cố server) -> Gửi lại request tạo đơn -> Resilience4j Circuit Breaker lập tức kích hoạt hàm Fallback, trả về đơn hàng tạm ở trạng thái chờ xử lý thay vì sập lỗi 500!
-
----
-
-### Slide 13: Ứng dụng thực tế & Khi nào NÊN / KHÔNG NÊN dùng?
+### Slide 12: Ứng dụng thực tế & Khi nào NÊN / KHÔNG NÊN dùng?
 - **Nội dung chính:** Ma trận quyết định kiến trúc cho các doanh nghiệp và dự án phần mềm.
 - **📐 Ma trận quyết định:**
   - 🟢 **KHI NÀO NÊN DÙNG (THỰC TẾ ÁP DỤNG THÀNH CÔNG):**
@@ -281,7 +270,7 @@
 
 ---
 
-### Slide 14: Tổng kết và hỏi đáp
+### Slide 13: Tổng kết và hỏi đáp
 - **Nội dung chính:**
   - Tóm tắt 3 thông điệp kỹ thuật then chốt của bài seminar.
   - Tài liệu tham khảo chuẩn chỉnh & Lời cảm ơn.
