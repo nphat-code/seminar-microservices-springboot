@@ -189,40 +189,37 @@
 
 ## PHẦN DEMO THỰC TẾ TRÊN MÁY TÍNH (KHÔNG DÙNG SLIDE)
 - **Thời lượng:** ~5 - 6 phút
-- **Cues:** Chuyển màn hình chiếu sang máy tính (mở sẵn Trình duyệt, Postman và IDE). Vừa thao tác vừa nói chậm rãi, chỉ vào đúng khu vực trên màn hình.
+- **Cues:** Chuyển màn hình chiếu sang máy tính (mở sẵn Trình duyệt, Postman và 4 tab file code trên IDE). Vừa thao tác vừa nói chậm rãi, chỉ vào đúng khu vực trên màn hình.
 
-### 📌 Kịch bản 1: Service Discovery trên Eureka Dashboard
-- **Thao tác:** Mở trình duyệt tab `http://localhost:8761`, bấm **F5**, chỉ vào bảng **Instances currently registered with Eureka**.
-- **Lời nói:**
-> "Đầu tiên là giao diện của `Eureka Server`. Thầy và các bạn có thể thấy cả 3 service là `API-GATEWAY`, `PRODUCT-SERVICE` và `ORDER-SERVICE` đều đang hiển thị trạng thái **UP**. Khi khởi động, các service tự động đăng ký địa chỉ lên đây và giao tiếp với nhau thông qua tên logic mà không cần cấu hình cứng địa chỉ IP."
-
----
-
-### 📌 Kịch bản 2: API Gateway Routing và OpenFeign
-- **Thao tác 1:** Chuyển sang Postman (hoặc Terminal), chạy `GET http://localhost:8080/api/products` rồi bấm **Send**.
-- **Lời nói:**
-> "Tiếp theo, client sẽ chỉ gửi request vào một đầu mối duy nhất là `API Gateway` ở cổng `8080`. Khi em gọi `/api/products`, Gateway tự động định tuyến yêu cầu xuống `Product Service` ở cổng `8081` để trả về danh sách 3 sản phẩm như trên màn hình."
-
-- **Thao tác 2:** Chạy `POST http://localhost:8080/api/orders?productId=1&quantity=2` rồi bấm **Send**.
-- **Lời nói:**
-> "Bây giờ em thử tạo đơn hàng với mã sản phẩm `1` và số lượng `2`. Gateway chuyển request sang `Order Service`. Vì `Order Service` không lưu dữ liệu sản phẩm, nó dùng `OpenFeign` gọi sang `Product Service` để lấy đơn giá `35 triệu`, nhân với `2` và trả về tổng tiền `70 triệu` với trạng thái `SUCCESS`."
+### 📌 Chặng 1: Giới thiệu Cấu hình & Code cốt lõi trên IDE (~1.5 phút)
+- **Cấu hình Eureka Server:** Mở tab [EurekaServerApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/java/com/seminar/eureka/EurekaServerApplication.java) và [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/resources/application.yml).  
+  > "Đầu tiên là trung tâm điều phối `Eureka Server` ở cổng `8761`. Trong code Java, em chỉ cần gắn duy nhất annotation `@EnableEurekaServer` là Spring Cloud tự động thiết lập toàn bộ máy chủ đăng ký dịch vụ. Trong file YML, em cấu hình tắt tự bảo tồn để phục vụ việc kiểm thử cục bộ."
+- **Định tuyến Gateway:** Mở tab [api-gateway/application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/api-gateway/src/main/resources/application.yml), chỉ vào các dòng `uri: lb://...`.  
+  > "Tiếp theo là `API Gateway` ở cổng `8080`. Tại đây em định nghĩa 2 route. Mọi người chú ý tiền tố `lb://` — Gateway không trỏ cứng vào bất kỳ địa chỉ IP nào mà gọi qua tên logic `PRODUCT-SERVICE` và `ORDER-SERVICE`, kết hợp với Eureka để tự động cân bằng tải."
+- **OpenFeign & Circuit Breaker:** Mở [ProductClient.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/client/ProductClient.java) và [OrderServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/OrderServiceApplication.java) (dòng 30 và 51).  
+  > "Để gọi liên service, ở Order Service em tạo interface `ProductClient` gắn `@FeignClient(name = "product-service")` mà không cần viết mã gọi HTTP thủ công. Đồng thời trên hàm tạo đơn hàng, em gắn `@CircuitBreaker` với phương thức dự phòng `createOrderFallback`. Khi `Product Service` gặp sự cố, hàm fallback ngay bên dưới sẽ được kích hoạt để bảo vệ hệ thống."
 
 ---
 
-### 📌 Kịch bản 3: Chịu lỗi với Resilience4j Circuit Breaker (Điểm nhấn)
-- **Thao tác 1:** Chuyển sang IDE, tìm tiến trình [ProductServiceApplication.java](../demo/product-service/src/main/java/com/seminar/product/ProductServiceApplication.java) và bấm nút **Stop** màu đỏ.
-- **Lời nói:**
-> "Bây giờ em giả lập tình huống thực tế: `Product Service` bị sập đột ngột do sự cố máy chủ hoặc đứt mạng."
-
-- **Thao tác 2:** Quay lại Postman, giữ nguyên request `POST http://localhost:8080/api/orders?productId=1&quantity=2` rồi bấm **Send** lại. Chỉ vào mã `200 OK` và dòng `PENDING_CIRCUIT_BREAKER` trong JSON trả về.
-- **Lời nói:**
-> "Thầy và các bạn thấy dù `Product Service` đã tắt hoàn toàn, hệ thống không hề bị treo hay văng lỗi `500`. Request phản hồi ngay lập tức với mã `200 OK` và trạng thái `PENDING_CIRCUIT_BREAKER`. Nhờ `Resilience4j Circuit Breaker`, sự cố đã được cách ly và hàm `Fallback` kích hoạt để tạm lưu đơn hàng ở trạng thái chờ xử lý, giúp `Order Service` vẫn hoạt động ổn định. Khi `Product Service` chạy lại, hệ thống sẽ tự động khôi phục bình thường."
+### 📌 Chặng 2: Kiểm chứng Vận hành bình thường (~2 phút)
+- **Eureka Dashboard:** Mở trình duyệt tab `http://localhost:8761`, bấm **F5**.  
+  > "Bây giờ chúng ta kiểm tra thực tế trên trình duyệt: Tại giao diện Eureka Dashboard, cả 3 service `API-GATEWAY`, `PRODUCT-SERVICE` và `ORDER-SERVICE` đều đang hiển thị trạng thái **UP** nhờ tự động gửi nhịp tim về đây."
+- **Gọi qua Gateway:** Mở Postman, chạy `GET http://localhost:8080/api/products` và `POST http://localhost:8080/api/orders?productId=1&quantity=2`.  
+  > "Client chỉ gửi request vào một đầu mối duy nhất là Gateway ở cổng `8080`. Khi em gọi lấy sản phẩm, Gateway định tuyến chính xác xuống `Product Service`. Khi em tạo đơn hàng, Order Service đã sử dụng `ProductClient` vừa xem trong code để gọi ngầm sang Product Service lấy đơn giá 35 triệu và trả về tổng tiền 70 triệu thành công với trạng thái `SUCCESS`."
 
 ---
 
-### 💡 Mẹo xử lý nhanh khi trình bày
-- Lúc bấm **Send** ở Kịch bản 3, nhớ nhấn mạnh cụm **"phản hồi ngay lập tức, không bị treo"** để giảng viên thấy rõ tác dụng của `Circuit Breaker`.
-- Nếu bấm **F5** trên Eureka mà chưa thấy đủ 3 service, chỉ cần nói *"Eureka cần vài giây nhận heartbeat từ các service"* rồi chờ 5 đến 10 giây bấm **F5** lại.
+### 📌 Chặng 3: Thử thách Chịu lỗi & Đối chiếu trực tiếp hàm Fallback (~2 phút)
+- **Giả lập sự cố:** Quay lại IDE, bấm nút **Stop** màu đỏ dừng `ProductServiceApplication`.  
+  > "Bây giờ em giả lập tình huống thực tế: `Product Service` bị sập đột ngột do sự cố phần cứng hoặc mạng."
+- **Kiểm chứng Fallback & Soi lại code:** Quay lại Postman, bấm **Send** lại request đặt hàng. Chỉ vào mã `200 OK` và dòng `PENDING_CIRCUIT_BREAKER`. Sau đó quay lại IDE chỉ đúng vào hàm `createOrderFallback` ở dòng 51 của `OrderServiceApplication.java`.  
+  > "Thầy và các bạn thấy dù `Product Service` đã tắt hoàn toàn, request vẫn phản hồi ngay lập tức với mã `200 OK` và trạng thái `PENDING_CIRCUIT_BREAKER`. Chính hàm `createOrderFallback` này trong code đã được Resilience4j Circuit Breaker kích hoạt tức thì để tạm lưu đơn hàng ở trạng thái chờ, bảo vệ Order Service không bị nghẽn luồng."
+
+---
+
+### 💡 Mẹo xử lý nếu thầy hỏi về dòng chữ đỏ trên Eureka
+Nếu trên giao diện Eureka xuất hiện dòng cảnh báo màu đỏ, bạn trả lời ngay:  
+> "Dạ thưa thầy, đó là cơ chế **Self-Preservation Mode** của Eureka. Khi số lượng nhịp tim gửi về bị tụt đột ngột dưới ngưỡng threshold, Eureka sẽ nghi ngờ mạng chập chờn diện rộng nên tự động đóng băng danh sách, không xóa service để tránh xóa nhầm. Trong file YML em đã thêm cấu hình `enable-self-preservation: false` để phục vụ việc kiểm thử cục bộ ạ."
 
 ---
 
