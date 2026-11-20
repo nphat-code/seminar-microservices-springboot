@@ -35,7 +35,7 @@ Mở sẵn 4 tab file sau trên IDE (IntelliJ IDEA hoặc VS Code) để khi dem
 * **Bước 1.3: Code giao tiếp OpenFeign & Resilience4j Circuit Breaker**
   * **Thao tác 1:** Bấm tab `[ProductClient.java]`.
   * **Lời nói:**
-    > "Để gọi liên service, ở Order Service em tạo interface `ProductClient` gắn `@FeignClient(name = "product-service")`. Chúng ta hoàn toàn không cần viết mã gọi HTTP thủ công, OpenFeign sẽ tự tìm địa chỉ thực tế từ Eureka."
+    > "Để Order Service gọi sang Product Service lấy giá, em tạo interface `ProductClient` gắn `@FeignClient(name = "product-service")`. Chúng ta hoàn toàn không cần viết mã gọi HTTP thủ công, OpenFeign sẽ tự tìm địa chỉ thực tế từ Eureka."
   * **Thao tác 2:** Bấm tab `[OrderServiceApplication.java]`, chỉ vào annotation `@CircuitBreaker` ở dòng 30 và hàm `createOrderFallback` ở dòng 51.
   * **Lời nói:**
     > "Và trên hàm tạo đơn hàng, em gắn `@CircuitBreaker` với phương thức dự phòng `createOrderFallback`. Khi `Product Service` gặp sự cố, hàm fallback ngay bên dưới sẽ được kích hoạt để bảo vệ hệ thống."

@@ -141,7 +141,7 @@ Hệ thống demo được xây dựng theo cấu trúc Maven Multi-Module gồm
   - Đặt `server.port: 8081` và `spring.application.name: product-service`.
   - Khai báo `eureka.client.service-url.defaultZone: http://localhost:8761/eureka/` để tự động đăng ký khi khởi động.
 
-### Bước 4: Phát triển `order-service` (Service nghiệp vụ gọi liên service và chịu lỗi)
+### Bước 4: Phát triển `order-service` (Service nghiệp vụ gọi sang service khác và chịu lỗi)
 - **Mục đích:** Tiếp nhận đơn hàng, gọi sang `product-service` lấy giá sản phẩm và tự bảo vệ khi service đích gặp sự cố.
 - **Kết nối OpenFeign:**
   - Tạo interface [ProductClient.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/client/ProductClient.java) gắn `@FeignClient(name = "product-service")` để gọi `GET /api/products/{id}` thông qua tên logic trên Eureka mà không cần ghi cứng IP.

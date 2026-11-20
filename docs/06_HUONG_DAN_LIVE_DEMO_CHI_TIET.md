@@ -43,7 +43,7 @@ Khởi chạy lần lượt từng file `Application.java` theo đúng thứ t�
 
 ---
 
-### 📌 Kịch bản 2: Trình diễn API Gateway Routing & Gọi liên service qua OpenFeign
+### 📌 Kịch bản 2: Trình diễn API Gateway Routing & Giao tiếp qua OpenFeign
 - **Màn hình hiển thị:** Chuyển sang phần mềm Postman (hoặc Terminal).
 - **Thao tác 2.1 - Kiểm tra định tuyến danh mục sản phẩm:**
   - Chọn phương thức `GET`.
