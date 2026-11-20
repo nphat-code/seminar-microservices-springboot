@@ -14,7 +14,7 @@ eureka:
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 10
 
-# Cấu hình Resilience4j Circuit Breaker
+
 resilience4j:
   circuitbreaker:
     instances:

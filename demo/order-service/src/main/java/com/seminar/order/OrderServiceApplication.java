@@ -29,10 +29,8 @@ public class OrderServiceApplication {
     @PostMapping
     @CircuitBreaker(name = "productServiceCB", fallbackMethod = "createOrderFallback")
     public Map<String, Object> createOrder(@RequestParam Long productId, @RequestParam Integer quantity) {
-        // 1. Gọi sang Product Service qua FeignClient (Service Discovery Eureka tự giải mã IP/Port)
         ProductClient.ProductDto product = productClient.getProductById(productId);
 
-        // 2. Tính tiền và lưu đơn hàng
         double totalPrice = product.getPrice() * quantity;
         Map<String, Object> order = new HashMap<>();
         order.put("orderId", UUID.randomUUID().toString());
@@ -47,14 +45,14 @@ public class OrderServiceApplication {
         return order;
     }
 
-    // Hàm Fallback được kích hoạt khi Product Service sập hoặc lỗi
     public Map<String, Object> createOrderFallback(Long productId, Integer quantity, Throwable throwable) {
         Map<String, Object> fallbackOrder = new HashMap<>();
         fallbackOrder.put("orderId", UUID.randomUUID().toString());
         fallbackOrder.put("productId", productId);
         fallbackOrder.put("quantity", quantity);
         fallbackOrder.put("status", "PENDING_CIRCUIT_BREAKER");
-        fallbackOrder.put("message", "[Resilience4j Fallback] Product Service hiện không phản hồi. Đơn hàng tạm lưu ở trạng thái chờ xử lý!");
+        fallbackOrder.put("message",
+                "[Resilience4j Fallback] Product Service hiện không phản hồi. Đơn hàng tạm lưu ở trạng thái chờ xử lý!");
         fallbackOrder.put("errorDetail", throwable.getMessage());
         return fallbackOrder;
     }
