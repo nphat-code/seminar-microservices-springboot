@@ -156,19 +156,19 @@
 > **🗣️ LỜI THOẠI:**  
 > "Về mặt thực tiễn, trong kỹ thuật phần mềm không có kiến trúc nào là hoàn hảo tuyệt đối, mọi quyết định đều là **sự đánh đổi kiến trúc**. Như bảng đối sánh trên slide:  
 > 
-> **Về mặt ưu điểm ở cột bên trái:**  
+> **Về mặt ưu điểm:**  
 > - Đầu tiên là **khả năng mở rộng linh hoạt** — thay vì phải nhân bản cả hệ thống lớn, mình chỉ cần scale riêng những service đang chịu tải cao, chẳng hạn như chỉ nhân bản thêm Product Service khi lượng người xem tăng mạnh, nhờ vậy tiết kiệm tối đa chi phí phần cứng.  
 > - Thứ hai là **triển khai độc lập** — các team có thể cập nhật và phát hành tính năng mới cho từng service riêng lẻ mà không lo ảnh hưởng đến các service còn lại.  
 > - Điểm thứ ba rất quan trọng là **khả năng cô lập lỗi** — nếu một service phụ chẳng may gặp sự cố, lỗi đó sẽ được khoanh vùng lại chứ không làm sập toàn bộ hệ thống.  
 > - Và cuối cùng là **sự tự do về công nghệ** — tùy vào đặc thù bài toán, mỗi service có thể tự chọn phiên bản công nghệ hoặc hệ cơ sở dữ liệu tối ưu nhất cho riêng mình.  
 > 
-> **Tuy nhiên, để đổi lấy những lợi thế trên, chúng ta phải chấp nhận 4 thách thức thực tế ở cột bên phải:**  
+> **Tuy nhiên, để đổi lấy những lợi thế trên, chúng ta phải chấp nhận 4 thách thức thực tế:**  
 > - Thứ nhất là **độ trễ mạng** — việc giao tiếp giữa các service qua HTTP/REST chắc chắn sẽ có độ trễ lớn hơn so với gọi hàm nội bộ trong RAM.  
 > - Thứ hai là **tính nhất quán dữ liệu** — việc chia tách database làm mất đi giao dịch `@Transactional` ACID truyền thống, buộc chúng ta phải áp dụng các mô hình phân tán phức tạp hơn như Saga Pattern.  
 > - Thứ ba là **vận hành phức tạp** — hệ thống đòi hỏi hạ tầng container hóa cùng các giải pháp giám sát, theo dõi log phân tán như Actuator hay Distributed Tracing.  
 > - Và thứ tư là **kiểm thử khó khăn** — rất khó để dựng lên toàn bộ môi trường test tích hợp end-to-end trên một máy cá nhân.  
 > 
-> Để kiểm chứng các ưu điểm này và thấy cách Spring Cloud giúp chúng ta giải quyết các thách thức về mạng và chịu lỗi, em xin phép chuyển sang phần **demo** trên mã nguồn thực tế."
+> Tiếp theo, em xin phép chuyển sang phần **demo** hệ thống."
 
 ---
 
