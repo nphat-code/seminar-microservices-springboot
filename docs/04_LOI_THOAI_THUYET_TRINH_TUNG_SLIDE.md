@@ -183,7 +183,7 @@
 > 3. **`product-service`** (cổng 8081): Service quản lý thông tin sản phẩm.  
 > 4. **`order-service`** (cổng 8082): Service tiếp nhận đơn hàng, gọi sang Product Service qua OpenFeign và được bảo vệ bởi Resilience4j Circuit Breaker.  
 > 
-> Cả 4 service hiện đã được khởi chạy trên máy. Em xin phép chuyển sang màn hình thao tác để thực hiện 3 kịch bản kiểm thử trực tiếp."
+> Cả 4 service này em đều đã bật chạy sẵn trên máy rồi. Sau đây em xin phép bắt đầu phần demo luôn ạ."
 
 ---
 

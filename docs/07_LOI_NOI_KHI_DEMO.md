@@ -4,9 +4,9 @@ Tài liệu tóm tắt ngắn gọn thao tác và lời thoại từng bước �
 
 ---
 
-## 1. Mở đầu khi chuyển sang màn hình máy tính
+## 1. Mở đầu khi bắt đầu demo
 
-> "Thưa thầy và các bạn, hệ thống demo của em gồm 4 service: `Eureka Server` ở cổng `8761`, `API Gateway` ở cổng `8080`, `Product Service` ở cổng `8081` và `Order Service` ở cổng `8082`. Cả 4 service hiện đã được khởi chạy sẵn. Sau đây em xin phép đi vào 3 kịch bản kiểm thử thực tế."
+> "Cả 4 service này em đều đã bật chạy sẵn trên máy rồi. Sau đây em xin phép bắt đầu phần demo luôn ạ."
 
 ---
 
