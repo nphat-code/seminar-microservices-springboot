@@ -8,12 +8,12 @@ spring:
     gateway:
       routes:
         - id: product-service-route
-          uri: lb://PRODUCT-SERVICE
+          uri: lb://product-service
           predicates:
             - Path=/api/products/**
 
         - id: order-service-route
-          uri: lb://ORDER-SERVICE
+          uri: lb://order-service
           predicates:
             - Path=/api/orders/**
 

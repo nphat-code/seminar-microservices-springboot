@@ -195,7 +195,7 @@
 - **Cấu hình Eureka Server:** Mở tab `[EurekaServerApplication.java]` và `[application.yml]`.  
   > "Đầu tiên là `Eureka Server` ở cổng `8761`. Trong code Java, em chỉ cần gắn duy nhất annotation `@EnableEurekaServer` là Spring Cloud sẽ tự động thiết lập Service Registry để quản lý danh bạ dịch vụ."
 - **Định tuyến Gateway:** Mở tab `[application.yml]` của API Gateway, chỉ vào các dòng `uri: lb://...`.  
-  > "Tiếp theo là `API Gateway` ở cổng `8080`. Tại đây em định nghĩa 2 route. Mọi người chú ý tiền tố `lb://` — Gateway không trỏ cứng vào bất kỳ địa chỉ IP nào mà gọi qua tên logic `PRODUCT-SERVICE` và `ORDER-SERVICE`, kết hợp với Eureka để tự động cân bằng tải."
+  > "Tiếp theo là `API Gateway` ở cổng `8080`. Tại đây em định nghĩa 2 route. Mọi người chú ý tiền tố `lb://` — Gateway không trỏ cứng vào bất kỳ địa chỉ IP nào mà gọi qua tên logic `product-service` và `order-service`, kết hợp với Eureka để tự động cân bằng tải."
 - **OpenFeign & Circuit Breaker:** Mở `[ProductClient.java]` và `[OrderServiceApplication.java]` (dòng 30 và 51).  
   > "Để Order Service gọi sang Product Service lấy giá, em tạo interface `ProductClient` gắn `@FeignClient(name = "product-service")` mà không cần viết mã gọi HTTP thủ công. Đồng thời trên hàm tạo đơn hàng, em gắn `@CircuitBreaker` với phương thức dự phòng `createOrderFallback`. Khi `Product Service` gặp sự cố, hàm fallback ngay bên dưới sẽ được kích hoạt để kiểm soát lỗi."
 

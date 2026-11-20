@@ -157,8 +157,8 @@ Hệ thống demo được xây dựng theo cấu trúc Maven Multi-Module gồm
 - **Cấu hình:** Trong [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/api-gateway/src/main/resources/application.yml):
   - Đặt `server.port: 8080` và `spring.application.name: api-gateway`.
   - Định nghĩa 2 route dùng tiền tố `lb://` kết hợp Eureka để cân bằng tải:
-    - `/api/products/**` trỏ về `lb://PRODUCT-SERVICE`
-    - `/api/orders/**` trỏ về `lb://ORDER-SERVICE`
+    - `/api/products/**` trỏ về `lb://product-service`
+    - `/api/orders/**` trỏ về `lb://order-service`
 
 ### Bước 6: Biên dịch và kiểm thử cục bộ
 Tại thư mục `demo/`, biên dịch toàn bộ 4 module bằng Maven:

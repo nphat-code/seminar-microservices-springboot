@@ -30,7 +30,7 @@ Mở sẵn 4 tab file sau trên IDE (IntelliJ IDEA hoặc VS Code) để khi dem
 * **Bước 1.2: Cấu hình định tuyến API Gateway**
   * **Thao tác:** Bấm tab `[application.yml]` của API Gateway, chỉ chuột vào các dòng `uri: lb://...`.
   * **Lời nói:**
-    > "Tiếp theo là `API Gateway` ở cổng `8080`. Tại đây em định nghĩa 2 route. Mọi người chú ý tiền tố `lb://` — Gateway không trỏ cứng vào bất kỳ địa chỉ IP nào mà gọi qua tên logic `PRODUCT-SERVICE` và `ORDER-SERVICE`, kết hợp với Eureka để tự động cân bằng tải."
+    > "Tiếp theo là `API Gateway` ở cổng `8080`. Tại đây em định nghĩa 2 route. Mọi người chú ý tiền tố `lb://` — Gateway không trỏ cứng vào bất kỳ địa chỉ IP nào mà gọi qua tên logic `product-service` và `order-service`, kết hợp với Eureka để tự động cân bằng tải."
 
 * **Bước 1.3: Code giao tiếp OpenFeign & Resilience4j Circuit Breaker**
   * **Thao tác 1:** Bấm tab `[ProductClient.java]`.
