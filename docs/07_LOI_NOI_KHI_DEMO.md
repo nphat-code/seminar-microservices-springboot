@@ -25,7 +25,7 @@ Mở sẵn 4 tab file sau trên IDE (IntelliJ IDEA hoặc VS Code) để khi dem
 * **Bước 1.1: Cấu hình Eureka Server**
   * **Thao tác:** Bấm tab `[EurekaServerApplication.java]` và `[application.yml]`.
   * **Lời nói:**
-    > "Đầu tiên là trung tâm điều phối `Eureka Server` ở cổng `8761`. Trong code Java, em chỉ cần gắn duy nhất annotation `@EnableEurekaServer` là Spring Cloud tự động thiết lập toàn bộ máy chủ đăng ký dịch vụ. Trong file YML, em cấu hình tắt tự bảo tồn để phục vụ việc kiểm thử cục bộ."
+    > "Đầu tiên là `Eureka Server` ở cổng `8761`. Trong code Java, em chỉ cần gắn duy nhất annotation `@EnableEurekaServer` là Spring Cloud sẽ tự động thiết lập Service Registry để quản lý danh bạ dịch vụ."
 
 * **Bước 1.2: Cấu hình định tuyến API Gateway**
   * **Thao tác:** Bấm tab `[application.yml]` của API Gateway, chỉ chuột vào các dòng `uri: lb://...`.

@@ -193,7 +193,7 @@
 
 ### 📌 Chặng 1: Giới thiệu Cấu hình & Code cốt lõi trên IDE (~1.5 phút)
 - **Cấu hình Eureka Server:** Mở tab `[EurekaServerApplication.java]` và `[application.yml]`.  
-  > "Đầu tiên là trung tâm điều phối `Eureka Server` ở cổng `8761`. Trong code Java, em chỉ cần gắn duy nhất annotation `@EnableEurekaServer` là Spring Cloud tự động thiết lập toàn bộ máy chủ đăng ký dịch vụ. Trong file YML, em cấu hình tắt tự bảo tồn để phục vụ việc kiểm thử cục bộ."
+  > "Đầu tiên là `Eureka Server` ở cổng `8761`. Trong code Java, em chỉ cần gắn duy nhất annotation `@EnableEurekaServer` là Spring Cloud sẽ tự động thiết lập Service Registry để quản lý danh bạ dịch vụ."
 - **Định tuyến Gateway:** Mở tab `[application.yml]` của API Gateway, chỉ vào các dòng `uri: lb://...`.  
   > "Tiếp theo là `API Gateway` ở cổng `8080`. Tại đây em định nghĩa 2 route. Mọi người chú ý tiền tố `lb://` — Gateway không trỏ cứng vào bất kỳ địa chỉ IP nào mà gọi qua tên logic `PRODUCT-SERVICE` và `ORDER-SERVICE`, kết hợp với Eureka để tự động cân bằng tải."
 - **OpenFeign & Circuit Breaker:** Mở `[ProductClient.java]` và `[OrderServiceApplication.java]` (dòng 30 và 51).  
