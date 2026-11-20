@@ -6,10 +6,10 @@ Tài liệu hướng dẫn thực chiến dành cho người thuyết trình bà
 
 ## 🛠️ CHUẨN BỊ TRƯỚC GIỜ BÁO CÁO (TRÊN IDE)
 Mở sẵn 4 tab file sau trên IDE (IntelliJ IDEA hoặc VS Code) để khi demo chỉ cần bấm chuột chuyển tab:
-1. [EurekaServerApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/java/com/seminar/eureka/EurekaServerApplication.java) và [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/resources/application.yml) (Eureka Server)
-2. [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/api-gateway/src/main/resources/application.yml) (API Gateway)
-3. [ProductClient.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/client/ProductClient.java)
-4. [OrderServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/OrderServiceApplication.java)
+1. `[EurekaServerApplication.java]` và `[application.yml]` (Eureka Server)
+2. `[application.yml]` (API Gateway)
+3. `[ProductClient.java]`
+4. `[OrderServiceApplication.java]`
 
 ---
 
@@ -23,20 +23,20 @@ Mở sẵn 4 tab file sau trên IDE (IntelliJ IDEA hoặc VS Code) để khi dem
 ### 2. Chặng 1: Giới thiệu Cấu hình & Code cốt lõi trên IDE (~1.5 phút)
 
 * **Bước 1.1: Cấu hình Eureka Server**
-  * **Thao tác:** Bấm tab [EurekaServerApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/java/com/seminar/eureka/EurekaServerApplication.java) và [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/resources/application.yml).
+  * **Thao tác:** Bấm tab `[EurekaServerApplication.java]` và `[application.yml]`.
   * **Lời nói:**
     > "Đầu tiên là trung tâm điều phối `Eureka Server` ở cổng `8761`. Trong code Java, em chỉ cần gắn duy nhất annotation `@EnableEurekaServer` là Spring Cloud tự động thiết lập toàn bộ máy chủ đăng ký dịch vụ. Trong file YML, em cấu hình tắt tự bảo tồn để phục vụ việc kiểm thử cục bộ."
 
 * **Bước 1.2: Cấu hình định tuyến API Gateway**
-  * **Thao tác:** Bấm tab [application.yml](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/api-gateway/src/main/resources/application.yml) của API Gateway, chỉ chuột vào các dòng `uri: lb://...`.
+  * **Thao tác:** Bấm tab `[application.yml]` của API Gateway, chỉ chuột vào các dòng `uri: lb://...`.
   * **Lời nói:**
     > "Tiếp theo là `API Gateway` ở cổng `8080`. Tại đây em định nghĩa 2 route. Mọi người chú ý tiền tố `lb://` — Gateway không trỏ cứng vào bất kỳ địa chỉ IP nào mà gọi qua tên logic `PRODUCT-SERVICE` và `ORDER-SERVICE`, kết hợp với Eureka để tự động cân bằng tải."
 
 * **Bước 1.3: Code giao tiếp OpenFeign & Resilience4j Circuit Breaker**
-  * **Thao tác 1:** Bấm tab [ProductClient.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/client/ProductClient.java).
+  * **Thao tác 1:** Bấm tab `[ProductClient.java]`.
   * **Lời nói:**
     > "Để gọi liên service, ở Order Service em tạo interface `ProductClient` gắn `@FeignClient(name = "product-service")`. Chúng ta hoàn toàn không cần viết mã gọi HTTP thủ công, OpenFeign sẽ tự tìm địa chỉ thực tế từ Eureka."
-  * **Thao tác 2:** Bấm tab [OrderServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/OrderServiceApplication.java), chỉ vào annotation `@CircuitBreaker` ở dòng 30 và hàm `createOrderFallback` ở dòng 51.
+  * **Thao tác 2:** Bấm tab `[OrderServiceApplication.java]`, chỉ vào annotation `@CircuitBreaker` ở dòng 30 và hàm `createOrderFallback` ở dòng 51.
   * **Lời nói:**
     > "Và trên hàm tạo đơn hàng, em gắn `@CircuitBreaker` với phương thức dự phòng `createOrderFallback`. Khi `Product Service` gặp sự cố, hàm fallback ngay bên dưới sẽ được kích hoạt để bảo vệ hệ thống."
 
@@ -62,7 +62,7 @@ Mở sẵn 4 tab file sau trên IDE (IntelliJ IDEA hoặc VS Code) để khi dem
 ### 4. Chặng 3: Thử thách Chịu lỗi & Đối chiếu trực tiếp hàm Fallback (~2 phút)
 
 * **Bước 3.1: Giả lập sự cố máy chủ**
-  * **Thao tác:** Chuyển sang IDE, tìm tiến trình [ProductServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/product-service/src/main/java/com/seminar/product/ProductServiceApplication.java) và bấm nút **Stop** màu đỏ.
+  * **Thao tác:** Chuyển sang IDE, tìm tiến trình `[ProductServiceApplication.java]` và bấm nút **Stop** màu đỏ.
   * **Lời nói:**
     > "Bây giờ em giả lập tình huống thực tế: `Product Service` bị sập đột ngột do sự cố phần cứng hoặc mạng."
 
@@ -70,7 +70,7 @@ Mở sẵn 4 tab file sau trên IDE (IntelliJ IDEA hoặc VS Code) để khi dem
   * **Thao tác 1:** Quay lại Postman, giữ nguyên request `POST http://localhost:8080/api/orders?productId=1&quantity=2` rồi bấm **Send** lại. Chỉ vào mã `200 OK` và dòng `PENDING_CIRCUIT_BREAKER`.
   * **Lời nói:**
     > "Thầy và các bạn thấy dù `Product Service` đã tắt hoàn toàn, request vẫn phản hồi ngay lập tức với mã `200 OK` và trạng thái `PENDING_CIRCUIT_BREAKER`. Hệ thống không hề bị treo chờ timeout hay báo lỗi 500."
-  * **Thao tác 2:** Quay lại IDE, bấm tab [OrderServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/OrderServiceApplication.java) và chỉ đúng vào hàm `createOrderFallback` ở dòng 51.
+  * **Thao tác 2:** Quay lại IDE, bấm tab `[OrderServiceApplication.java]` và chỉ đúng vào hàm `createOrderFallback` ở dòng 51.
   * **Lời nói chốt:**
     > "Chính hàm `createOrderFallback` này trong code đã được Resilience4j Circuit Breaker kích hoạt tức thì để tạm lưu đơn hàng ở trạng thái chờ, bảo vệ Order Service không bị nghẽn luồng. Khi Product Service khởi động lại, hệ thống sẽ tự động phục hồi bình thường."
 
