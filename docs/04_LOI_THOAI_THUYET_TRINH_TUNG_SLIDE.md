@@ -172,9 +172,9 @@
 
 ---
 
-## SLIDE 11: MÔ HÌNH HỆ THỐNG DEMO
+## SLIDE 11: MÔ HÌNH HỆ THỐNG DEMO (SLIDE CUỐI CÙNG)
 - **Thời lượng:** ~1 phút
-- **Cues:** Chiếu sơ đồ 4 node trên slide để cả lớp nắm cấu trúc trước, sau đó chuyển sang thao tác máy tính.
+- **Cues:** Chiếu sơ đồ 4 node trên slide cuối cùng này để cả lớp nắm cấu trúc trước, sau đó chuyển sang thao tác máy tính và kết thúc bài báo cáo tại phần demo.
 
 > **🗣️ LỜI THOẠI:**  
 > "Hệ thống demo được xây dựng gồm 4 service trên nền tảng Spring Boot 3 và Spring Cloud:  
@@ -214,28 +214,14 @@
   > "Bây giờ em giả lập tình huống thực tế: `Product Service` bị sập đột ngột do sự cố phần cứng hoặc mạng."
 - **Kiểm chứng Fallback & Soi lại code:** Quay lại Postman, bấm **Send** lại request đặt hàng. Chỉ vào mã `200 OK` và dòng `PENDING_CIRCUIT_BREAKER`. Sau đó quay lại IDE chỉ đúng vào hàm `createOrderFallback` ở dòng 51 của `[OrderServiceApplication.java]`.  
   > "Thầy và các bạn thấy dù `Product Service` đã tắt hoàn toàn, request vẫn phản hồi ngay lập tức với mã `200 OK` và trạng thái `PENDING_CIRCUIT_BREAKER`. Chính hàm `createOrderFallback` này trong code đã được Resilience4j Circuit Breaker kích hoạt tức thì để tạm lưu đơn hàng ở trạng thái chờ, bảo vệ Order Service không bị nghẽn luồng."
+  > 
+  > "Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe ạ!"
 
 ---
 
 ### 💡 Mẹo xử lý nếu thầy hỏi về dòng chữ đỏ trên Eureka
 Nếu trên giao diện Eureka xuất hiện dòng cảnh báo màu đỏ, bạn trả lời ngay:  
 > "Dạ thưa thầy, đó là cơ chế **Self-Preservation Mode** của Eureka. Khi số lượng nhịp tim gửi về bị tụt đột ngột dưới ngưỡng threshold, Eureka sẽ nghi ngờ mạng chập chờn diện rộng nên tự động đóng băng danh sách, không xóa service để tránh xóa nhầm. Trong file YML em đã thêm cấu hình `enable-self-preservation: false` để phục vụ việc kiểm thử cục bộ ạ."
-
----
-
-## SLIDE 12: ỨNG DỤNG THỰC TẾ & KHI NÀO NÊN / KHÔNG NÊN DÙNG (SLIDE KẾT THÚC)
-- **Thời lượng:** ~1 phút 30 giây
-- **Cues:** Quay lại màn hình slide (Slide 12), chỉ lần lượt vào phần màu xanh và phần màu đỏ của ma trận quyết định. Đọc câu danh ngôn đúc kết và chào kết thúc bài.
-
-> **🗣️ LỜI THOẠI:**  
-> "Từ phần lý thuyết và thực nghiệm vừa rồi, câu hỏi quan trọng nhất là khi nào nên áp dụng Microservices trong thực tế? Chúng ta có thể thấy rõ qua hai trường hợp sau:  
-> 
-> - Đầu tiên là **khi nào nên dùng** — kiến trúc này phát huy hiệu quả rõ rệt với các hệ thống có lưu lượng truy cập lớn như Netflix, Amazon, Shopee, Tiki hay các hệ thống Core Banking; dự án có từ 3 nhóm phát triển trở lên làm việc song song và đòi hỏi độ sẵn sàng cao 99,99%.  
-> - Ngược lại là **khi nào không nên dùng** — với các dự án khởi nghiệp ở giai đoạn MVP khi nghiệp vụ còn thay đổi liên tục, hoặc đội ngũ nhỏ dưới 5 lập trình viên, chi phí vận hành và gỡ lỗi phân tán sẽ vượt quá lợi ích mang lại.  
-> 
-> Như lời khuyên nổi tiếng của Martin Fowler: *'Đừng bắt đầu bằng Microservices nếu ứng dụng của bạn chưa thực sự cần nó. Hãy bắt đầu từ một Monolith được thiết kế tốt.'*  
-> 
-> Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe."
 
 ---
 

@@ -7,7 +7,7 @@ Tài liệu hướng dẫn thao tác thực chiến dành cho người thuyết 
 ## 📋 I. KHUNG CHUẨN BỊ TRƯỚC KHI BÁO CÁO (5 PHÚT TRƯỚC GIỜ G)
 
 ### 1. Chuẩn bị công cụ trên máy tính
-- Mở sẵn **IDE** (IntelliJ IDEA hoặc VS Code) chứa toàn bộ thư mục [demo/](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/).
+- Mở sẵn **IDE** (IntelliJ IDEA hoặc VS Code) chứa toàn bộ thư mục `[demo/]`.
 - Mở sẵn **Trình duyệt Web** với một tab trống trỏ tới: `http://localhost:8761`.
 - Mở sẵn **Postman** (hoặc mở sẵn cửa sổ Terminal nếu dùng cURL) đã tạo sẵn 2 request:
   - Request 1: `GET http://localhost:8080/api/products`
@@ -18,10 +18,10 @@ Khởi chạy lần lượt từng file `Application.java` theo đúng thứ t�
 
 | Thứ tự | Service | File khởi chạy | Cổng | Thời gian chờ |
 | :---: | :--- | :--- | :---: | :--- |
-| **1** | **Eureka Server** | [EurekaServerApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/eureka-server/src/main/java/com/seminar/eureka/EurekaServerApplication.java) | `8761` | Chờ 10 - 15 giây cho máy chủ khởi động hoàn tất |
-| **2** | **Product Service** | [ProductServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/product-service/src/main/java/com/seminar/product/ProductServiceApplication.java) | `8081` | Khởi chạy xong sau ~3-5 giây |
-| **3** | **Order Service** | [OrderServiceApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/order-service/src/main/java/com/seminar/order/OrderServiceApplication.java) | `8082` | Khởi chạy xong sau ~5 giây |
-| **4** | **API Gateway** | [ApiGatewayApplication.java](file:///c:/Study/HK1Nam3/J2EE/Seminar/demo/api-gateway/src/main/java/com/seminar/gateway/ApiGatewayApplication.java) | `8080` | Khởi chạy xong sau ~3-5 giây |
+| **1** | **Eureka Server** | `[EurekaServerApplication.java]` | `8761` | Chờ 10 - 15 giây cho máy chủ khởi động hoàn tất |
+| **2** | **Product Service** | `[ProductServiceApplication.java]` | `8081` | Khởi chạy xong sau ~3-5 giây |
+| **3** | **Order Service** | `[OrderServiceApplication.java]` | `8082` | Khởi chạy xong sau ~5 giây |
+| **4** | **API Gateway** | `[ApiGatewayApplication.java]` | `8080` | Khởi chạy xong sau ~3-5 giây |
 
 > 💡 **Mẹo:** Nên khởi động sẵn cả 4 service từ lúc ngồi dưới lớp chờ đến lượt mình lên báo cáo. Khi bắt đầu chuyển sang phần demo chỉ việc thao tác ngay mà không mất thời gian chờ ứng dụng compile/build.
 
@@ -103,8 +103,9 @@ Khởi chạy lần lượt từng file `Application.java` theo đúng thứ t�
       "errorDetail": "[503 Service Unavailable] during [GET] to [http://product-service/api/products/1]..."
     }
     ```
-- **Lời nói chốt hạ:**  
-  *"Như thầy và các bạn thấy, mặc dù Product Service đã chết hoàn toàn, hệ thống không hề bị sập dây chuyền. Nhờ Resilience4j Circuit Breaker, sự cố được cách ly an toàn, hàm Fallback lập tức kích hoạt để lưu tạm đơn hàng ở trạng thái chờ xử lý. Khi Product Service hoạt động trở lại, hệ thống sẽ tự động khôi phục bình thường."*
+- **Lời nói chốt hạ & Kết thúc bài:**  
+  *"Thầy và các bạn thấy dù Product Service đã tắt hoàn toàn, request vẫn phản hồi ngay lập tức với mã 200 OK và trạng thái PENDING_CIRCUIT_BREAKER. Chính hàm createOrderFallback này trong code đã được Resilience4j Circuit Breaker kích hoạt tức thì để tạm lưu đơn hàng ở trạng thái chờ, bảo vệ Order Service không bị nghẽn luồng."*  
+  *"Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe ạ!"*
 
 ---
 

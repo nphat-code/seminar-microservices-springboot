@@ -12,9 +12,8 @@
 | **00:00 - 03:30** | Mở đầu, Nội dung trình bày & So sánh Monolith vs. Microservices | Giới thiệu đề tài, cấu trúc 3 phần, chỉ ra vì sao kiến trúc Monolith gặp nghẽn |
 | **03:30 - 10:30** | Hệ sinh thái Spring Cloud & Các thành phần cốt lõi | Trình bày kiến trúc: Eureka, API Gateway, OpenFeign, Resilience4j |
 | **10:30 - 12:00** | Đánh giá Ưu điểm, Nhược điểm & Thách thức | Phân tích sự đánh đổi kiến trúc |
-| **12:00 - 19:00** | **Thực nghiệm Demo trực tiếp** | Thao tác trên IDE, Eureka Dashboard, Postman và kiểm thử Circuit Breaker |
-| **19:00 - 22:00** | **Ứng dụng thực tế & Đúc kết** | Nêu trường hợp nên/không nên dùng và đúc kết bằng lời khuyên Martin Fowler |
-| **22:00 - 25:00** | **Hỏi đáp phản biện** | Lắng nghe và giải đáp câu hỏi từ giảng viên |
+| **12:00 - 20:00** | **Thực nghiệm Demo trực tiếp & Kết bài** | Thao tác trên IDE, Eureka Dashboard, Postman, kiểm thử Circuit Breaker và kết thúc bài |
+| **20:00 - 25:00** | **Hỏi đáp phản biện** | Lắng nghe và giải đáp câu hỏi từ giảng viên |
 
 ---
 
@@ -233,7 +232,7 @@
 
 ---
 
-### Slide 11: Giới thiệu Kiến trúc Demo Project
+### Slide 11: Giới thiệu Kiến trúc Demo Project (Slide cuối cùng của bộ Slide)
 - **Nội dung chính:** Mô hình 4 microservices thực chiến được xây dựng trong chuyên đề.
 - **📐 Sơ đồ hệ thống 4 Service Demo:**
   ```text
@@ -252,23 +251,7 @@
     - 🚪 `api-gateway` (:8080) - Cổng tiếp nhận toàn bộ request từ người dùng.
     - 📦 `product-service` (:8081) - Service dữ liệu sản phẩm.
     - 🛒 `order-service` (:8082) - Service đơn hàng tích hợp OpenFeign & Resilience4j Circuit Breaker.
-  - 💡 *Sau khi trình bày sơ đồ tổng quan trên slide này, người thuyết trình chuyển màn hình sang IDE và Postman để thực hiện phần Demo trực tiếp (xem chi tiết kịch bản thao tác tại tài liệu hướng dẫn demo).*
-
----
-
-### Slide 12: Ứng dụng thực tế & Khi nào NÊN / KHÔNG NÊN dùng? (Slide kết thúc)
-- **Nội dung chính:** Ma trận quyết định kiến trúc cho các doanh nghiệp và dự án phần mềm; đúc kết bài báo cáo bằng câu nói kinh điển của Martin Fowler.
-- **📐 Ma trận quyết định & Kết bài:**
-  - 🟢 **KHI NÀO NÊN DÙNG (THỰC TẾ ÁP DỤNG THÀNH CÔNG):**
-    - Doanh nghiệp lớn với lượng truy cập khổng lồ: Netflix, Amazon, Shopee, Tiki, các hệ thống Core Banking.
-    - Quy mô dự án lớn, có từ 3 nhóm phát triển theo nghiệp vụ trở lên cùng làm việc song song.
-    - Các hệ thống yêu cầu độ sẵn sàng cực cao (99.99%) và khả năng scale tự động theo mùa vụ.
-  - 🔴 **KHI NÀO KHÔNG NÊN DÙNG (CÂN NHẮC KỸ):**
-    - Dự án khởi nghiệp giai đoạn MVP: Yêu cầu tính năng thay đổi hàng ngày, chưa rõ mô hình kinh doanh.
-    - Đội ngũ lập trình nhỏ (dưới 5 người): Chi phí vận hành, bảo trì microservices sẽ vượt quá lợi ích mang lại.
-  - 💬 **Lời khuyên Martin Fowler (Thông điệp kết thúc bài):**
-    > *"Đừng bắt đầu bằng Microservices nếu ứng dụng của bạn chưa thực sự cần nó. Hãy bắt đầu từ một Monolith được thiết kế tốt!"*
-  - 🙏 **Lời cảm ơn:** Màn hình dừng tại câu nói đúc kết này để chuyển sang phần hỏi đáp cùng giảng viên.
+  - 💡 *Sau khi trình bày sơ đồ tổng quan trên slide này, người thuyết trình chuyển sang máy tính thực hiện phần Demo trực tiếp và kết thúc bài báo cáo tại phần demo (xem chi tiết kịch bản thao tác tại tài liệu hướng dẫn demo).*
 
 ---
 

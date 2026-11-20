@@ -15,7 +15,7 @@ Khi bấm vào nút **Slide Deck** trong NotebookLM, thiết lập các mục nh
 | :--- | :--- | :--- |
 | **Format** | **Presenter Slides** | Slide thoáng, ít chữ, làm nổi bật từ khóa và sơ đồ để diễn giả tự do thuyết trình; tránh biến slide thành "bức tường chữ". |
 | **Choose language** | **Vietnamese** *(hoặc English tùy nhu cầu)* | Để toàn bộ tiêu đề và nội dung slide sinh ra bằng tiếng Việt chuẩn xác (các thuật ngữ công nghệ AI vẫn giữ nguyên tiếng Anh). |
-| **Length** | **Default** | Độ dài mặc định khớp tối ưu với 12 slide đã có trong tài liệu nguồn. |
+| **Length** | **Default** | Độ dài mặc định khớp tối ưu với 11 slide đã có trong tài liệu nguồn. |
 | **Sources** | **2 sources** | Chọn 2 file `03_DAN_Y...` và `04_LOI_THOAI...`. |
 | **Review slide outline** | **BẬT** | Cho phép xem trước và điều chỉnh dàn ý từng slide trước khi hệ thống tạo slide chính thức. |
 
@@ -40,7 +40,7 @@ Yêu cầu về Bố cục & Trực quan:
   + Sơ đồ Cổng bảo vệ Spring Cloud Gateway (xác thực, định tuyến).
   + Máy trạng thái Resilience4j Circuit Breaker (Closed -> Open -> Half-Open) và cơ chế Fallback.
   + Topology 4-node của dự án Demo (Eureka Server :8761, Gateway :8080, Product :8081, Order :8082).
-  + Bảng đối sánh 2 cột trực quan cho Ưu/Nhược điểm và Ma trận quyết định Nên/Không nên dùng.
+  + Bảng đối sánh 2 cột trực quan cho Ưu và Nhược điểm.
 
 Yêu cầu về Phong cách thiết kế:
 - Nền slide màu trắng. Phong cách thiết kế công nghệ cao tối giản, thanh lịch theo trường phái Swiss Minimalist.
@@ -66,7 +66,7 @@ Visual & Layout Directives:
   + Spring Cloud Gateway reverse-proxy funnel with token authentication and dynamic routing.
   + Resilience4j Circuit Breaker 3-state machine (Closed, Open, Half-Open) and safe fallback path.
   + 4-node cluster demo topology (Eureka Server :8761, Gateway :8080, Product :8081, Order :8082).
-  + Balanced 2-column comparison tables for Pros & Cons and Adoption Decision Matrix.
+  + Balanced 2-column comparison table for Pros & Cons.
 
 Design & Aesthetic Style:
 - Clean white background. Elegant high-tech minimalist aesthetic (Swiss tech style) with crisp geometry, high contrast, balanced negative space, and modern typography.
@@ -82,7 +82,7 @@ Design & Aesthetic Style:
 2. Bấm vào nút **Slide Deck** -> chọn **Customize**.
 3. Sao chép một trong hai đoạn prompt trên dán vào ô mô tả của NotebookLM.
 4. Bấm nút **Generate now**.
-5. Khi dàn ý hiển thị, duyệt nhanh 12 slide và bấm tiếp tục để hệ thống sinh slide hoàn chỉnh kèm sơ đồ và minh họa trực quan.
+5. Khi dàn ý hiển thị, duyệt nhanh 11 slide và bấm tiếp tục để hệ thống sinh slide hoàn chỉnh kèm sơ đồ và minh họa trực quan.
 6. Xuất file slide ra **Google Slides** hoặc tải về định dạng **PowerPoint (.pptx)**:
    - Bạn có thể tùy chỉnh thêm icon, logo Spring chính thức, hoặc thay thế các sơ đồ vector nếu muốn bài thuyết trình càng thêm chuyên nghiệp.
 

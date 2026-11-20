@@ -71,8 +71,10 @@ Mở sẵn 4 tab file sau trên IDE (IntelliJ IDEA hoặc VS Code) để khi dem
   * **Lời nói:**
     > "Thầy và các bạn thấy dù `Product Service` đã tắt hoàn toàn, request vẫn phản hồi ngay lập tức với mã `200 OK` và trạng thái `PENDING_CIRCUIT_BREAKER`. Hệ thống không hề bị treo chờ timeout hay báo lỗi 500."
   * **Thao tác 2:** Quay lại IDE, bấm tab `[OrderServiceApplication.java]` và chỉ đúng vào hàm `createOrderFallback` ở dòng 51.
-  * **Lời nói chốt:**
-    > "Chính hàm `createOrderFallback` này trong code đã được Resilience4j Circuit Breaker kích hoạt tức thì để tạm lưu đơn hàng ở trạng thái chờ, bảo vệ Order Service không bị nghẽn luồng. Khi Product Service khởi động lại, hệ thống sẽ tự động phục hồi bình thường."
+  * **Lời nói chốt & Kết thúc bài:**
+    > "Chính hàm `createOrderFallback` này trong code đã được Resilience4j Circuit Breaker kích hoạt tức thì để tạm lưu đơn hàng ở trạng thái chờ, bảo vệ Order Service không bị nghẽn luồng."
+    > 
+    > "Bài trình bày về đề tài Spring for Microservices của em xin được kết thúc tại đây. Em xin cảm ơn thầy và các bạn đã chú ý lắng nghe ạ!"
 
 ---
 
